@@ -8,7 +8,7 @@ class Header extends HTMLElement {
       <header style="margin-bottom: 57px;">
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark shadow">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/">
+            <a class="navbar-brand" href="index.html">
               <img src="images/inkredibledoc.png" alt="Your Logo" width="30" height="30" class="d-inline-block align-text-top">
               <strong>InkredibleDoc</strong>
             </a>
@@ -32,7 +32,7 @@ class Header extends HTMLElement {
               </ul>
               <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-warning" type="submit">Search</button>
               </form>
             </div>
           </div>
