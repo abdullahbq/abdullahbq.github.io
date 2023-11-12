@@ -16,7 +16,7 @@ class Newsletter extends HTMLElement {
                 <div class="card shadow border-primary">
                   <div class="card-body p-5">
                     <h3 class="fw-bold">
-                      <i class="fas fa-envelope"></i>
+                      <i class="fas fa-envelope text-primary"></i>
                       Join our newsletter and be the first to know!
                     </h3>
                     <p class="small">

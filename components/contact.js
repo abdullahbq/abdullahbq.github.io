@@ -1,4 +1,4 @@
-class ContactPage extends HTMLElement {
+class Contact extends HTMLElement {
   constructor() {
     super();
   }
@@ -135,4 +135,4 @@ class ContactPage extends HTMLElement {
   }
 }
 
-customElements.define("contact-page", ContactPage);
+customElements.define("contact-component", Contact);
