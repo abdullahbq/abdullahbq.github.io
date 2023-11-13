@@ -10,25 +10,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-  <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
-  <script src="components/header.js" type="text/javascript" defer></script>
-  <script src="components/footer.js" type="text/javascript" defer></script>
+  <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  <script src="../js/bootstrap.min.js" type="text/javascript" defer></script>
+  <script src="../components/header.js" type="text/javascript" defer></script>
+  <script src="../components/footer.js" type="text/javascript" defer></script>
 </head>
 
 <body>
   <header-component></header-component>
   <div class="position-relative">
-      <img src="images/{{image}}" alt="Image with Text Overlay" class="img-fluid w-100 h-50 rounded shadow">
-      <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-        <h1>{{title}}</h1>
-        <p class="card-text">
-        <div class="text-light">By <strong>{{author}}</strong> | {{date}}</div>
-        </p>
+    <img src="../images/{{image}}.png" alt="Image with Text Overlay" class="img-fluid w-100 h-50 rounded shadow">
+    <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
+      <h1>{{title}}</h1>
+      <p class="card-text">
+      <div class="text-light">By <strong>{{author}}</strong> | {{date}}</div>
+      </p>
 
-        <p>{{description}}</p>
-      </div>
+      <p>{{description}}</p>
     </div>
+  </div>
   <main class="container py-5">
     <article>
       {{{content}}}

@@ -17,24 +17,26 @@
 
 <body>
     <header-component></header-component>
-    <section class="pricing-section bg-primary bg-opacity-10">
+    <section class="blog-section bg-primary bg-opacity-10">
         <title-component title="Blog"></title-component>
         <div class="container py-5">
             <div class="row">
                 {{#each posts}}
-                <div class="col-md-4">
-                    <a href="{{fileName}}.html" class="text-decoration-none">
+                <div class="col-md-4 post-item" data-category="{{category}}">
+                    <a href="blogposts/{{fileName}}.html" class="text-decoration-none">
                         <div class="card border-primary shadow mb-4">
-                            <img src="images/{{image}}" class="card-img-top" alt="{{title}}">
+                            <div class="card-overlay position-absolute m-2">
+                                <p class="badge bg-primary">{{category}}</p>
+                            </div>
+                            <img src="images/{{image}}.png" class="card-img-top" alt="{{title}}">
                             <div class="card-body">
                                 <h4 class="fw-bold card-title">{{title}}</h5>
                                     <p class="card-text">{{description}}</p>
-
-
                             </div>
-                            <div class="card-footer">
-                                <p class="card-text"><small class="text-muted">By <strong>{{author}}</strong> |
-                                        {{date}}</small></p>
+                            <div class="card-footer bg-primary bg-opacity-10">
+                                <p class="card-text">
+                                    <small class="text-muted">By <strong>{{author}}</strong> | {{date}}</small>
+                                </p>
                             </div>
                         </div>
                     </a>
