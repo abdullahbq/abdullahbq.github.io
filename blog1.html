@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="author" content="{{author}}" />
-  <title>{{title}}</title>
+  <meta name="author" content="Abdullah" />
+  <title>Blog 1 Title</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
     crossorigin="anonymous" />
@@ -19,19 +19,27 @@
 <body>
   <header-component></header-component>
   <div class="position-relative">
-    <img src="images/{{image}}.png" alt="Image with Text Overlay" class="img-fluid w-100 h-50 rounded shadow">
+    <img src="images/sample.png" alt="Image with Text Overlay" class="img-fluid w-100 h-50 rounded shadow">
     <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-      <h1>{{title}}</h1>
+      <h1>Blog 1 Title</h1>
       <p class="card-text">
-      <div class="text-light">By <strong>{{author}}</strong> | {{date}}</div>
+      <div class="text-light">By <strong>Abdullah</strong> | 12 Nov 2023</div>
       </p>
 
-      <p>{{description}}</p>
+      <p>It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
     </div>
   </div>
   <main class="container py-5">
     <article>
-      {{{content}}}
+      
+# Sample Markdown File 1
+
+This is a sample Markdown file. You can include various elements such as headings, lists, and paragraphs.
+
+- Bullet point 1
+- Bullet point 2
+
+
     </article>
   </main>
   <footer-component></footer-component>

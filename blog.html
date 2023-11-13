@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/title.js" type="text/javascript" defer></script>
+    <script src="components/footer.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <header-component></header-component>
+    <section class="blog-section bg-primary bg-opacity-10">
+        <title-component title="Blog"></title-component>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-md-4 post-item" data-category="Web Development">
+                    <a href="blog1.html" class="text-decoration-none">
+                        <div class="card border-primary shadow mb-4">
+                            <div class="card-overlay position-absolute m-2">
+                                <p class="badge bg-primary">Web Development</p>
+                            </div>
+                            <img src="images/sample.png" class="card-img-top" alt="Blog 1 Title">
+                            <div class="card-body">
+                                <h4 class="fw-bold card-title">Blog 1 Title</h5>
+                                    <p class="card-text">It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+                            </div>
+                            <div class="card-footer bg-primary bg-opacity-10">
+                                <p class="card-text">
+                                    <small class="text-muted">By <strong>Abdullah</strong> | 12 Nov 2023</small>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 post-item" data-category="Digital">
+                    <a href="blog2.html" class="text-decoration-none">
+                        <div class="card border-primary shadow mb-4">
+                            <div class="card-overlay position-absolute m-2">
+                                <p class="badge bg-primary">Digital</p>
+                            </div>
+                            <img src="images/sample.png" class="card-img-top" alt="Blog 2 Title">
+                            <div class="card-body">
+                                <h4 class="fw-bold card-title">Blog 2 Title</h5>
+                                    <p class="card-text">It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+                            </div>
+                            <div class="card-footer bg-primary bg-opacity-10">
+                                <p class="card-text">
+                                    <small class="text-muted">By <strong>Abdullah</strong> | 12 Nov 2023</small>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 post-item" data-category="React">
+                    <a href="blog3.html" class="text-decoration-none">
+                        <div class="card border-primary shadow mb-4">
+                            <div class="card-overlay position-absolute m-2">
+                                <p class="badge bg-primary">React</p>
+                            </div>
+                            <img src="images/sample.png" class="card-img-top" alt="Blog 3 Title">
+                            <div class="card-body">
+                                <h4 class="fw-bold card-title">Blog 3 Title</h5>
+                                    <p class="card-text">It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+                            </div>
+                            <div class="card-footer bg-primary bg-opacity-10">
+                                <p class="card-text">
+                                    <small class="text-muted">By <strong>Abdullah</strong> | 12 Nov 2023</small>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer-component></footer-component>
+</body>
+
+</html>

@@ -41,10 +41,10 @@ function generateBlogPage(blogTemplatePath, sourceFiles, outputPath) {
 }
 
 // Generate pages for each Markdown file in the contents folder
-const templatePath = "post_template.hbs";
+const templatePath = "templates/post_template.hbs";
 const contentsFolder = "contents";
 const outputFolder = "";
-const blogTemplatePath = "blog_template.hbs"; // Update with your blog template file path
+const blogTemplatePath = "templates/blog_template.hbs"; // Update with your blog template file path
 
 // Read the list of files in the contents folder
 const sourceFiles = fs
