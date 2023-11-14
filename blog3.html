@@ -13,25 +13,20 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
   <script src="components/header.js" type="text/javascript" defer></script>
+  <script src="components/title.js" type="text/javascript" defer></script>
   <script src="components/footer.js" type="text/javascript" defer></script>
 </head>
 
 <body>
   <header-component></header-component>
-  <div class="position-relative">
-    <img src="images/sample.png" alt="Image with Text Overlay" class="img-fluid w-100 h-50 rounded shadow">
-    <div class="position-absolute top-50 start-50 translate-middle text-white text-center">
-      <h1>Blog 3 Title</h1>
-      <p class="card-text">
-      <div class="text-light">By <strong>Abdullah</strong> | 12 Nov 2023</div>
-      </p>
-
-      <p>It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
+  <div class="card border-0 rounded-0 shadow">
+    <img src="images/sample.png" class="card-img-top rounded-0" alt="Blog 3 Title">
+    <div class="card-overlay position-absolute m-2">
+      <p class="badge bg-primary">React</p>
+      <h1 class="card-title text-light" style="font-weight:900">Blog 3 Title</h1>
     </div>
-  </div>
-  <main class="container py-5">
-    <article>
-      
+    <div class="card-body">
+      <p class="card-text">
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,9 +91,12 @@
 
 </body>
 </html>
-
-    </article>
-  </main>
+</p>
+    </div>
+    <div class="card-footer rounded-0 bg-primary bg-opacity-10">
+      <small class="text-muted">By <strong>Abdullah</strong> | 12 Nov 2023</small>
+    </div>
+  </div>
   <footer-component></footer-component>
 </body>
 

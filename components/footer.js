@@ -6,7 +6,7 @@ class Footer extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
       <footer class="bg-dark">
-        <div class="container py-5">
+        <div class="container-fluid py-5">
           <div class="row">
             <div class="col-md-6">
               <h2 class="fw-bold text-light"><img src="images/inkredibledoc.png" alt="Your Logo" width="50" height="50" class="d-inline-block align-text-top"> InkredibleDoc</h2>
@@ -14,7 +14,7 @@ class Footer extends HTMLElement {
             </div>
             <div class="col-md-3">
               <h2 class="fw-bold text-light">Quick Links</h2>
-              <ul class="list-unstyled text-decoration-none ms-4">
+              <ul class="list-unstyled text-decoration-none ms-3">
                 <li><a href="index.html" class="text-light">Home</a></li>
                 <li><a href="blog.html" class="text-light">Blog</a></li>
                 <li><a href="about.html" class="text-light">About</a></li>
