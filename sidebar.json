@@ -1,0 +1,20 @@
+{
+  "Actuators": [
+    "file1.html",
+    "file2.html"
+  ],
+  "Develop": [
+    "rest.html"
+  ],
+  "Hello": [
+    "test.html"
+  ],
+  "Sensors": [
+    "file1.html",
+    "file2.html"
+  ],
+  "Test1": [
+    "file1.html",
+    "file2.html"
+  ]
+}
