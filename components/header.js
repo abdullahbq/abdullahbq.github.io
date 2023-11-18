@@ -17,6 +17,9 @@ class Header extends HTMLElement {
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                  <a class="nav-link" id="courses-link" href="courses.html">Courses</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" id="blog-link" href="blog.html">Blog</a>
                 </li>
@@ -46,6 +49,7 @@ class Header extends HTMLElement {
     // Update the active class based on the current path
     const links = {
       "/": "home-link",
+      "/courses.html": "courses-link",
       "/blog.html": "blog-link",
       "/about.html": "about-link",
       "/services.html": "services-link",

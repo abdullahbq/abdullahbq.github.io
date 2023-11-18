@@ -1,20 +1,146 @@
 {
-  "Actuators": [
-    "file1.html",
-    "file2.html"
+  "Civil_Engineering": [
+    "Environmental Engineering.html",
+    "Geotechnical Engineering.html",
+    "Structural Analysis.html",
+    "Transportation Engineering.html"
   ],
-  "Develop": [
-    "rest.html"
+  "Civil_Engineering - Copy": [
+    "Environmental Engineering.html",
+    "Geotechnical Engineering.html",
+    "Structural Analysis.html",
+    "Transportation Engineering.html"
   ],
-  "Hello": [
-    "test.html"
+  "Civil_Engineering - Copy (2)": [
+    "Environmental Engineering.html",
+    "Geotechnical Engineering.html",
+    "Structural Analysis.html",
+    "Transportation Engineering.html"
   ],
-  "Sensors": [
-    "file1.html",
-    "file2.html"
+  "Civil_Engineering - Copy (3)": [
+    "Environmental Engineering.html",
+    "Geotechnical Engineering.html",
+    "Structural Analysis.html",
+    "Transportation Engineering.html"
   ],
-  "Test1": [
-    "file1.html",
-    "file2.html"
+  "Computer_Science_and_Programming": [
+    "Data Structures and Algorithms.html",
+    "Database Management Systems.html",
+    "Object-Oriented Programming.html",
+    "Programming Fundamentals.html"
+  ],
+  "Computer_Science_and_Programming - Copy": [
+    "Data Structures and Algorithms.html",
+    "Database Management Systems.html",
+    "Object-Oriented Programming.html",
+    "Programming Fundamentals.html"
+  ],
+  "Computer_Science_and_Programming - Copy (2)": [
+    "Data Structures and Algorithms.html",
+    "Database Management Systems.html",
+    "Object-Oriented Programming.html",
+    "Programming Fundamentals.html"
+  ],
+  "Computer_Science_and_Programming - Copy (3)": [
+    "Data Structures and Algorithms.html",
+    "Database Management Systems.html",
+    "Object-Oriented Programming.html",
+    "Programming Fundamentals.html"
+  ],
+  "Electrical_Engineering": [
+    "Control Systems.html",
+    "Electric Circuit Theory.html",
+    "Power Systems.html",
+    "Renewable Energy Systems.html"
+  ],
+  "Electrical_Engineering - Copy": [
+    "Control Systems.html",
+    "Electric Circuit Theory.html",
+    "Power Systems.html",
+    "Renewable Energy Systems.html"
+  ],
+  "Electrical_Engineering - Copy (2)": [
+    "Control Systems.html",
+    "Electric Circuit Theory.html",
+    "Power Systems.html",
+    "Renewable Energy Systems.html"
+  ],
+  "Electrical_Engineering - Copy (3)": [
+    "Control Systems.html",
+    "Electric Circuit Theory.html",
+    "Power Systems.html",
+    "Renewable Energy Systems.html"
+  ],
+  "Electronics_and_Communication_Engineering": [
+    "Analog Electronics.html",
+    "Communication Systems.html",
+    "Digital Electronics.html",
+    "Signals and Systems.html"
+  ],
+  "Electronics_and_Communication_Engineering - Copy": [
+    "Analog Electronics.html",
+    "Communication Systems.html",
+    "Digital Electronics.html",
+    "Signals and Systems.html"
+  ],
+  "Electronics_and_Communication_Engineering - Copy (2)": [
+    "Analog Electronics.html",
+    "Communication Systems.html",
+    "Digital Electronics.html",
+    "Signals and Systems.html"
+  ],
+  "Electronics_and_Communication_Engineering - Copy (3)": [
+    "Analog Electronics.html",
+    "Communication Systems.html",
+    "Digital Electronics.html",
+    "Signals and Systems.html"
+  ],
+  "Mathematics_and_Physics_Foundation": [
+    "Calculus.html",
+    "Differential Equations.html",
+    "Linear Algebra.html",
+    "Physics for Engineers.html"
+  ],
+  "Mathematics_and_Physics_Foundation - Copy": [
+    "Calculus.html",
+    "Differential Equations.html",
+    "Linear Algebra.html",
+    "Physics for Engineers.html"
+  ],
+  "Mathematics_and_Physics_Foundation - Copy (2)": [
+    "Calculus.html",
+    "Differential Equations.html",
+    "Linear Algebra.html",
+    "Physics for Engineers.html"
+  ],
+  "Mathematics_and_Physics_Foundation - Copy (3)": [
+    "Calculus.html",
+    "Differential Equations.html",
+    "Linear Algebra.html",
+    "Physics for Engineers.html"
+  ],
+  "Mechanical_Engineering": [
+    "Dynamics of Machinery.html",
+    "Machine Design.html",
+    "Manufacturing Processes.html",
+    "Mechanics of Materials.html"
+  ],
+  "Mechanical_Engineering - Copy": [
+    "Dynamics of Machinery.html",
+    "Machine Design.html",
+    "Manufacturing Processes.html",
+    "Mechanics of Materials.html"
+  ],
+  "Mechanical_Engineering - Copy (2)": [
+    "Dynamics of Machinery.html",
+    "Machine Design.html",
+    "Manufacturing Processes.html",
+    "Mechanics of Materials.html"
+  ],
+  "Mechanical_Engineering - Copy (3)": [
+    "Dynamics of Machinery.html",
+    "Machine Design.html",
+    "Manufacturing Processes.html",
+    "Mechanics of Materials.html"
   ]
 }
