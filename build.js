@@ -1,6 +1,5 @@
 const fs = require("fs");
 const path = require("path");
-const handlebars = require("handlebars");
 
 function parseMetadata(sourceContent) {
   const metadata = {};
@@ -19,30 +18,100 @@ function parseMetadata(sourceContent) {
   return metadata;
 }
 
-function generatePage(templatePath, sourcePath, outputPath) {
-  const templateContent = fs.readFileSync(templatePath, "utf8");
-  const template = handlebars.compile(templateContent);
-  const sourceContent = fs.readFileSync(sourcePath, "utf8");
-  const metadata = parseMetadata(sourceContent);
-  const content = sourceContent.split('---')[2].trim(); // Assuming the markdown content follows the metadata
-  const htmlContent = template({ ...metadata, content });
-  fs.writeFileSync(outputPath, htmlContent);
+function generatePostHtml(metadata, content) {
+  return `
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="author" content="${metadata.author}" />
+    <title>${metadata.title}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/title.js" type="text/javascript" defer></script>
+    <script src="components/footer.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+    <header-component></header-component>
+    <div class="card border-0 rounded-0 shadow">
+      <img src="images/${metadata.image}.png" class="card-img-top rounded-0" alt=${metadata.title}>
+      <div class="card-overlay position-absolute m-2">
+        <p class="badge bg-primary">${metadata.category}</p>
+        <h1 class="card-title text-light" style="font-weight:900">${metadata.title}</h1>
+      </div>
+      <div class="card-body">
+        <p class="card-text">${content}</p>
+      </div>
+      <div class="card-footer rounded-0 bg-primary bg-opacity-10">
+        <small class="text-muted">By <strong>${metadata.author}</strong> | ${metadata.date}</small>
+      </div>
+    </div>
+    <footer-component></footer-component>
+  </body>
+    </html>
+  `;
 }
 
-function generateBlogPage(blogTemplatePath, sourceFiles, outputPath) {
-  const blogTemplateContent = fs.readFileSync(blogTemplatePath, "utf8");
-  const blogTemplate = handlebars.compile(blogTemplateContent);
-  const posts = sourceFiles.map((sourceFile) => {
-    const sourceContent = fs.readFileSync(sourceFile, "utf8");
-    const metadata = parseMetadata(sourceContent);
-    return { ...metadata, fileName: path.basename(sourceFile, ".md") };
-  });
-
-  const htmlContent = blogTemplate({ posts });
-  fs.writeFileSync(outputPath, htmlContent);
+function generateBlogHtml(posts) {
+  return `
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Blog</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous" />
+      <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
+      <script src="components/header.js" type="text/javascript" defer></script>
+      <script src="components/title.js" type="text/javascript" defer></script>
+      <script src="components/footer.js" type="text/javascript" defer></script>
+  </head>
+  <body>
+    <header-component></header-component>
+    <section class="blog-section bg-primary bg-opacity-10">
+      <title-component title="Blog"></title-component>
+      <div class="container py-5">
+        <div class="row">
+          ${posts.map(post => `
+            <div class="col-md-4 post-item" data-category=${post.category}>
+              <a href="${post.fileName}.html" class="text-decoration-none">
+                <div class="card border-primary shadow mb-4">
+                  <div class="card-overlay position-absolute m-2">
+                    <p class="badge bg-primary">${post.category}</p>
+                  </div>
+                  <img src="images/${post.image}.png" class="card-img-top" alt=${post.title}>
+                  <div class="card-body">
+                    <h4 class="fw-bold card-title">${post.title}</h5>
+                    <p class="card-text">${post.description}</p>
+                  </div>
+                  <div class="card-footer bg-primary bg-opacity-10">
+                    <p class="card-text">
+                      <small class="text-muted">By <strong>${post.author}</strong> | ${post.date}</small>
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>`).join('')}
+        </div>
+      </div>
+    </section>
+    <footer-component></footer-component>
+  </body>
+  </html>
+  `;
 }
 
-const templatePath = "templates/post_template.hbs";
 const contentsFolder = "contents";
 const outputFolder = "";
 
@@ -55,12 +124,25 @@ sourceFiles.forEach((sourceFile) => {
   const fileNameWithoutExtension = path.basename(sourceFile, ".md");
   const outputFileName = `${fileNameWithoutExtension}.html`;
   const outputPath = path.join(outputFolder, outputFileName);
-  generatePage(templatePath, sourceFile, outputPath);
+
+  const sourceContent = fs.readFileSync(sourceFile, "utf8");
+  const metadata = parseMetadata(sourceContent);
+  const content = sourceContent.split('---')[2].trim();
+
+  const postHtml = generatePostHtml(metadata, content);
+  fs.writeFileSync(outputPath, postHtml);
 });
 
-const blogTemplatePath = "templates/blog_template.hbs";
 const blogOutputPath = path.join(outputFolder, "blog.html");
-generateBlogPage(blogTemplatePath, sourceFiles, blogOutputPath);
+const posts = sourceFiles.map((sourceFile) => {
+  const sourceContent = fs.readFileSync(sourceFile, "utf8");
+  const metadata = parseMetadata(sourceContent);
+  return { ...metadata, fileName: path.basename(sourceFile, ".md") };
+});
+
+const blogHtml = generateBlogHtml(posts);
+fs.writeFileSync(blogOutputPath, blogHtml);
+
 const rootFolder = 'courses';
 const sidebarOutputPath = 'sidebar.json';
 const folderNames = fs.readdirSync(rootFolder);
@@ -73,3 +155,4 @@ folderNames.forEach(folderName => {
 
 const jsonString = JSON.stringify(folderContents, null, 2);
 fs.writeFileSync(sidebarOutputPath, jsonString);
+

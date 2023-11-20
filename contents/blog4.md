@@ -1,32 +1,13 @@
+---
+title: Fake title
+category: Web Development
+description: It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.
+author: Abdullah
+image: sample
+date: 12 Nov 2023
+---
 
-  <!DOCTYPE html>
-  <html lang="en">
-  
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="author" content="Abdullah" />
-    <title>Blog 3 Title</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
-    <script src="components/header.js" type="text/javascript" defer></script>
-    <script src="components/title.js" type="text/javascript" defer></script>
-    <script src="components/footer.js" type="text/javascript" defer></script>
-  </head>
-  <body>
-    <header-component></header-component>
-    <div class="card border-0 rounded-0 shadow">
-      <img src="images/sample.png" class="card-img-top rounded-0" alt=Blog 3 Title>
-      <div class="card-overlay position-absolute m-2">
-        <p class="badge bg-primary">React</p>
-        <h1 class="card-title text-light" style="font-weight:900">Blog 3 Title</h1>
-      </div>
-      <div class="card-body">
-        <p class="card-text"><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -94,13 +75,4 @@
 
 </body>
 
-</html></p>
-      </div>
-      <div class="card-footer rounded-0 bg-primary bg-opacity-10">
-        <small class="text-muted">By <strong>Abdullah</strong> | 12 Nov 2023</small>
-      </div>
-    </div>
-    <footer-component></footer-component>
-  </body>
-    </html>
-  
+</html>
