@@ -6,7 +6,6 @@ class FileViewer extends HTMLElement {
 
     connectedCallback() {
         this.setupSidebar();
-        this.loadFolderData();
         window.addEventListener('load', () => this.responsiveSidebar());
         window.addEventListener('resize', () => this.responsiveSidebar());
     }
@@ -28,6 +27,7 @@ class FileViewer extends HTMLElement {
         const sidebar = document.createElement('div');
         sidebar.id = 'docs-sidebar';
         document.body.appendChild(sidebar);
+        this.loadFolderData(); // Move the call to loadFolderData here
     }
 
     responsiveSidebar() {
