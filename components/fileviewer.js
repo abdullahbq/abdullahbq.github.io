@@ -38,13 +38,10 @@ class FileViewer extends HTMLElement {
 
     renderFolder(folder, folderName) {
         const filesContainer = this.querySelector(`#${folderName} .files`);
-
         const filesHTML = folder.map((fileName, fileIndex) =>
-            `<li id="${fileIndex}" data-file="${fileIndex}" data-folder="${folderName}" class="file" style="cursor: pointer">${fileName.replace('.html', '')}</li>`
+            `<li id="${fileIndex}" data-file="${fileIndex}" data-folder="${folderName}" class="file mb-2" style="cursor: pointer">${fileName.replace('.html', '')}</li>`
         ).join("");
-
         filesContainer.innerHTML = filesHTML;
-
         filesContainer.addEventListener('click', (event) => {
             const fileElement = event.target.closest('.file');
             if (fileElement) {
@@ -78,7 +75,6 @@ class FileViewer extends HTMLElement {
                 </div>                                
             </section>
         `;
-
         Object.keys(this.data).forEach((folderName, folderIndex) => this.renderFolder(this.data[folderName], folderName, folderIndex));
     }
 
@@ -86,19 +82,15 @@ class FileViewer extends HTMLElement {
         const contentContainer = this.querySelector('.content-container');
         const folder = this.data[folderName];
         const fileName = folder[fileIndex];
-
         const filePath = `courses/${folderName}/${fileName}`;
-
         try {
             const response = await fetch(filePath);
             if (response.ok) {
                 const htmlContent = await response.text();
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(htmlContent, 'text/html');
-
                 const title = doc.querySelector('title').innerText;
                 const bodyContent = doc.querySelector('body').innerHTML;
-
                 contentContainer.innerHTML = `<title-component title="${title}"></title-component><div class="container py-3">${bodyContent}</div>`;
             } else {
                 console.error("Failed to load file content:", response.status, response.statusText);

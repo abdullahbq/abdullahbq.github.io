@@ -22,7 +22,6 @@ function parseMetadata(sourceContent) {
 function generatePage(templatePath, sourcePath, outputPath) {
   const templateContent = fs.readFileSync(templatePath, "utf8");
   const template = handlebars.compile(templateContent);
-
   const sourceContent = fs.readFileSync(sourcePath, "utf8");
   const metadata = parseMetadata(sourceContent);
   const content = sourceContent.split('---')[2].trim(); // Assuming the markdown content follows the metadata
@@ -33,7 +32,6 @@ function generatePage(templatePath, sourcePath, outputPath) {
 function generateBlogPage(blogTemplatePath, sourceFiles, outputPath) {
   const blogTemplateContent = fs.readFileSync(blogTemplatePath, "utf8");
   const blogTemplate = handlebars.compile(blogTemplateContent);
-
   const posts = sourceFiles.map((sourceFile) => {
     const sourceContent = fs.readFileSync(sourceFile, "utf8");
     const metadata = parseMetadata(sourceContent);
@@ -63,7 +61,6 @@ sourceFiles.forEach((sourceFile) => {
 const blogTemplatePath = "templates/blog_template.hbs";
 const blogOutputPath = path.join(outputFolder, "blog.html");
 generateBlogPage(blogTemplatePath, sourceFiles, blogOutputPath);
-
 const rootFolder = 'courses';
 const sidebarOutputPath = 'sidebar.json';
 const folderNames = fs.readdirSync(rootFolder);
