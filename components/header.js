@@ -33,9 +33,10 @@ class Header extends HTMLElement {
                   <a class="nav-link" id="contact-link" href="contact.html">Contact</a>
                 </li>
               </ul>
+              <button id="hideSidebarBtn" class="btn btn-outline-info me-2"><i class="fas fa-bars"></i></button>
               <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-warning" type="submit">Search</button>
+                <button class="btn btn-outline-warning" type="submit"><i class="fas fa-search"></i></button>
               </form>
             </div>
           </div>
