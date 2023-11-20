@@ -1,16 +1,32 @@
 const fs = require("fs");
 const path = require("path");
 const handlebars = require("handlebars");
-const matter = require("gray-matter");
+
+function parseMetadata(sourceContent) {
+  const metadata = {};
+  const lines = sourceContent.split('\n');
+  let inMetadata = false;
+
+  for (const line of lines) {
+    if (line.trim() === '---') {
+      inMetadata = !inMetadata;
+    } else if (inMetadata) {
+      const [key, value] = line.split(':').map(part => part.trim());
+      metadata[key] = value;
+    }
+  }
+
+  return metadata;
+}
 
 function generatePage(templatePath, sourcePath, outputPath) {
   const templateContent = fs.readFileSync(templatePath, "utf8");
   const template = handlebars.compile(templateContent);
 
   const sourceContent = fs.readFileSync(sourcePath, "utf8");
-  const { data, content } = matter(sourceContent);
-
-  const htmlContent = template({ ...data, content });
+  const metadata = parseMetadata(sourceContent);
+  const content = sourceContent.split('---')[2].trim(); // Assuming the markdown content follows the metadata
+  const htmlContent = template({ ...metadata, content });
   fs.writeFileSync(outputPath, htmlContent);
 }
 
@@ -20,9 +36,8 @@ function generateBlogPage(blogTemplatePath, sourceFiles, outputPath) {
 
   const posts = sourceFiles.map((sourceFile) => {
     const sourceContent = fs.readFileSync(sourceFile, "utf8");
-    const { data } = matter(sourceContent);
-
-    return { ...data, fileName: path.basename(sourceFile, ".md") };
+    const metadata = parseMetadata(sourceContent);
+    return { ...metadata, fileName: path.basename(sourceFile, ".md") };
   });
 
   const htmlContent = blogTemplate({ posts });
