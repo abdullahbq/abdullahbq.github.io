@@ -59,38 +59,37 @@ class Portfolio extends HTMLElement {
 
   render() {
     this.innerHTML = `
-    <section class="portfolio-section bg-primary bg-opacity-10">
-    <title-component title="Portfolio"></title-component> 
-    <div class="container py-5">  
-        <div class="d-flex justify-content-center mb-4">
-          ${this.state.filters
-            .map(
-              (filter) => `
+      <section class="portfolio-section bg-primary bg-opacity-10">
+        <title-component title="Portfolio"></title-component>
+        <div class="container py-5">
+          <div class="d-flex justify-content-center mb-4">
+            ${this.state.filters
+        .map(
+          (filter) => `
                 <button
-                  class="btn rounded-pill ${
-                    filter === this.state.selectedFilter
-                      ? "btn-primary"
-                      : "btn-outline-secondary"
-                  } me-2"
+                  class="btn rounded-pill ${filter === this.state.selectedFilter
+              ? "btn-primary"
+              : "btn-outline-secondary"
+            } me-2"
                   onclick="document.querySelector('portfolio-component').setFilter('${filter}')"
                 >
                   ${filter}
                 </button>
               `
-            )
-            .join("")}
-        </div>
-        <div class="row justify-content-center">
-          ${this.state.projects
-            .filter((project) => {
-              return (
-                this.state.selectedFilter === "All" ||
-                project.category === this.state.selectedFilter
-              );
-            })
-            .map(
-              (project, index) => `
-                <div class="col-lg-4 col-md-4 col-sm-12">
+        )
+        .join("")}
+          </div>
+          <div class="row justify-content-center">
+            ${this.state.projects
+        .filter((project) => {
+          return (
+            this.state.selectedFilter === "All" ||
+            project.category === this.state.selectedFilter
+          );
+        })
+        .map(
+          (project, index) => `
+                <div key="${index}" class="col-lg-4 col-md-4 col-sm-12">
                   <div class="card shadow mb-4 position-relative">
                     <img
                       class="card-img"
@@ -104,9 +103,9 @@ class Portfolio extends HTMLElement {
                   </div>
                 </div>
               `
-            )
-            .join("")}
-        </div></div>
+        )
+        .join("")}
+          </div></div>
       </section>
     `;
   }
