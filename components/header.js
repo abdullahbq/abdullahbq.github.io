@@ -23,7 +23,7 @@ class Header extends HTMLElement {
                 <i class="fas fa-sun"></i>
               </button>
             </div>                 
-            <a class="navbar-brand d-flex ms-5" href="index.html">
+            <a class="navbar-brand d-flex mx-5" href="index.html">
               <img src="images/inkredibledoc.png" alt="Your Logo" width="32" height="32" class="me-2">
               <span class="fw-bold">InkredibleDoc</span>
             </a>
@@ -93,7 +93,7 @@ class Header extends HTMLElement {
 
     const currentLink = links[path];
     if (currentLink) {
-      document.getElementById(currentLink).classList.add("active");
+      document.getElementById(currentLink).classList.add("active", "border", "border-warning", "rounded-2");
     }
   }
 }
