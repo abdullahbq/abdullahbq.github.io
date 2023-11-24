@@ -92,7 +92,7 @@ function generateBlogHtml(posts) {
                   </div>
                   <img src="images/${post.image}.png" class="card-img-top" alt=${post.title}>
                   <div class="card-body">
-                    <h5 class="fw-bold card-title">${post.title}</h5>
+                    <h4 class="fw-bold card-title">${post.title}</h4>
                     <p class="card-text">${post.description}</p>
                   </div>
                   <div class="card-footer bg-primary bg-opacity-10">
