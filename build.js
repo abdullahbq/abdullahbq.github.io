@@ -50,7 +50,7 @@ function generatePostHtml(metadata, content) {
         <p class="card-text">${content}</p>
       </div>
       <div class="card-footer rounded-0 bg-primary bg-opacity-10">
-        <small class="text-muted">By <strong>${metadata.author}</strong> | ${metadata.date}</small>
+        <small>By <strong>${metadata.author}</strong> | ${metadata.date}</small>
       </div>
     </div>
     <footer-component></footer-component>
@@ -84,7 +84,7 @@ function generateBlogHtml(posts) {
       <div class="container py-5">
         <div class="row">
           ${posts.map(post => `
-            <div class="col-md-4 post-item" data-category=${post.category}>
+            <div class="col-lg-4 col-md-6 post-item" data-category=${post.category}>
               <a href="${post.fileName}.html" class="text-decoration-none">
                 <div class="card border-primary shadow mb-4">
                   <div class="card-overlay position-absolute m-2">
@@ -92,12 +92,12 @@ function generateBlogHtml(posts) {
                   </div>
                   <img src="images/${post.image}.png" class="card-img-top" alt=${post.title}>
                   <div class="card-body">
-                    <h4 class="fw-bold card-title">${post.title}</h5>
+                    <h5 class="fw-bold card-title">${post.title}</h5>
                     <p class="card-text">${post.description}</p>
                   </div>
                   <div class="card-footer bg-primary bg-opacity-10">
                     <p class="card-text">
-                      <small class="text-muted">By <strong>${post.author}</strong> | ${post.date}</small>
+                      <small>By <strong>${post.author}</strong> | ${post.date}</small>
                     </p>
                   </div>
                 </div>

@@ -70,8 +70,8 @@ class Faq extends HTMLElement {
         <div class="container py-5">
           <div class="accordion" id="accordionExample">
             ${items
-              .map((item, index) => this.generateAccordion(item, index))
-              .join("")}
+        .map((item, index) => this.generateAccordion(item, index))
+        .join("")}
           </div>
         </div>
       </section>
@@ -85,17 +85,14 @@ class Faq extends HTMLElement {
     return `
       <div class="accordion-item border-primary">
         <h2 class="accordion-header" id="heading${index + 1}">
-          <button class="accordion-button ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${
-      index + 1
-    }" aria-expanded="${isFirstItem}" aria-controls="collapse${index + 1}">
-            <h5>${title}</h5>
+          <button class="accordion-button fw-bold ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${index + 1
+      }" aria-expanded="${isFirstItem}" aria-controls="collapse${index + 1}">
+            ${title}
           </button>
         </h2>
-        <div id="collapse${
-          index + 1
-        }" class="accordion-collapse collapse ${isFirstItem}" aria-labelledby="heading${
-      index + 1
-    }" data-bs-parent="#accordionExample">
+        <div id="collapse${index + 1
+      }" class="accordion-collapse collapse ${isFirstItem}" aria-labelledby="heading${index + 1
+      }" data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <p>${content}</p>
           </div>

@@ -18,70 +18,78 @@ class FileViewer extends HTMLElement {
 
         const hideSidebarBtn = document.querySelector('#hideSidebarBtn');
         hideSidebarBtn.addEventListener('click', () => this.toggleSidebar());
+
+        // Add event listener for folder clicks
+        const folderTree = this.querySelector('#folderTree');
+        folderTree.addEventListener('click', (event) => this.handleFolderClick(event));
     }
 
     async loadFileContent(filePath) {
         try {
             const response = await fetch(filePath);
-            if (response.ok) {
-                return await response.text();
-            } else {
-                console.error("Failed to load file content:", response.status, response.statusText);
-                return "Failed to load content";
-            }
+            return response.ok ? await response.text() : "Failed to load content";
         } catch (error) {
             console.error("Error fetching the file:", error);
             return "Failed to load content";
         }
     }
 
-    async renderFolder(folder, folderName) {
-        const filesContainer = this.querySelector(`#${folderName} .files`);
-        const filesHTML = folder.map((fileName, fileIndex) => `<li data-file="${fileIndex}" data-folder="${folderName}" class="file p-1" style="cursor: pointer">${fileName.replace('.html', '')}</li>`).join("");
-        filesContainer.innerHTML = filesHTML;
+    async renderFolder(folder, folderName, parentElement) {
+        const folderItem = document.createElement('li');
+        folderItem.classList.add('folder-item');
+        folderItem.innerHTML = `        
+        <span class="folder-name fw-bold p-2 bg-primary bg-opacity-10 justify-content-start align-items-center d-flex border border-primary border-start-0 border-end-0 border-opacity-50" style="cursor: pointer;">
+        <i class="fas fa-folder me-2"></i>${folderName}</span>
+        <ul class="files-list"></ul>
+      `;
 
-        const fileElements = this.querySelectorAll('.file');
+        const filesList = folderItem.querySelector('.files-list');
+        folder.forEach((fileName, fileIndex) => {
+            const fileItem = document.createElement('li');
+            fileItem.classList.add('file', 'bg-info', 'bg-opacity-10', 'py-1', 'px-2');
+            fileItem.dataset.file = fileIndex;
+            fileItem.dataset.folder = folderName;
+            fileItem.style.cursor = 'pointer';
+            fileItem.textContent = fileName.replace('.html', '');
 
-        fileElements.forEach((fileElement) => fileElement.addEventListener('click', () => this.handleFileClick(fileElement.dataset.file, fileElement.dataset.folder)));
+            fileItem.addEventListener('click', () => this.handleFileClick(fileItem.dataset.file, fileItem.dataset.folder));
+
+            filesList.appendChild(fileItem);
+        });
+
+        parentElement.appendChild(folderItem);
     }
 
-    async render() {
-        const defaultContent = '<div><title-component title="Welcome to our Courses"></title-component></title-component><div class="container py-3"><h2>We offer tutorials for various courses.</h2><p>Click a topic from the sidebar to start reading the topic.</p></div></div>';
-        this.innerHTML = `
-            <section class="courses-section">  
-                <div class="container-fluid">      
-                    <div class="row">
-                        <div class="col-md-4 p-0" style="overflow-y: auto;">
-                            <div class="accordion" id="fileAccordion">
-                                ${Object.keys(this.data).map((folderName, folderIndex) => `
-                                    <div class="accordion-item border-0" id="${folderName}">
-                                        <div class="accordion-header" id="folder${folderIndex}Header">
-                                            <button class="accordion-button collapsed bg-primary bg-opacity-10 rounded-0"  style="font-size: 1.05rem; font-weight: 650; height: 38px" type="button" data-bs-toggle="collapse" data-bs-target="#folder${folderIndex}" aria-expanded="false" aria-controls="folder${folderIndex}">
-                                                <i class="fas fa-folder me-2"></i>${folderName}
-                                            </button>
-                                        </div>
-                                        <div id="folder${folderIndex}" class="accordion-collapse collapse" aria-labelledby="folder${folderIndex}Header" data-bs-parent="#fileAccordion">
-                                            <div class="accordion-body p-0">
-                                                <ul class="files pt-2 ms-2"></ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                        <div class="col-md-8 p-0">
-                            <div class="content">
-                                <div class="content-container">                                
-                                    ${defaultContent}
-                                </div>
-                            </div>
-                        </div>         
-                    </div>  
-                </div>          
-            </section>
-        `;
+    render() {
+        const defaultContent = `
+        <div>
+          <title-component title="Welcome to our Courses"></title-component>
+          <div class="container py-3">
+            <h2>We offer tutorials for various courses.</h2>
+            <p>Click a topic from the sidebar to start reading the topic.</p>
+          </div>
+        </div>
+      `;
 
-        Object.keys(this.data).forEach((folderName) => this.renderFolder(this.data[folderName], folderName));
+        this.innerHTML = `
+        <section class="courses-section">  
+          <div class="container-fluid">      
+            <div class="row">
+              <div class="col-md-4 p-0" style="overflow-y: auto;">
+                <ul id="folderTree" class="folder-tree list-unstyled"></ul>
+              </div>
+              <div class="col-md-8 p-0">
+                <div class="content">
+                  <div class="content-container">${defaultContent}</div>
+                </div>
+              </div>         
+            </div>  
+          </div>          
+        </section>
+      `;
+
+        const folderTree = this.querySelector('#folderTree');
+        Object.keys(this.data).forEach((folderName) => this.renderFolder(this.data[folderName], folderName, folderTree));
 
         const hideSidebarBtn = this.querySelector('#hideSidebarBtn');
         hideSidebarBtn.addEventListener('click', () => this.toggleSidebar());
@@ -102,6 +110,14 @@ class FileViewer extends HTMLElement {
         }
     }
 
+    // Handle folder click to expand/collapse the files tree
+    handleFolderClick(event) {
+        const target = event.target;
+        if (target.classList.contains('folder-name')) {
+            const filesList = target.nextElementSibling; // Get the <ul> element
+            filesList.classList.toggle('expanded');
+        }
+    }
 
     async handleFileClick(fileIndex, folderName) {
         const contentContainer = this.querySelector('.content-container');

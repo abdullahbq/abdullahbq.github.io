@@ -1,35 +1,35 @@
 {
-  "Civil_Engineering": [
+  "Civil Engineering": [
     "Environmental Engineering.html",
     "Geotechnical Engineering.html",
     "Structural Analysis.html",
     "Transportation Engineering.html"
   ],
-  "Computer_Science_and_Programming": [
+  "Computer Science and Programming": [
     "Data Structures and Algorithms.html",
     "Database Management Systems.html",
     "Object-Oriented Programming.html",
     "Programming Fundamentals.html"
   ],
-  "Electrical_Engineering": [
+  "Electrical Engineering": [
     "Control Systems.html",
     "Electric Circuit Theory.html",
     "Power Systems.html",
     "Renewable Energy Systems.html"
   ],
-  "Electronics_and_Communication": [
+  "Electronics and Communication": [
     "Analog Electronics.html",
     "Communication Systems.html",
     "Digital Electronics.html",
     "Signals and Systems.html"
   ],
-  "Mathematics_and_Physics_Foundation": [
+  "Mathematics and Physics Foundation": [
     "Calculus.html",
     "Differential Equations.html",
     "Linear Algebra.html",
     "Physics for Engineers.html"
   ],
-  "Mechanical_Engineering": [
+  "Mechanical Engineering": [
     "Dynamics of Machinery.html",
     "Machine Design.html",
     "Manufacturing Processes.html",

@@ -90,7 +90,7 @@ class Portfolio extends HTMLElement {
             })
             .map(
               (project, index) => `
-                <div class="col-lg-3 col-md-4 col-sm-12">
+                <div class="col-lg-4 col-md-4 col-sm-12">
                   <div class="card shadow mb-4 position-relative">
                     <img
                       class="card-img"

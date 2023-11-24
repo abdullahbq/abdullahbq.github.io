@@ -32,15 +32,7 @@ class Team extends HTMLElement {
         github: "https://www.google.com",
         linkedin: "https://www.google.com",
         authorimage: "sample",
-      },
-      {
-        authorname: "John Doe",
-        role: "Content Manager",
-        instagram: "https://www.google.com",
-        github: "https://www.google.com",
-        linkedin: "https://www.google.com",
-        authorimage: "sample",
-      },
+      }
     ];
 
     this.innerHTML = `
@@ -67,7 +59,7 @@ class Team extends HTMLElement {
 
   generateTeamCard(item, index) {
     return `
-        <div key=${index} class="col-lg-3 col-md-6 col-sm-6 mb-4">
+        <div key=${index} class="col-lg-4 col-md-6 col-sm-6 mb-4">
           <div class="card shadow text-center p-4 border-primary">
             <img class="card-img shadow rounded-circle mb-4" src="images/${item.authorimage}.png" alt="${item.authorimage}" style="width: 160px; height: 160px; margin: 0 auto;">
             <h4 class="text-primary fw-bold">${item.authorname}</h4>
