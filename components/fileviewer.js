@@ -46,7 +46,7 @@ class FileViewer extends HTMLElement {
     const filesList = folderItem.querySelector('.files-list');
     folder.forEach((fileName, fileIndex) => {
       const fileItem = document.createElement('li');
-      fileItem.classList.add('file', 'bg-primary', 'bg-opacity-10', 'p-1');
+      fileItem.classList.add('file', 'bg-white', 'bg-opacity-75', 'p-1');
       fileItem.dataset.file = fileIndex;
       fileItem.dataset.folder = folderName;
       fileItem.style.cursor = 'pointer';
@@ -78,7 +78,7 @@ class FileViewer extends HTMLElement {
         <section class="courses-section">  
           <div class="container-fluid">      
             <div class="row">
-            <div class="col-md-4 p-0 bg-primary bg-opacity-25 border border-primary border-5 border-opacity-50" style="height: ${sidebarMaxHeight}; overflow-y: auto;">
+            <div class="col-md-4 p-0 bg-primary bg-opacity-25 border border-primary border-5 border-opacity-50 shadow" style="height: ${sidebarMaxHeight}; overflow-y: auto;">
                 <ul id="folderTree" class="folder-tree list-unstyled mb-0"></ul>
               </div>
               <div class="col-md-8 p-0">
