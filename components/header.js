@@ -93,7 +93,9 @@ class Header extends HTMLElement {
 
     const currentLink = links[path];
     if (currentLink) {
-      document.getElementById(currentLink).classList.add("active", "border", "border-warning", "rounded-2");
+      document
+        .getElementById(currentLink)
+        .classList.add("active", "border", "border-warning", "rounded-2");
     }
   }
 }

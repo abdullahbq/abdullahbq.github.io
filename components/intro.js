@@ -1,10 +1,10 @@
 class Intro extends HTMLElement {
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 
-    connectedCallback() {
-        this.innerHTML = `
+  connectedCallback() {
+    this.innerHTML = `
             <section class="intro-section bg-primary bg-opacity-10">
                 <div class="container py-5">
                     <div class="row gx-5 align-items-center justify-content-center">
@@ -23,7 +23,7 @@ class Intro extends HTMLElement {
                 </div>
             </section>
         `;
-    }
+  }
 }
 
 customElements.define("intro-component", Intro);

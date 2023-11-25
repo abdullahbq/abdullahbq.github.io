@@ -32,7 +32,7 @@ class Team extends HTMLElement {
         github: "https://www.google.com",
         linkedin: "https://www.google.com",
         authorimage: "sample",
-      }
+      },
     ];
 
     this.innerHTML = `

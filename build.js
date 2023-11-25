@@ -87,17 +87,17 @@ function generateBlogHtml(posts) {
                     <div id="filterButtons">
                       <button class="btn btn-primary rounded-pill filter-btn" data-filter="all">All Categories</button>
                       ${Array.from(new Set(posts.map((post) => post.category)))
-      .map(
-        (category) => `
+                        .map(
+                          (category) => `
                           <button class="btn btn-primary rounded-pill filter-btn" data-filter="${category}">${category}</button>
-                      `,
-      )
-      .join("")}
+                      `
+                        )
+                        .join("")}
                     </div>
                   </div>
                   ${posts
-      .map(
-        (post) => `
+                    .map(
+                      (post) => `
                   <div class="col-lg-4 col-md-6 post-item" data-category="${post.category}">
               <a href="${post.fileName}.html" class="text-decoration-none">
                 <div class="card border-primary shadow mb-4">
@@ -116,9 +116,9 @@ function generateBlogHtml(posts) {
                   </div>
                 </div>
               </a>
-            </div>`,
-      )
-      .join("")}
+            </div>`
+                    )
+                    .join("")}
                 </div>
               </div>
             </section>           

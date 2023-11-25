@@ -41,25 +41,28 @@ class Features extends HTMLElement {
         <title-component title="Features"></title-component>
         <div class="container py-5">
           ${items
-        .map(
-          (item, i, array) => `
-          <div class="row justify-content-center align-items-center pb-3 ${i === array.length - 1 ? "" : " mb-5"
-            }">
+            .map(
+              (item, i, array) => `
+          <div class="row justify-content-center align-items-center pb-3 ${
+            i === array.length - 1 ? "" : " mb-5"
+          }">
             <div class="col-md-7 ${item.order}">
               <h2 class="heading fw-bold">
-                ${item.title} <span class="text-primary">${item.titleinprimary
-            }</span>
+                ${item.title} <span class="text-primary">${
+                item.titleinprimary
+              }</span>
               </h2>
               <p>${item.content}</p>
             </div>
             <div class="col-md-5">
-              <img src="images/${item.image}.png" alt="Image ${i + 1
-            }" class="img-fluid rounded shadow">
+              <img src="images/${item.image}.png" alt="Image ${
+                i + 1
+              }" class="img-fluid rounded shadow">
             </div>
           </div>
         `
-        )
-        .join("")}
+            )
+            .join("")}
         </div>
       </section>
       `;
