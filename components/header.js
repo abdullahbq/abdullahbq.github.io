@@ -16,7 +16,7 @@ class Header extends HTMLElement {
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-2 shadow">
           <div class="container-fluid">
             <div class="d-flex">
-              <button id="hideSidebarBtn" class="btn btn-outline-warning me-2 text-light">
+            <button id="toggle-btn" class="btn btn-outline-primary me-2">
                 <i class="fas fa-list"></i>
               </button>
               <button class="btn btn-outline-warning me-2 text-light" id="toggleThemeBtn">

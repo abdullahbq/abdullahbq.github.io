@@ -13941,3 +13941,17 @@ body.dark-theme .accordion-header button {
 .file:hover {
     font-weight: 700;
 }
+
+/* New Sidebar styles */
+#sidebar {
+    height: calc(100vh - 58px);
+    position: fixed;
+    top: 58px;
+    left: 0;
+    width: 350px;
+    overflow-y: auto;
+}
+
+#main-content {
+    margin-left: 350px;
+}
