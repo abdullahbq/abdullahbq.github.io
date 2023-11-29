@@ -37,26 +37,52 @@ class Sidebar extends HTMLElement {
   async renderFolder(folder, folderName, parentElement) {
     const folderItem = document.createElement("li");
     folderItem.classList.add("folder-item");
-    folderItem.innerHTML = `        
-        <span class="folder-name fw-bold p-2 justify-content-start align-items-center d-flex" style="cursor: pointer;">
-        <i class="fas fa-folder me-2"></i>${folderName}</span>
-        <ul class="files-list"></ul>
-      `;
 
-    const filesList = folderItem.querySelector(".files-list");
+    // Create a span element for the folder name with an icon
+    const folderSpan = document.createElement("span");
+    folderSpan.classList.add(
+      "folder-name",
+      "fw-bold",
+      "p-2",
+      "justify-content-start",
+      "align-items-center",
+      "d-flex"
+    );
+    folderSpan.style.cursor = "pointer";
+    folderSpan.innerHTML = `
+      <i class="folder-icon fas fa-folder me-2 fa-lg text-primary"></i>${folderName}
+    `;
+
+    // Create an icon element within the span for toggling
+    const folderIcon = folderSpan.querySelector(".folder-icon");
+
+    // Create a ul element for the files within the folder
+    const filesList = document.createElement("ul");
+    filesList.classList.add("files-list");
+
     folder.forEach((fileName, fileIndex) => {
       const fileItem = document.createElement("li");
       fileItem.classList.add("file", "bg-primary", "bg-opacity-10", "p-1");
       fileItem.dataset.file = fileIndex;
       fileItem.dataset.folder = folderName;
       fileItem.style.cursor = "pointer";
-      fileItem.textContent = fileName.replace(".html", "");
+      fileItem.textContent = fileName;
 
       fileItem.addEventListener("click", () =>
         this.handleFileClick(fileItem.dataset.file, fileItem.dataset.folder)
       );
 
       filesList.appendChild(fileItem);
+    });
+
+    // Append the files list to the folder item
+    folderItem.appendChild(folderSpan);
+    folderItem.appendChild(filesList);
+
+    // Add a click event listener to toggle the folder state
+    folderSpan.addEventListener("click", () => {
+      folderItem.classList.toggle("folder-expanded");
+      folderIcon.classList.toggle("fa-folder-open");
     });
 
     parentElement.appendChild(folderItem);
@@ -118,7 +144,10 @@ class Sidebar extends HTMLElement {
     const folder = this.data[folderName];
     const fileName = folder[fileIndex];
 
-    const filePath = `courses/${folderName}/${fileName}`;
+    // Append ".html" extension to the file name
+    const fileNameWithExtension = `${fileName}.html`;
+
+    const filePath = `courses/${folderName}/${fileNameWithExtension}`;
 
     try {
       const response = await fetch(filePath);

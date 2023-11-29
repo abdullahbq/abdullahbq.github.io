@@ -33,7 +33,7 @@ function generatePostHtml(metadata, content) {
           integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
           crossorigin="anonymous" />
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
+        <script src="js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
         <script src="components/header.js" type="text/javascript" defer></script>
         <script src="components/title.js" type="text/javascript" defer></script>
         <script src="components/footer.js" type="text/javascript" defer></script>
@@ -61,92 +61,102 @@ function generatePostHtml(metadata, content) {
 
 function generateBlogHtml(posts) {
   return `
-    <!DOCTYPE html>
-    <html lang="en">
-
-      <head>
-        <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Blog</title>
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-              integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-              crossorigin="anonymous" />
-            <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-            <script src="js/bootstrap.min.js" type="text/javascript" defer></script>
-            <script src="components/header.js" type="text/javascript" defer></script>
-            <script src="components/title.js" type="text/javascript" defer></script>
-            <script src="components/footer.js" type="text/javascript" defer></script>
-          </head>
-          <body>
-            <header-component></header-component>
-            <section class="blog-section bg-primary bg-opacity-10">
-              <title-component title="Blog"></title-component>
-              <div class="container py-5">
-                <div class="row">
-                <div class="col-lg-12 mb-4 text-center">
-                    <div id="filterButtons">
-                      <button class="btn btn-primary rounded-pill filter-btn me-2" data-filter="all">All Categories</button>
-                      ${Array.from(new Set(posts.map((post) => post.category)))
-                        .map(
-                          (category) => `
-                          <button class="btn btn-primary rounded-pill filter-btn me-2" data-filter="${category}">${category}</button>
-                      `
-                        )
-                        .join("")}
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/title.js" type="text/javascript" defer></script>
+    <script src="components/footer.js" type="text/javascript" defer></script>
+  </head>
+  
+  <body>
+    <header-component></header-component>
+    <section class="blog-section bg-primary bg-opacity-10">
+      <title-component title="Blog"></title-component>
+      <div class="container py-5">
+        <div class="row">
+          <div class="col-lg-12 mb-4 text-center">
+            <div id="filterButtons">
+              <button class="btn btn-outline-primary rounded-pill filter-btn m-2 active" data-filter="all">All Categories</button>
+              ${Array.from(new Set(posts.map((post) => post.category)))
+                .map(
+                  (category) => `
+                    <button class="btn btn-outline-primary rounded-pill filter-btn me-2" data-filter="${category}">${category}</button>
+                `
+                )
+                .join("")}
+            </div>
+          </div>
+          ${posts
+            .map(
+              (post) => `
+                <div class="col-lg-4 col-md-6 post-item" data-category="${post.category}">
+                  <a href="${post.fileName}.html" class="text-decoration-none">
+                    <div class="card border-primary shadow mb-4">
+                      <div class="card-overlay position-absolute m-2">
+                        <p class="badge bg-primary">${post.category}</p>
+                      </div>
+                      <img src="images/${post.image}.png" class="card-img-top" alt=${post.title}>
+                      <div class="card-body">
+                        <h4 class="fw-bold card-title text-primary">${post.title}</h4>
+                        <p class="card-text">${post.description}</p>
+                      </div>
+                      <div class="card-footer bg-primary bg-opacity-10">
+                        <p class="card-text">
+                          <small>By <strong>${post.author}</strong> | ${post.date}</small>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  ${posts
-                    .map(
-                      (post) => `
-                  <div class="col-lg-4 col-md-6 post-item" data-category="${post.category}">
-              <a href="${post.fileName}.html" class="text-decoration-none">
-                <div class="card border-primary shadow mb-4">
-                  <div class="card-overlay position-absolute m-2">
-                    <p class="badge bg-primary">${post.category}</p>
-                  </div>
-                  <img src="images/${post.image}.png" class="card-img-top" alt=${post.title}>
-                  <div class="card-body">
-                    <h4 class="fw-bold card-title text-primary">${post.title}</h4>
-                    <p class="card-text">${post.description}</p>
-                  </div>
-                  <div class="card-footer bg-primary bg-opacity-10">
-                    <p class="card-text">
-                      <small>By <strong>${post.author}</strong> | ${post.date}</small>
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </div>`
-                    )
-                    .join("")}
-                </div>
-              </div>
-            </section>           
-            <footer-component></footer-component>
-            <script>
-            document.addEventListener('DOMContentLoaded', function () {
-              const filterButtons = document.querySelectorAll('.filter-btn');
-              const blogItems = document.querySelectorAll('.post-item');
+                  </a>
+                </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    </section>
+    <footer-component></footer-component>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const blogItems = document.querySelectorAll('.post-item');
+    
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // Remove "active" class from all filter buttons
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active');
+          });
+    
+          // Add "active" class to the clicked filter button
+          this.classList.add('active');
+    
+          const selectedCategory = this.getAttribute('data-filter');
+    
+          blogItems.forEach(item => {
+            const itemCategory = item.dataset.category;
+    
+            if (selectedCategory === 'all' || selectedCategory === itemCategory) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+    });
+    </script>
+  </body>
   
-              filterButtons.forEach(button => {
-                button.addEventListener('click', function () {
-                  const selectedCategory = this.getAttribute('data-filter');
-  
-                  blogItems.forEach(item => {
-                    const itemCategory = item.dataset.category;
-  
-                    if (selectedCategory === 'all' || selectedCategory === itemCategory) {
-                      item.style.display = 'block';
-                    } else {
-                      item.style.display = 'none';
-                    }
-                  });
-                });
-              });
-            });
-          </script>
-          </body>
-        </html>
+  </html>  
         `;
 }
 
@@ -188,7 +198,14 @@ const folderContents = {};
 
 folderNames.forEach((folderName) => {
   const folderPath = path.join(rootFolder, folderName);
-  folderContents[folderName] = fs.readdirSync(folderPath);
+  const fileNames = fs.readdirSync(folderPath);
+
+  // Remove file extension from file names
+  const filesWithoutExtension = fileNames.map((fileName) =>
+    fileName.replace(".html", "")
+  );
+
+  folderContents[folderName] = filesWithoutExtension;
 });
 
 const jsonString = JSON.stringify(folderContents, null, 2);
