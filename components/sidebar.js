@@ -2,11 +2,13 @@ class Sidebar extends HTMLElement {
   constructor() {
     super();
     this.data = {};
+    this.coursesFolderPath = this.getAttribute("course");
+    this.sidebarDataURL = this.getAttribute("sidebar");
   }
 
   async connectedCallback() {
     try {
-      const response = await fetch("sidebar.json");
+      const response = await fetch(this.sidebarDataURL);
       if (!response.ok) {
         throw new Error(
           `Failed to load folder data: ${response.status} - ${response.statusText}`
@@ -91,10 +93,9 @@ class Sidebar extends HTMLElement {
   render() {
     const defaultContent = `
         <div>
-          <title-component title="Welcome to our Courses"></title-component>
-          <div class="container py-3">
-            <h2>We offer tutorials for various courses.</h2>
-            <p>Click a topic from the sidebar to start reading the topic.</p>
+          <title-component title="${this.coursesFolderPath}"></title-component>
+          <div class="container py-3">          
+            <p class="text-center py-3">Click a topic from the sidebar to start reading the topic.</p>
           </div>
         </div>
       `;
@@ -147,7 +148,8 @@ class Sidebar extends HTMLElement {
     // Append ".html" extension to the file name
     const fileNameWithExtension = `${fileName}.html`;
 
-    const filePath = `courses/${folderName}/${fileNameWithExtension}`;
+    // Use template literals to construct the file path dynamically
+    const filePath = `${this.coursesFolderPath}/${folderName}/${fileNameWithExtension}`;
 
     try {
       const response = await fetch(filePath);

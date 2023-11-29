@@ -33,19 +33,28 @@ class Header extends HTMLElement {
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item mx-auto">
-                  <a class="nav-link px-2" id="courses-link" href="courses.html">Courses</a>
-                </li>
-                <li class="nav-item mx-auto">
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Courses
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="digital_electronics.html">Digital Electronics</a></li>
+                  <li><a class="dropdown-item" href="embedded_systems.html">Embedded Systems</a></li>
+                  <li><a class="dropdown-item" href="web_development.html">Web Development</a></li>
+                </ul>
+              </li>
+
+                <li class="nav-item">
                   <a class="nav-link px-2" id="blog-link" href="blog.html">Blog</a>
                 </li>
-                <li class="nav-item mx-auto">
+                <li class="nav-item">
                   <a class="nav-link px-2" id="about-link" href="about.html">About</a>
                 </li>
-                <li class="nav-item mx-auto">
+                <li class="nav-item">
                   <a class="nav-link px-2" id="services-link" href="services.html">Services</a>
                 </li>
-                <li class="nav-item mx-auto">
+                <li class="nav-item">
                   <a class="nav-link px-2" id="contact-link" href="contact.html">Contact</a>
                 </li>
               </ul>

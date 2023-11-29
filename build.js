@@ -160,7 +160,7 @@ function generateBlogHtml(posts) {
         `;
 }
 
-const contentsFolder = "contents";
+const contentsFolder = "Blogs";
 const outputFolder = "";
 
 const sourceFiles = fs
@@ -191,22 +191,43 @@ const posts = sourceFiles.map((sourceFile) => {
 const blogHtml = generateBlogHtml(posts);
 fs.writeFileSync(blogOutputPath, blogHtml);
 
-const rootFolder = "courses";
-const sidebarOutputPath = "sidebar.json";
-const folderNames = fs.readdirSync(rootFolder);
-const folderContents = {};
+function generateSidebarJSON(rootFolder, sidebarOutputPath) {
+  const folderNames = fs.readdirSync(rootFolder);
+  const folderContents = {};
 
-folderNames.forEach((folderName) => {
-  const folderPath = path.join(rootFolder, folderName);
-  const fileNames = fs.readdirSync(folderPath);
+  folderNames.forEach((folderName) => {
+    const folderPath = path.join(rootFolder, folderName);
+    const fileNames = fs.readdirSync(folderPath);
 
-  // Remove file extension from file names
-  const filesWithoutExtension = fileNames.map((fileName) =>
-    fileName.replace(".html", "")
-  );
+    // Remove file extension from file names
+    const filesWithoutExtension = fileNames.map((fileName) =>
+      fileName.replace(".html", "")
+    );
 
-  folderContents[folderName] = filesWithoutExtension;
+    folderContents[folderName] = filesWithoutExtension;
+  });
+
+  const jsonString = JSON.stringify(folderContents, null, 2);
+  fs.writeFileSync(sidebarOutputPath, jsonString);
+}
+
+// Array of root folders and corresponding sidebar output paths
+const rootFolders = [
+  {
+    rootFolder: "Digital Electronics",
+    sidebarOutputPath: "digital_electronics.json",
+  },
+  {
+    rootFolder: "Embedded Systems",
+    sidebarOutputPath: "embedded_systems.json",
+  },
+  {
+    rootFolder: "Web Development",
+    sidebarOutputPath: "web_development.json",
+  },
+];
+
+// Generate JSON files for each entry in the array
+rootFolders.forEach(({ rootFolder, sidebarOutputPath }) => {
+  generateSidebarJSON(rootFolder, sidebarOutputPath);
 });
-
-const jsonString = JSON.stringify(folderContents, null, 2);
-fs.writeFileSync(sidebarOutputPath, jsonString);

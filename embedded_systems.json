@@ -1,0 +1,38 @@
+{
+  "8051 Microcontroller": [
+    "Environmental Engineering",
+    "Geotechnical Engineering",
+    "Structural Analysis",
+    "Transportation Engineering"
+  ],
+  "8086 Microprocessor": [
+    "Data Structures and Algorithms",
+    "Database Management Systems",
+    "Object-Oriented Programming",
+    "Programming Fundamentals"
+  ],
+  "Arduino": [
+    "Control Systems",
+    "Electric Circuit Theory",
+    "Power Systems",
+    "Renewable Energy Systems"
+  ],
+  "ESP 8266": [
+    "Dynamics of Machinery",
+    "Machine Design",
+    "Manufacturing Processes",
+    "Mechanics of Materials"
+  ],
+  "MSP 430": [
+    "Calculus",
+    "Differential Equations",
+    "Linear Algebra",
+    "Physics for Engineers"
+  ],
+  "Raspberry Pi": [
+    "Analog Electronics",
+    "Communication Systems",
+    "Digital Electronics",
+    "Signals and Systems"
+  ]
+}
