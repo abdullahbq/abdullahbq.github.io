@@ -108,7 +108,7 @@ class Pricing extends HTMLElement {
                 class="${
                   this.state.active === i
                     ? "btn btn-primary rounded-pill m-1 shadow"
-                    : "btn btn-outline-secondary rounded-pill m-1 shadow"
+                    : "btn btn-outline-primary rounded-pill m-1 shadow"
                 }"
                 num="${i}"
               >

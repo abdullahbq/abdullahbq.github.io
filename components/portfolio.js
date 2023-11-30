@@ -70,7 +70,7 @@ class Portfolio extends HTMLElement {
                   class="btn rounded-pill ${
                     filter === this.state.selectedFilter
                       ? "btn-primary"
-                      : "btn-outline-secondary"
+                      : "btn-outline-primary"
                   } me-2"
                   onclick="document.querySelector('portfolio-component').setFilter('${filter}')"
                 >
