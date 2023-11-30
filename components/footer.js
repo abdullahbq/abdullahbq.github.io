@@ -9,7 +9,7 @@ class Footer extends HTMLElement {
         <div class="container-fluid py-5">
           <div class="row">
             <div class="col-md-6">
-              <h2 class="fw-bold text-light"><img src="images/inkredibledoc.png" alt="Your Logo" width="50" height="50" class="d-inline-block align-text-top"> InkredibleDoc</h2>
+              <h2 class="fw-bold text-light"><img src="assets/images/inkredibledoc.png" alt="Your Logo" width="50" height="50" class="d-inline-block align-text-top"> InkredibleDoc</h2>
               <p class="text-light">Explore your passion and unlock your potential with our projects and courses! We offer an extensive range of courses, designed to cater to the diverse needs and interests of learners worldwide. Our courses are flexible, accessible, and self-paced, ensuring that you can learn anytime, anywhere. Our team of experienced instructors is dedicated to supporting you throughout your learning journey. Join us today and embark on a journey of lifelong learning!</p>
             </div>
             <div class="col-md-3">

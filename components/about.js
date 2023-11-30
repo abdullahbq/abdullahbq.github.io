@@ -13,7 +13,7 @@ class About extends HTMLElement {
           <div class="card shadow mb-4 border-primary">
             <div class="card-body">
               <div class="d-flex flex-column align-items-center text-center">
-              <img src="images/abdullah.png" class="card-img-top shadow rounded-circle mb-2" style="width: 160px; height: 160px; margin: 0 auto" alt="Abdullah">                
+              <img src="assets/images/abdullah.png" class="card-img-top shadow rounded-circle mb-2" style="width: 160px; height: 160px; margin: 0 auto" alt="Abdullah">                
                 <div class="mt-3">
                   <h4 class="fw-bold">Abdullah</h4>
                   <p class="text-secondary mb-1">Full Stack Developer</p>

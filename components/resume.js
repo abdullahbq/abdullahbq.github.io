@@ -21,7 +21,7 @@ class Resume extends HTMLElement {
                     Developement.
                     <span class="noprint fst-normal">
                       <a class="noprint btn btn-primary btn-sm text-light text-decoration-none" style="font-size: 1em"
-                        href="abdullahbq_resume.pdf" target="_blank">Download CV</a>
+                        href="assets/abdullahbq_resume.pdf" target="_blank">Download CV</a>
                     </span>
                   </div>
                   <hr class="my-2" />
@@ -34,7 +34,7 @@ class Resume extends HTMLElement {
                 </div>
                 <div class="col-3">
                   <div class="text-center">
-                    <img src="./photo/abdullah.jpg" style="border-radius: 100%" alt="Abdullah Bin Queyam" width="120" />
+                    <img src="assets/images/abdullah.png" style="border-radius: 100%" alt="Abdullah Bin Queyam" width="120" />
                   </div>
                 </div>
               </div>

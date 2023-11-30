@@ -55,7 +55,7 @@ class Features extends HTMLElement {
               <p>${item.content}</p>
             </div>
             <div class="col-md-5">
-              <img src="images/${item.image}.png" alt="Image ${
+              <img src="assets/images/${item.image}.png" alt="Image ${
                 i + 1
               }" class="img-fluid rounded shadow">
             </div>

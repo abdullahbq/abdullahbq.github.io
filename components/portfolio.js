@@ -94,7 +94,7 @@ class Portfolio extends HTMLElement {
                   <div class="card shadow mb-4 position-relative">
                     <img
                       class="card-img"
-                      src="images/${project.src}.png"
+                      src="assets/images/${project.src}.png"
                       alt="${project.name}"
                     />
                     <div class="card-overlay position-absolute top-50 start-50 translate-middle text-center">

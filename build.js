@@ -29,11 +29,9 @@ function generatePostHtml(metadata, content) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <meta name="author" content="${metadata.author}" />
         <title>${metadata.title}</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-          crossorigin="anonymous" />
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <script src="js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
+        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/all.css" rel="stylesheet" type="text/css" />
+        <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
         <script src="components/header.js" type="text/javascript" defer></script>
         <script src="components/title.js" type="text/javascript" defer></script>
         <script src="components/footer.js" type="text/javascript" defer></script>
@@ -41,7 +39,7 @@ function generatePostHtml(metadata, content) {
       <body>
         <header-component></header-component>
         <div class="card border-0 rounded-0 shadow">
-          <img src="images/${metadata.image}.png" class="card-img-top rounded-0" alt=${metadata.title}>
+          <img src="assets/images/${metadata.image}.png" class="card-img-top rounded-0" alt=${metadata.title}>
             <div class="card-overlay position-absolute m-2">
               <p class="badge bg-primary">${metadata.category}</p>
               <h1 class="card-title text-light" style="font-weight:900">${metadata.title}</h1>
@@ -68,11 +66,9 @@ function generateBlogHtml(posts) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
-      crossorigin="anonymous" />
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/all.css" rel="stylesheet" type="text/css" />
+    <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
     <script src="components/header.js" type="text/javascript" defer></script>
     <script src="components/title.js" type="text/javascript" defer></script>
     <script src="components/footer.js" type="text/javascript" defer></script>
@@ -105,7 +101,7 @@ function generateBlogHtml(posts) {
                       <div class="card-overlay position-absolute m-2">
                         <p class="badge bg-primary">${post.category}</p>
                       </div>
-                      <img src="images/${post.image}.png" class="card-img-top" alt=${post.title}>
+                      <img src="assets/images/${post.image}.png" class="card-img-top" alt=${post.title}>
                       <div class="card-body">
                         <h4 class="fw-bold card-title text-primary">${post.title}</h4>
                         <p class="card-text">${post.description}</p>
@@ -160,7 +156,7 @@ function generateBlogHtml(posts) {
         `;
 }
 
-const contentsFolder = "Blogs";
+const contentsFolder = "contents/Blogs";
 const outputFolder = "";
 
 const sourceFiles = fs
@@ -214,16 +210,16 @@ function generateSidebarJSON(rootFolder, sidebarOutputPath) {
 // Array of root folders and corresponding sidebar output paths
 const rootFolders = [
   {
-    rootFolder: "Digital Electronics",
-    sidebarOutputPath: "digital_electronics.json",
+    rootFolder: "contents/Digital Electronics",
+    sidebarOutputPath: "sidebars/digital_electronics.json",
   },
   {
-    rootFolder: "Embedded Systems",
-    sidebarOutputPath: "embedded_systems.json",
+    rootFolder: "contents/Embedded Systems",
+    sidebarOutputPath: "sidebars/embedded_systems.json",
   },
   {
-    rootFolder: "Web Development",
-    sidebarOutputPath: "web_development.json",
+    rootFolder: "contents/Web Development",
+    sidebarOutputPath: "sidebars/web_development.json",
   },
 ];
 

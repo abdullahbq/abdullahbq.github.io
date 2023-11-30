@@ -24,8 +24,8 @@ class Header extends HTMLElement {
                 <i class="fas fa-sun"></i>
               </button>
             </div>
-            <a class="navbar-brand d-flex mx-5" href="index.html">
-              <img src="images/inkredibledoc.png" alt="Your Logo" width="32" height="32" class="me-2"/>
+            <a class="navbar-brand d-flex mx-2 px-2" id="home-link" href="index.html">
+              <img src="assets/images/inkredibledoc.png" alt="Your Logo" width="32" height="32" class="me-2"/>
                 <span class="fw-bold">InkredibleDoc</span>
             </a>
             <button class="navbar-toggler btn btn-outline-primary border-primary text-light" style="padding: 9px 10px 9px 10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,10 +38,10 @@ class Header extends HTMLElement {
                 <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Courses
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="digital_electronics.html">Digital Electronics</a></li>
-                  <li><a class="dropdown-item" href="embedded_systems.html">Embedded Systems</a></li>
-                  <li><a class="dropdown-item" href="web_development.html">Web Development</a></li>
+                <ul class="dropdown-menu p-2">
+                  <li><a class="dropdown-item rounded-2 my-1" id="digital_electronics-link" href="digital_electronics.html">Digital Electronics</a></li>
+                  <li><a class="dropdown-item rounded-2 my-1" id="embedded_systems-link" href="embedded_systems.html">Embedded Systems</a></li>
+                  <li><a class="dropdown-item rounded-2 my-1" id="web_development-link" href="web_development.html">Web Development</a></li>
                 </ul>
               </li>
 
@@ -95,7 +95,10 @@ class Header extends HTMLElement {
     const path = window.location.pathname;
     const links = {
       "/": "home-link",
-      "/courses.html": "courses-link",
+      "/index.html": "home-link",
+      "/digital_electronics.html": "digital_electronics-link",
+      "/embedded_systems.html": "embedded_systems-link",
+      "/web_development.html": "web_development-link",
       "/blog.html": "blog-link",
       "/about.html": "about-link",
       "/services.html": "services-link",

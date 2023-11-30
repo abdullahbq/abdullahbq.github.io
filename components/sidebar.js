@@ -4,6 +4,8 @@ class Sidebar extends HTMLElement {
     this.data = {};
     this.coursesFolderPath = this.getAttribute("course");
     this.sidebarDataURL = this.getAttribute("sidebar");
+    // Extract the course name from the coursesFolderPath
+    this.courseName = this.coursesFolderPath.split("/").pop();
   }
 
   async connectedCallback() {
@@ -93,7 +95,7 @@ class Sidebar extends HTMLElement {
   render() {
     const defaultContent = `
         <div>
-          <title-component title="${this.coursesFolderPath}"></title-component>
+          <title-component title="${this.courseName}"></title-component>
           <div class="container py-3">          
             <p class="text-center py-3">Click a topic from the sidebar to start reading the topic.</p>
           </div>

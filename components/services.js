@@ -10,7 +10,7 @@ class Services extends HTMLElement {
   render() {
     this.innerHTML = `
       <section class="services-section bg-primary bg-opacity-10">      
-      <title-component title="Our Services"></title-component>
+      <title-component title="Services"></title-component>
         <div class="container py-5">
           <div class="row justify-content-center">
             ${this.renderItems()}

@@ -61,7 +61,7 @@ class Team extends HTMLElement {
     return `
         <div key=${index} class="col-lg-4 col-md-6 col-sm-6 mb-4">
           <div class="card shadow text-center p-4 border-primary">
-            <img class="card-img shadow rounded-circle mb-4" src="images/${item.authorimage}.png" alt="${item.authorimage}" style="width: 160px; height: 160px; margin: 0 auto;">
+            <img class="card-img shadow rounded-circle mb-4" src="assets/images/${item.authorimage}.png" alt="${item.authorimage}" style="width: 160px; height: 160px; margin: 0 auto;">
             <h4 class="text-primary fw-bold">${item.authorname}</h4>
             <p>${item.role}</p>
             <div class="float-middle">
