@@ -5,7 +5,6 @@ class Tabs extends HTMLElement {
         title: "<strong>Welcome to InkredibleDoc</strong>",
         icon: "fas fa-university",
         content: `
-          <i class="fas fa-university fa-5x p-5 text-primary"></i>
           <h2 class="text-primary">Explore the World of Technology and Education</h2>
           <p>Welcome to InkredibleDoc, your gateway to a diverse range of courses, tutorials, and projects in the fields of technology and education. Whether you're a student, professional, or lifelong learner, our platform is designed to empower you on your educational journey.</p>
         `,
@@ -14,7 +13,6 @@ class Tabs extends HTMLElement {
         title: "<strong>Featured Courses</strong>",
         icon: "fas fa-graduation-cap",
         content: `
-        <i class="fas fa-graduation-cap fa-5x p-5 text-primary"></i>
           <h2 class="text-primary">Enhance Your Skills with Our Featured Courses</h2>
           <p>At TechEduHub, we offer a curated selection of courses covering cutting-edge technologies. From programming languages to data science and artificial intelligence, our courses are crafted to meet the demands of the ever-evolving tech landscape. Dive into interactive learning experiences led by industry experts.</p>
         `,
@@ -23,7 +21,6 @@ class Tabs extends HTMLElement {
         title: "<strong>Tutorials for Every Level</strong>",
         icon: "fas fa-book-open",
         content: `
-        <i class="fas fa-book-open fa-5x p-5 text-primary"></i>
           <h2 class="text-primary">Learn at Your Own Pace with Tutorials</h2>
           <p>Our platform provides a plethora of tutorials catering to learners of all levels. Whether you're a beginner looking to grasp the basics or an advanced learner seeking in-depth knowledge, our tutorials cover a wide range of topics. Explore step-by-step guides, practical tips, and hands-on projects to reinforce your understanding.</p>
         `,
@@ -32,7 +29,6 @@ class Tabs extends HTMLElement {
         title: "<strong>Real-world Projects</strong>",
         icon: "fas fa-cogs",
         content: `
-        <i class="fas fa-cogs fa-5x p-5 text-primary"></i>
           <h2 class="text-primary">Apply Your Knowledge with Real-world Projects</h2>
           <p>At TechEduHub, we believe in the power of practical application. Engage in real-world projects that simulate industry scenarios. Build a portfolio showcasing your skills and gain hands-on experience that sets you apart in the competitive job market.</p>
         `,
@@ -41,7 +37,6 @@ class Tabs extends HTMLElement {
         title: "<strong>Community and Collaboration</strong>",
         icon: "fas fa-users",
         content: `
-        <i class="fas fa-users fa-5x p-5 text-primary"></i>
           <h2 class="text-primary">Join a Vibrant Learning Community</h2>
           <p>Connect with like-minded learners, share insights, and collaborate on projects within our thriving community. TechEduHub fosters a supportive environment where learners can engage in discussions, seek help, and celebrate each other's successes. Education is not just about acquiring knowledge; it's also about building connections.</p>
         `,
@@ -50,7 +45,6 @@ class Tabs extends HTMLElement {
         title: "<strong>Stay Updated with the Latest Trends</strong>",
         icon: "fas fa-lightbulb",
         content: `
-        <i class="fas fa-lightbulb fa-5x p-5 text-primary"></i>
           <h2 class="text-primary">Keep Abreast of Educational Trends and Innovations</h2>
           <p>Education is a dynamic field, and staying updated is crucial. Explore our content on the latest trends, innovations, and advancements in technology and education. From industry insights to emerging technologies, we strive to keep you informed and inspired.</p>
         `,
@@ -90,7 +84,8 @@ class Tabs extends HTMLElement {
               ${data
                 .map(
                   (tab, i) =>
-                    `<div class="card card-body mt-4 border-primary shadow mb-4 tab-pane" id="tab-${i}">${tab.content}</div>`
+                    `<div class="card card-body mt-4 border-primary shadow mb-4 tab-pane" id="tab-${i}"><i class="${tab.icon} fa-4x p-3 text-primary"></i>
+                    <p>${tab.content}</p></div>`
                 )
                 .join("")}
             </div>

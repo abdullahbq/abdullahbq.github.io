@@ -1,9 +1,17 @@
 {
   "8051 Microcontroller": [
-    "Environmental Engineering",
-    "Geotechnical Engineering",
-    "Structural Analysis",
-    "Transportation Engineering"
+    "1 - Introduction to Microcontrollers",
+    "2 - Introduction to 8051 Microcontroller",
+    "3 - 8051 Instruction Set and Programming",
+    "8051 Advanced Concepts",
+    "8051 Development Tools",
+    "8051 Input-Output Ports",
+    "8051 Microcontroller Memory Organization",
+    "8051 Microcontroller Projects",
+    "Future Trends in Microcontrollers",
+    "Interrupts and Timers",
+    "Serial Communication with 8051",
+    "Troubleshooting and Debugging"
   ],
   "8086 Microprocessor": [
     "Data Structures and Algorithms",

@@ -66,7 +66,13 @@ class Sidebar extends HTMLElement {
 
     folder.forEach((fileName, fileIndex) => {
       const fileItem = document.createElement("li");
-      fileItem.classList.add("file", "bg-primary", "bg-opacity-10", "p-1");
+      fileItem.classList.add(
+        "file",
+        "bg-primary",
+        "bg-opacity-10",
+        "p-1",
+        "list-unstyled"
+      );
       fileItem.dataset.file = fileIndex;
       fileItem.dataset.folder = folderName;
       fileItem.style.cursor = "pointer";
@@ -130,7 +136,7 @@ class Sidebar extends HTMLElement {
       sidebar.classList.toggle("d-none");
       mainContent.style.marginLeft = sidebar.classList.contains("d-none")
         ? "0"
-        : "350px";
+        : "400px";
     });
   }
 
