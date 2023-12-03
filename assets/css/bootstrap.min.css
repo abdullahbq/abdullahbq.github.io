@@ -13943,3 +13943,29 @@ body.dark-theme .accordion-header button {
 #main-content {
     margin-left: 400px;
 }
+
+.slide {
+    font-size: 40pt;
+    font-weight: 1800;
+    width: "100%";
+}
+
+xmp {
+    font-family: monospace;
+    font-size: 28pt;
+    padding: 10px;
+    border: 1px solid var(--bs-primary);
+    border-radius: 10px;
+    color: #fafafa;
+    background-color: #2a2a2a;
+}
+
+@media print {
+    .slide {
+        page-break-before: always;
+    }
+}
+
+@page {
+    size: landscape;
+}
