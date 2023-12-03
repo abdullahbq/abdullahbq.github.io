@@ -16,6 +16,10 @@
 </head>
 
 <body>
+    <header-component></header-component>
+    <section class="slides-section bg-primary bg-opacity-10">      
+        <title-component title="Slides"></title-component>
+          <div class="container py-5">
     
         <button id="startButton1" class="card">
             <div class="card-body">Start Presentation 1</div>
@@ -28,6 +32,8 @@
         <button id="startButton3" class="card">
             <div class="card-body">Start Presentation 1</div>
         </button>
+        </div>
+        </section>
     
     <fullscreen-presentation id="presentation1" style="display:none;"
         path="contents/Slides/slides.html"></fullscreen-presentation>
@@ -35,6 +41,8 @@
         path="contents/Slides/power.html"></fullscreen-presentation>
     <fullscreen-presentation id="presentation3" style="display:none;"
         path="contents/Slides/another.html"></fullscreen-presentation>
+        
+  <footer-component></footer-component>
 </body>
 
 </html>

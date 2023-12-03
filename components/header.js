@@ -57,6 +57,9 @@ class Header extends HTMLElement {
                 <li class="nav-item">
                   <a class="nav-link px-2" id="contact-link" href="contact.html">Contact</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link px-2" id="contact-link" href="slides.html">Slides</a>
+                </li>
               </ul>
               <form class="d-flex" role="search">
                 <input class="form-control me-2 border-primary shadow" type="search" placeholder="Search" aria-label="Search">
@@ -114,7 +117,8 @@ class Header extends HTMLElement {
           "border",
           "border-primary",
           "rounded-2",
-          "bg-primary", "shadow"
+          "bg-primary",
+          "shadow"
         );
     }
   }
