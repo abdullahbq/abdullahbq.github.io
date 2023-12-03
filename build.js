@@ -82,11 +82,11 @@ function generateBlogHtml(posts) {
         <div class="row">
           <div class="col-lg-12 mb-4 text-center">
             <div id="filterButtons">
-              <button class="btn btn-outline-primary rounded-pill filter-btn m-2 active" data-filter="all">All Categories</button>
+              <button class="btn btn-outline-primary rounded-pill filter-btn m-2 active shadow" data-filter="all">All Categories</button>
               ${Array.from(new Set(posts.map((post) => post.category)))
                 .map(
                   (category) => `
-                    <button class="btn btn-outline-primary rounded-pill filter-btn me-2" data-filter="${category}">${category}</button>
+                    <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="${category}">${category}</button>
                 `
                 )
                 .join("")}

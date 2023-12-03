@@ -1,4 +1,46 @@
 {
-  "Gatsby": [],
-  "React": []
+  "8051 Microcontroller": [
+    "1 - Introduction to Microcontrollers",
+    "2 - Introduction to 8051 Microcontroller",
+    "3 - 8051 Instruction Set and Programming",
+    "8051 Advanced Concepts",
+    "8051 Development Tools",
+    "8051 Input-Output Ports",
+    "8051 Microcontroller Memory Organization",
+    "8051 Microcontroller Projects",
+    "Future Trends in Microcontrollers",
+    "Interrupts and Timers",
+    "Serial Communication with 8051",
+    "Troubleshooting and Debugging"
+  ],
+  "8086 Microprocessor": [
+    "Data Structures and Algorithms",
+    "Database Management Systems",
+    "Object-Oriented Programming",
+    "Programming Fundamentals"
+  ],
+  "Arduino": [
+    "Control Systems",
+    "Electric Circuit Theory",
+    "Power Systems",
+    "Renewable Energy Systems"
+  ],
+  "ESP 8266": [
+    "Dynamics of Machinery",
+    "Machine Design",
+    "Manufacturing Processes",
+    "Mechanics of Materials"
+  ],
+  "MSP 430": [
+    "Calculus",
+    "Differential Equations",
+    "Linear Algebra",
+    "Physics for Engineers"
+  ],
+  "Raspberry Pi": [
+    "Analog Electronics",
+    "Communication Systems",
+    "Digital Electronics",
+    "Signals and Systems"
+  ]
 }

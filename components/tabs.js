@@ -69,14 +69,14 @@ class Tabs extends HTMLElement {
 
   render(data) {
     this.innerHTML = `
-    <section class="services-section bg-primary bg-opacity-10">      
+    <section class="tabs-section bg-primary bg-opacity-10">      
     <title-component title="Tabs"></title-component>
       <div class="container text-center py-5">
             <div class="tabs-container">
               ${data
                 .map(
                   (tab, i) =>
-                    `<a class="tab-link btn btn-outline-primary rounded-pill m-2" data-index="${i}" data-toggle="tab" href="#tab-${i}"><i class="${tab.icon} me-2"></i> ${tab.title}</a>`
+                    `<a class="tab-link btn btn-outline-primary rounded-pill m-2 shadow" data-index="${i}" data-toggle="tab" href="#tab-${i}"><i class="${tab.icon} me-2"></i> ${tab.title}</a>`
                 )
                 .join("")}
             </div>

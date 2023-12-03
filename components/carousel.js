@@ -25,9 +25,8 @@ class Carousel extends HTMLElement {
 
     // Generate carousel HTML based on JSON data
     this.innerHTML = `
-    <section class="services-section bg-primary bg-opacity-10">      
+    <section class="carousel-section bg-primary bg-opacity-10">      
       <title-component title="Carousel"></title-component>
-        <div class="container py-5">
         <div id="carouselExampleCaptions" class="carousel slide">
           <div class="carousel-indicators">
             ${carouselData
@@ -46,7 +45,7 @@ class Carousel extends HTMLElement {
               <div class="carousel-item ${index === 0 ? "active" : ""}">
                 <img src="assets/images/${
                   item.image
-                }.png" class="img-top d-block w-100 rounded-2" alt="Slide ${
+                }.png" class="img-top d-block w-100" alt="Slide ${
                   index + 1
                 }">
                 <div class="carousel-caption d-none d-md-block">
@@ -66,7 +65,6 @@ class Carousel extends HTMLElement {
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
           </button>
-        </div>
         </div>
         </section>
       `;

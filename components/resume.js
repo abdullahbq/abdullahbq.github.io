@@ -20,7 +20,7 @@ class Resume extends HTMLElement {
                     I am a Professor of Biomedical Instrumentation and also loves Web
                     Developement.
                     <span class="noprint fst-normal">
-                      <a class="noprint btn btn-primary btn-sm text-light text-decoration-none" style="font-size: 1em"
+                      <a class="noprint btn btn-primary btn-sm text-light text-decoration-none shadow" style="font-size: 1em"
                         href="assets/abdullahbq_resume.pdf" target="_blank">Download CV</a>
                     </span>
                   </div>

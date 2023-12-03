@@ -67,7 +67,7 @@ class Portfolio extends HTMLElement {
               .map(
                 (filter) => `
                 <button
-                  class="btn rounded-pill ${
+                  class="btn rounded-pill shadow ${
                     filter === this.state.selectedFilter
                       ? "btn-primary"
                       : "btn-outline-primary"

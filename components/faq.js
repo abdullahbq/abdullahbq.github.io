@@ -65,10 +65,10 @@ class Faq extends HTMLElement {
     ];
 
     this.innerHTML = `
-      <section class="team-section bg-primary bg-opacity-10">
+      <section class="faq-section bg-primary bg-opacity-10">
         <title-component title="FAQ's"></title-component>      
         <div class="container py-5">
-          <div class="accordion" id="accordionExample">
+          <div class="accordion shadow rounded-2" id="accordionExample">
             ${items
               .map((item, index) => this.generateAccordion(item, index))
               .join("")}
@@ -80,7 +80,7 @@ class Faq extends HTMLElement {
 
   generateAccordion({ title, content }, index) {
     const isFirstItem = index === 0 ? "show" : "";
-    const isCollapsed = index === 0 ? "" : "collapsed"; // Fixed this line
+    const isCollapsed = index === 0 ? "" : "collapsed";
 
     return `
       <div class="accordion-item border-primary">

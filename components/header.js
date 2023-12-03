@@ -14,13 +14,13 @@ class Header extends HTMLElement {
   render() {
     this.innerHTML = `
       <header style="margin-bottom: 58px;">
-        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark py-2 shadow">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-2 shadow">
           <div class="container-fluid">
             <div class="d-flex">
-            <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light">
+            <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light shadow">
                 <i class="fas fa-list"></i>
               </button>
-              <button class="btn btn-outline-primary me-2 text-light" id="toggleThemeBtn">
+              <button class="btn btn-outline-primary me-2 text-light shadow" id="toggleThemeBtn">
                 <i class="fas fa-sun"></i>
               </button>
             </div>
@@ -28,7 +28,7 @@ class Header extends HTMLElement {
               <img src="assets/images/inkredibledoc.png" alt="Your Logo" width="32" height="32" class="me-2"/>
                 <span class="fw-bold">InkredibleDoc</span>
             </a>
-            <button class="navbar-toggler btn btn-outline-primary border-primary text-light" style="padding: 9px 10px 9px 10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler btn btn-outline-primary border-primary text-light shadow" style="padding: 9px 10px 9px 10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fas fa-hamburger"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -59,8 +59,8 @@ class Header extends HTMLElement {
                 </li>
               </ul>
               <form class="d-flex" role="search">
-                <input class="form-control me-2 border-primary" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-primary text-light" type="submit">
+                <input class="form-control me-2 border-primary shadow" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-primary text-light shadow" type="submit">
                     <i class="fas fa-search"></i>
                   </button>
               </form>
@@ -114,7 +114,7 @@ class Header extends HTMLElement {
           "border",
           "border-primary",
           "rounded-2",
-          "bg-primary"
+          "bg-primary", "shadow"
         );
     }
   }
@@ -123,7 +123,7 @@ class Header extends HTMLElement {
     // Create the scroll-to-top button dynamically
     const scrollToTopBtn = document.createElement("button");
     scrollToTopBtn.id = "scrollToTopBtn";
-    scrollToTopBtn.className = "btn btn-primary";
+    scrollToTopBtn.className = "btn btn-primary shadow";
     scrollToTopBtn.style =
       "position: fixed; bottom: 20px; right: 20px; display: none;";
     scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';

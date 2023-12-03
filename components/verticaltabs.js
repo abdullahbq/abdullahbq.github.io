@@ -28,7 +28,7 @@ class VerticalTabs extends HTMLElement {
     ];
 
     this.innerHTML = `
-          <section class="services-section bg-primary bg-opacity-10">      
+          <section class="verticaltabs-section bg-primary bg-opacity-10">      
             <title-component title="Vertical Tabs"></title-component>
             <div class="container text-center py-5">
               <div class="d-flex align-items-start">

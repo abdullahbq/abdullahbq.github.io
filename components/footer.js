@@ -14,20 +14,20 @@ class Footer extends HTMLElement {
             </div>
             <div class="col-md-3">
               <h2 class="fw-bold text-light">Quick Links</h2>
-              <ul class="list-unstyled text-decoration-none ms-3">
-                <li><a href="index.html" class="text-light">Home</a></li>
-                <li><a href="blog.html" class="text-light">Blog</a></li>
-                <li><a href="about.html" class="text-light">About</a></li>
-                <li><a href="services.html" class="text-light">Services</a></li>
-                <li><a href="contact.html" class="text-light">Contact</a></li>
+              <ul class="list-unstyled ms-3">
+                <li><a href="index.html" class="text-decoration-none text-primary">Home</a></li>
+                <li><a href="blog.html" class="text-decoration-none text-primary">Blog</a></li>
+                <li><a href="about.html" class="text-decoration-none text-primary">About</a></li>
+                <li><a href="services.html" class="text-decoration-none text-primary">Services</a></li>
+                <li><a href="contact.html" class="text-decoration-none text-primary">Contact</a></li>
               </ul>
             </div>
             <div class="col-md-3">
               <h2 class="fw-bold text-light">Follow Us</h2>
               <ul class="list-unstyled social-icons">
-                <li class="d-inline-block me-2"><a href="#" target="_blank"><i class="text-light fab fa-facebook fa-2x me-2"></i></a></li>
-                <li class="d-inline-block me-2"><a href="#" target="_blank"><i class="text-light fab fa-instagram fa-2x me-2"></i></a></li>
-                <li class="d-inline-block"><a href="#" target="_blank"><i class="text-light fab fa-github fa-2x me-2"></i></a></li>
+                <li class="d-inline-block me-2"><a href="#" target="_blank"><i class="fab fa-facebook fa-2x me-2"></i></a></li>
+                <li class="d-inline-block me-2"><a href="#" target="_blank"><i class="fab fa-instagram fa-2x me-2"></i></a></li>
+                <li class="d-inline-block"><a href="#" target="_blank"><i class="fab fa-github fa-2x me-2"></i></a></li>
               </ul>
             </div>
           </div>
@@ -35,8 +35,8 @@ class Footer extends HTMLElement {
         <div
         class="copyright text-center text-light py-3"
         style="background-color: #0c0c0c; box-shadow: 0 -4px 10px -1px rgba(0, 0, 0, 0.2)">
-        <span class="text-light">Copyright &copy; 2023</span>---
-        <span class="text-light fw-bold">
+        <span class="text-light">Copyright &copy; 2023</span> ---
+        <span class="text-primary fw-bold">
         InkredibleDoc
         </span>
         ---
