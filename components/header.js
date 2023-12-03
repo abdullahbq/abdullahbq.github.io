@@ -58,7 +58,7 @@ class Header extends HTMLElement {
                   <a class="nav-link px-2" id="contact-link" href="contact.html">Contact</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-2" id="contact-link" href="slides.html">Slides</a>
+                  <a class="nav-link px-2" id="slides-link" href="slides.html">Slides</a>
                 </li>
               </ul>
               <form class="d-flex" role="search">
@@ -106,6 +106,7 @@ class Header extends HTMLElement {
       "/about.html": "about-link",
       "/services.html": "services-link",
       "/contact.html": "contact-link",
+      "/slides.html": "slides-link",
     };
 
     const currentLink = links[path];

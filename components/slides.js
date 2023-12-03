@@ -3,20 +3,19 @@ class FullScreenPresentation extends HTMLElement {
     super();
 
     this.slideIndex = 1;
-    this.totalSlides = 0; // Updated after fetching slides
+    this.totalSlides = 0;
     this.slides = [];
-    this.Path = this.getAttribute("path");
     this.setupEventListeners();
     this.setupNavigationButtons();
-    this.fetchSlides(); // Fetch slides when the element is constructed
+    this.fetchSlides();
   }
 
   connectedCallback() {
-    // Use MutationObserver to wait for slides to be added
     const observer = new MutationObserver(() => {
       if (this.totalSlides > 0) {
         observer.disconnect();
         this.showSlide(this.slideIndex);
+        this.updateSlideCounter(); // Add this line to update the slide counter
       }
     });
 
@@ -38,33 +37,49 @@ class FullScreenPresentation extends HTMLElement {
 
   async fetchSlides() {
     try {
-      // Fetch the external HTML file containing the slides
-      const response = await fetch(this.Path);
+      const response = await fetch(this.getAttribute("path"));
       const htmlContent = await response.text();
 
-      // Create a temporary div to parse the HTML content
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = htmlContent;
 
-      // Get all slide elements from the parsed HTML
-      this.slides = Array.from(tempDiv.querySelectorAll(".slide"));
-      this.totalSlides = this.slides.length;
+      const slideElements = tempDiv.querySelectorAll(".slide");
 
-      // Append the fetched slides to the presentation
-      this.slides.forEach((slide) => {
-        this.appendChild(slide);
+      slideElements.forEach((slideContent, index) => {
+        const newSlide = document.createElement("div");
+        newSlide.classList.add("slide");
+        newSlide.innerHTML = slideContent.innerHTML;
+
+        this.slides.push(newSlide);
+        this.totalSlides = this.slides.length;
+        this.appendChild(newSlide);
       });
+
+      this.showSlide(this.slideIndex);
     } catch (error) {
       console.error("Error fetching slides:", error);
     }
   }
 
+  updateSlideCounter() {
+    const slideCounter = this.querySelector(".slide-counter");
+    if (slideCounter) {
+      const counterText =
+        this.totalSlides > 0
+          ? `${this.slideIndex} / ${this.totalSlides}`
+          : "0 / 0";
+      slideCounter.textContent = counterText;
+    }
+  }
+
   nextSlide() {
     this.showSlide(this.slideIndex + 1);
+    this.updateSlideCounter();
   }
 
   prevSlide() {
     this.showSlide(this.slideIndex - 1);
+    this.updateSlideCounter();
   }
 
   showSlide(index) {
@@ -82,112 +97,60 @@ class FullScreenPresentation extends HTMLElement {
   }
 
   setupNavigationButtons() {
-    const container = document.createElement("div");
-    container.classList.add("presentation-container");
+    this.innerHTML = `
+      <div style="position: fixed; bottom: 5px; left: 50%; transform: translateX(-50%); display: flex; justify-content: space-between; width: 250px;" class="presentation-container">
+        <button style="margin: 0 5px;" class="btn btn-outline-primary px-3 py-1" id="prevButton">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div style="flex: 1; text-align: center; font-weight: bold;" class="btn btn-primary px-3 py-1 slide-counter"></div>
+        <button style="margin: 0 5px;" class="btn btn-outline-primary px-3 py-1" id="nextButton">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    `;
 
-    const prevButton = document.createElement("button");
-    prevButton.innerHTML = '<i class="fas fa-chevron-left"></i>';
+    const prevButton = this.querySelector("#prevButton");
+    const nextButton = this.querySelector("#nextButton");
+
     prevButton.addEventListener("click", () => this.prevSlide());
-
-    const nextButton = document.createElement("button");
-    nextButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
     nextButton.addEventListener("click", () => this.nextSlide());
 
-    const closeButton = document.createElement("button");
-    closeButton.innerHTML = '<i class="fas fa-times"></i>';
-    closeButton.addEventListener("click", () => this.closePresentation());
-    closeButton.classList.add(
-      "btn",
-      "btn-outline-primary",
-      "px-3",
-      "py-1",
-      "close-button"
-    );
-    this.appendChild(closeButton);
-
-    // Apply styles to the close button
-    closeButton.style.position = "absolute";
-    closeButton.style.top = "5px";
-    closeButton.style.right = "5px";
-
-    container.appendChild(prevButton);
-    container.appendChild(nextButton);
-
-    this.appendChild(container);
-
-    // Apply styles to the navigation buttons
-    container.style.position = "fixed";
-    container.style.bottom = "5px";
-    container.style.left = "50%";
-    container.style.transform = "translateX(-50%)";
-    container.style.display = "flex";
-    container.style.justifyContent = "space-between";
-    container.style.width = "250px"; // Adjust the width as needed
-
-    // Apply styles to each button
-    const buttons = [prevButton, nextButton, closeButton];
-    buttons.forEach((button) => {
-      button.classList.add("btn", "btn-outline-primary", "px-3", "py-1");
-    });
-  }
-
-  closePresentation() {
-    // Hide the current presentation
-    this.style.display = "none";
-
-    // Show all buttons
-    const buttonSelector = `button[id^="startButton"]`;
-    const buttons = document.querySelectorAll(buttonSelector);
-    buttons.forEach((button) => {
-      button.style.display = "block";
-    });
+    this.updateSlideCounter(); // Call the method to set the initial slide counter
   }
 }
 
-// Define the custom element
 customElements.define("fullscreen-presentation", FullScreenPresentation);
 
-// Additional script for starting each presentation dynamically
-const presentationCount = 3; // Change this to the number of presentations
+function openStaticBackdropModal(contentPath) {
+  try {
+    const template = document.getElementById("staticBackdropModalTemplate");
+    const templateContent = template.content;
 
-for (let i = 1; i <= presentationCount; i++) {
-  const buttonId = `startButton${i}`;
-  const presentationId = `presentation${i}`;
+    const modal = document.createElement("div");
+    modal.classList.add("modal-container");
+    modal.appendChild(templateContent.cloneNode(true));
 
-  // Add event listener for each button
-  document.getElementById(buttonId).addEventListener("click", function () {
-    startPresentation(buttonId, presentationId);
-  });
-}
+    // Extract title from the button's inner text
+    const button = document.activeElement;
+    const buttonText = button.innerText.trim();
+    modal.querySelector(".modal-title").textContent = buttonText;
 
-// General startPresentation function
-function startPresentation(buttonId, presentationId) {
-  // Hide all buttons
-  for (let i = 1; i <= presentationCount; i++) {
-    const currentButtonId = `startButton${i}`;
-    document.getElementById(currentButtonId).style.display = "none";
+    const modalBody = modal.querySelector(".modal-body");
+
+    // Find the fullscreen-presentation element in the modal
+    const presentation = modalBody.querySelector("fullscreen-presentation");
+
+    // Set the path attribute dynamically
+    presentation.setAttribute("path", contentPath);
+
+    document.body.appendChild(modal);
+
+    const bootstrapModal = new bootstrap.Modal(modal.querySelector(".modal"), {
+      backdrop: "static",
+      keyboard: false,
+    });
+    bootstrapModal.show();
+  } catch (error) {
+    console.error("Error fetching or displaying modal content:", error);
   }
-
-  // Hide all presentations
-  for (let i = 1; i <= presentationCount; i++) {
-    const currentPresentationId = `presentation${i}`;
-    document.getElementById(currentPresentationId).style.display = "none";
-  }
-
-  // Show the relevant presentation
-  document.getElementById(presentationId).style.display = "block";
-
-  // Add close button
-  const closeButton = document.createElement("button");
-  closeButton.innerHTML = '<i class="fas fa-chevron-right"></i>';
-  closeButton.addEventListener("click", function () {
-    // Hide the current presentation
-    document.getElementById(presentationId).style.display = "none";
-
-    // Show all buttons
-    for (let i = 1; i <= presentationCount; i++) {
-      const currentButtonId = `startButton${i}`;
-      document.getElementById(currentButtonId).style.display = "block";
-    }
-  });
 }
