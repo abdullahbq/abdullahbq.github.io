@@ -7,7 +7,7 @@ class Intro extends HTMLElement {
     this.innerHTML = `
             <section class="intro-section bg-primary bg-opacity-10">
                 <div class="container py-5">
-                    <div class="row gx-5 align-items-center justify-content-center">
+                    <div class="row align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder mb-2">Welcome to InkredibleDoc!</h1>

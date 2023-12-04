@@ -20,7 +20,7 @@ class Header extends HTMLElement {
             <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light shadow">
                 <i class="fas fa-list"></i>
               </button>
-              <button class="btn btn-outline-primary me-2 text-light shadow" id="toggleThemeBtn">
+              <button class="btn btn-outline-primary text-light shadow" id="toggleThemeBtn">
                 <i class="fas fa-sun"></i>
               </button>
             </div>
@@ -130,7 +130,7 @@ class Header extends HTMLElement {
     scrollToTopBtn.id = "scrollToTopBtn";
     scrollToTopBtn.className = "btn btn-primary shadow";
     scrollToTopBtn.style =
-      "position: fixed; bottom: 20px; right: 20px; display: none;";
+      "position: fixed; bottom: 20px; right: 20px; display: none; z-index: 5;";
     scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
 
     // Append the button to the header
