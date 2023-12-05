@@ -29,8 +29,9 @@ function generatePostHtml(metadata, content) {
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <meta name="author" content="${metadata.author}" />
         <title>${metadata.title}</title>
+        <link href="assets/css/fontawesome.css" rel="stylesheet" type="text/css" />
         <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <link href="assets/css/all.css" rel="stylesheet" type="text/css" />
+        <link href="assets/css/mystyles.css" rel="stylesheet" type="text/css" />
         <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
         <script src="components/header.js" type="text/javascript" defer></script>
         <script src="components/title.js" type="text/javascript" defer></script>
@@ -66,8 +67,9 @@ function generateBlogHtml(posts) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
+    <link href="assets/css/fontawesome.css" rel="stylesheet" type="text/css" />
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="assets/css/all.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/mystyles.css" rel="stylesheet" type="text/css" />
     <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
     <script src="components/header.js" type="text/javascript" defer></script>
     <script src="components/title.js" type="text/javascript" defer></script>

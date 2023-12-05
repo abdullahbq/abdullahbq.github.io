@@ -32,8 +32,7 @@ class Header extends HTMLElement {
               <i class="fas fa-hamburger"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              
+              <ul class="navbar-nav me-auto mb-2 mb-md-0">              
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Courses
@@ -44,22 +43,23 @@ class Header extends HTMLElement {
                   <li><a class="dropdown-item rounded-2 my-1" id="web_development-link" href="web_development.html">Web Development</a></li>
                 </ul>
               </li>
-
                 <li class="nav-item">
                   <a class="nav-link px-2" id="blog-link" href="blog.html">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link px-2" id="about-link" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link px-2" id="services-link" href="services.html">Services</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link px-2" id="contact-link" href="contact.html">Contact</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link px-2" id="slides-link" href="slides.html">Slides</a>
-                </li>
+                </li>                
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                More
+              </a>
+              <ul class="dropdown-menu p-2">
+                <li><a class="dropdown-item rounded-2 my-1" id="about-link" href="about.html">About</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="services-link" href="services.html">Services</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="contact-link" href="contact.html">Contact</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="gallery-link" href="gallery.html">Gallery</a></li>
+              </ul>
+            </li>
               </ul>
               <form class="d-flex" role="search">
                 <input class="form-control me-2 border-primary shadow" type="search" placeholder="Search" aria-label="Search">
@@ -106,6 +106,7 @@ class Header extends HTMLElement {
       "/about.html": "about-link",
       "/services.html": "services-link",
       "/contact.html": "contact-link",
+      "/gallery.html": "gallery-link",
       "/slides.html": "slides-link",
     };
 
