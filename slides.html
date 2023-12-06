@@ -63,8 +63,9 @@
         // Function to generate the button HTML dynamically
         function generateButtonsHTML(data) {
             return data.map(button => `
-                <button type="button" class="card card-body border-primary mb-4 shadow" onclick="openStaticBackdropModal('${button.path}')">
-                    ${button.title}
+                <button type="button" class="card card-body border-primary mb-4 shadow text-center" onclick="openStaticBackdropModal('${button.path}')">
+                    <i class="text-muted">Presentation on</i>
+                    <h5 class="text-primary">${button.title}</h5>
                 </button>
             `).join('');
         }

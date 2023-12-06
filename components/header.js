@@ -13,7 +13,7 @@ class Header extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <header style="margin-bottom: 58px;">
+      <header id="myHeader" style="margin-bottom: 58px;">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-2 shadow">
           <div class="container-fluid">
             <div class="d-flex">

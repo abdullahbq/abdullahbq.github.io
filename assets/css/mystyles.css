@@ -75,3 +75,49 @@ xmp {
 @page {
     size: landscape;
 }
+
+/* Gallery */
+.gallery {
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 58px);
+}
+
+.gallery .movable {
+    display: flex;
+    height: 100%;
+    transition: transform 0.4s;
+}
+
+.gallery .movable>img {
+    flex: 1;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Maintain aspect ratio and cover container */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev,
+.next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.prev {
+    left: 0;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.next {
+    right: 0;
+    border-radius: 10px 0px 0px 10px;
+}
