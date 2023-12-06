@@ -43,11 +43,11 @@ class FullScreenPresentation extends HTMLElement {
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = htmlContent;
 
-      const slideElements = tempDiv.querySelectorAll(".slide");
+      const slideElements = tempDiv.querySelectorAll(".myslide");
 
       slideElements.forEach((slideContent, index) => {
         const newSlide = document.createElement("div");
-        newSlide.classList.add("slide");
+        newSlide.classList.add("myslide");
         newSlide.innerHTML = slideContent.innerHTML;
 
         this.slides.push(newSlide);
