@@ -5,7 +5,7 @@ class Intro extends HTMLElement {
 
   connectedCallback() {
     this.innerHTML = `
-            <section class="intro-section bg-primary bg-opacity-10">
+            <section class="intro-section bg-warning bg-opacity-10">
                 <div class="container py-5">
                     <div class="row align-items-center justify-content-center">
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
@@ -18,7 +18,7 @@ class Intro extends HTMLElement {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5 shadow" src="assets/images/sample.png" alt="InkredibleDoc" /></div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5 shadow" src="assets/images/4.png" alt="InkredibleDoc" /></div>
                     </div>
                 </div>
             </section>

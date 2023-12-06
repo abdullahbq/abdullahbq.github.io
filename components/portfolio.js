@@ -59,7 +59,7 @@ class Portfolio extends HTMLElement {
 
   render() {
     this.innerHTML = `
-      <section class="portfolio-section bg-primary bg-opacity-10">
+      <section class="portfolio-section bg-warning bg-opacity-10">
         <title-component title="Portfolio"></title-component>
         <div class="container py-5">
           <div class="d-flex justify-content-center mb-4">

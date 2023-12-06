@@ -69,7 +69,7 @@ class Tabs extends HTMLElement {
 
   render(data) {
     this.innerHTML = `
-    <section class="tabs-section bg-primary bg-opacity-10">      
+    <section class="tabs-section bg-warning bg-opacity-10">      
     <title-component title="Tabs"></title-component>
       <div class="container text-center py-5">
             <div class="tabs-container">

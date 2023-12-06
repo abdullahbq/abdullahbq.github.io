@@ -47,6 +47,9 @@ class Header extends HTMLElement {
                   <a class="nav-link px-2" id="blog-link" href="blog.html">Blog</a>
                 </li>
                 <li class="nav-item">
+                  <a class="nav-link px-2" id="publications-link" href="publications.html">Publications</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link px-2" id="slides-link" href="slides.html">Slides</a>
                 </li>                
               <li class="nav-item dropdown">
@@ -108,6 +111,7 @@ class Header extends HTMLElement {
       "/contact.html": "contact-link",
       "/gallery.html": "gallery-link",
       "/slides.html": "slides-link",
+      "/publications.html": "publications-link",
     };
 
     const currentLink = links[path];

@@ -118,7 +118,7 @@ class Pricing extends HTMLElement {
       .join("");
 
     this.innerHTML = `
-      <section class="pricing-section bg-primary bg-opacity-10">
+      <section class="pricing-section bg-warning bg-opacity-10">
         <title-component title="Pricing"></title-component> 
         <div class="container text-center py-5">
           <div class="mb-4">${buttons}</div> 
