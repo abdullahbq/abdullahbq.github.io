@@ -4,22 +4,29 @@ class Header extends HTMLElement {
   }
 
   connectedCallback() {
-    this.render();
+    const showToggleButton = this.hasAttribute("showToggleButton");
+    this.render(showToggleButton);
     this.setupEventListeners();
     this.applyTheme();
     this.updateActiveLink();
     this.setupScrollToTop();
   }
 
-  render() {
+  render(showToggleButton) {
     this.innerHTML = `
       <header id="myHeader" style="margin-bottom: 58px;">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-2 shadow">
           <div class="container-fluid">
             <div class="d-flex">
-            <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light shadow">
-                <i class="fas fa-list"></i>
-              </button>
+            ${
+              showToggleButton
+                ? `
+                  <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light shadow">
+                    <i class="fas fa-list"></i>
+                  </button>
+                `
+                : ""
+            }
               <button class="btn btn-outline-primary text-light shadow" id="toggleThemeBtn">
                 <i class="fas fa-sun"></i>
               </button>

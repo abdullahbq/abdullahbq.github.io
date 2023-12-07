@@ -16,6 +16,8 @@
   "8086 Microprocessor": [
     "Data Structures and Algorithms",
     "Database Management Systems",
+    "Evolution of Microprocessor",
+    "Intel 8086 Architecture",
     "Object-Oriented Programming",
     "Programming Fundamentals"
   ],
@@ -24,6 +26,9 @@
     "Electric Circuit Theory",
     "Power Systems",
     "Renewable Energy Systems"
+  ],
+  "Default Chapter": [
+    "Default Title"
   ],
   "ESP 8266": [
     "Dynamics of Machinery",

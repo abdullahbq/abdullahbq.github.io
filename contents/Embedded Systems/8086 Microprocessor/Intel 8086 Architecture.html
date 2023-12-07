@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Intel 8086 Architecture</title>
+  </head>
+  <body>
+    <p>
+      The Intel 8086 microprocessor, introduced in 1978, marked a significant
+      advancement in the x86 architecture. Here's a comprehensive overview of
+      its architecture, highlighting key features and functionalities.
+    </p>
+
+    <h2>1. Data Bus and Address Bus:</h2>
+    <p>
+      The 8086 features a 16-bit data bus, allowing it to process data in 16-bit
+      chunks. This wide data bus contributes to its ability to handle larger
+      volumes of data efficiently. The address bus is also 16 bits wide,
+      enabling the processor to address up to 2^16 (64 KB) memory locations,
+      providing a substantial addressable memory space.
+    </p>
+
+    <h2>2. Registers:</h2>
+    <p>
+      The 8086 architecture includes various registers, crucial for data
+      manipulation and storage. Four general-purpose registers (AX, BX, CX, DX)
+      are each 16 bits long. These registers can be accessed as two 8-bit
+      registers (AH and AL, BH and BL, CH and CL, DH and DL), providing
+      versatility in handling different data types.
+    </p>
+    <p>
+      Additionally, the 8086 includes registers like the stack pointer (SP) and
+      base pointer (BP), vital for managing the stack and data segments. The
+      source index (SI) and destination index (DI) registers are used for data
+      movement and manipulation operations.
+    </p>
+
+    <h2>3. Instruction Pointer (IP):</h2>
+    <p>
+      The IP register holds the offset address of the next instruction to be
+      executed. Together with the code segment register (CS), it forms a 20-bit
+      physical address for instruction fetching. This segmentation approach
+      allows the 8086 to access a larger memory space by combining the 16-bit
+      offset with the 16-bit segment address.
+    </p>
+
+    <h2>4. Segment Registers:</h2>
+    <p>
+      The 8086 includes four segment registers: Code Segment (CS), Data Segment
+      (DS), Stack Segment (SS), and Extra Segment (ES). These registers play a
+      crucial role in memory addressing, determining the base address for
+      different types of data and code segments.
+    </p>
+
+    <h2>5. Addressing Modes:</h2>
+    <p>
+      The 8086 supports various addressing modes, allowing flexible operand
+      addressing. Common addressing modes include register addressing, immediate
+      addressing, direct addressing, and indirect addressing. This flexibility
+      enhances the versatility of the microprocessor in handling different types
+      of instructions and operands.
+    </p>
+
+    <h2>6. Arithmetic and Logic Unit (ALU):</h2>
+    <p>
+      The heart of the 8086 is its Arithmetic and Logic Unit (ALU), responsible
+      for executing arithmetic and logic operations. The ALU operates on 16-bit
+      data and supports a rich set of instructions, including addition,
+      subtraction, multiplication, division, bitwise AND, OR, XOR, and more.
+    </p>
+
+    <h2>7. Control Unit:</h2>
+    <p>
+      The Control Unit manages the execution of instructions by coordinating
+      various components of the processor. It interprets instructions from
+      memory and directs the operation of the ALU, registers, and other
+      functional units. The Control Unit plays a crucial role in ensuring the
+      orderly execution of programs.
+    </p>
+
+    <h2>8. Interrupts and Exception Handling:</h2>
+    <p>
+      The 8086 supports interrupt-driven I/O and exception handling. Interrupts
+      allow the processor to respond to external events or requests, providing a
+      mechanism for efficient I/O operations. The 8086 architecture includes an
+      Interrupt Descriptor Table (IDT) to manage interrupt vectors and exception
+      handling.
+    </p>
+
+    <h2>9. Memory Management:</h2>
+    <p>
+      Memory management in the 8086 involves the use of segmentation. The
+      combination of segment registers and the instruction pointer allows the
+      processor to access a more extensive memory space. The 8086 can address up
+      to 1 MB of memory, making it suitable for a range of applications.
+    </p>
+
+    <h2>10. Instruction Set:</h2>
+    <p>
+      The 8086 instruction set is rich and diverse, offering a wide range of
+      operations for data manipulation, control flow, and I/O operations.
+      Instructions are encoded in machine language and can be categorized into
+      various groups, including data transfer, arithmetic, logical, control
+      transfer, and string manipulation instructions.
+    </p>
+
+    <div class="bs-callout bs-callout-success">
+      <i class="icon fas fa-check"></i>
+      <ul>
+        <li>
+          The Intel 8086, introduced in 1978, is a 16-bit microprocessor with a
+          16-bit data bus and a 20-bit address bus.
+        </li>
+        <br />
+        <li>
+          It features eight 16-bit registers, including general-purpose
+          registers (AX, BX, CX, DX) and segment registers (CS, DS, SS, ES).
+        </li>
+        <br />
+        <li>
+          The 8086 operates with a maximum memory addressing capability of 1 MB.
+        </li>
+        <br />
+        <li>
+          It supports both little-endian and big-endian memory addressing.
+        </li>
+        <br />
+        <li>
+          The instruction set includes a variety of data movement, arithmetic,
+          logic, and control transfer instructions.
+        </li>
+        <br />
+        <li>
+          The 8086 uses a pipelined architecture with multiple execution units,
+          enhancing its processing speed.
+        </li>
+        <br />
+        <li>
+          Segment registers are used for memory segmentation, providing a way to
+          overcome the 1 MB addressing limitation.
+        </li>
+        <br />
+        <li>
+          The 8086 has a powerful instruction set, making it suitable for a wide
+          range of applications, from embedded systems to personal computers.
+        </li>
+        <br />
+        <li>
+          It laid the foundation for subsequent x86 architectures, influencing
+          the design of modern processors.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

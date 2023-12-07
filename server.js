@@ -35,7 +35,7 @@ const server = http.createServer((req, res) => {
           <title>${title}</title>
         </head>
         <body>
-          <div>${post}</div>          
+          ${post}        
         </body>
         </html>
       `;

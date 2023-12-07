@@ -1,7 +1,4 @@
 {
-  "a": [
-    "a"
-  ],
   "Civil Engineering": [
     "Environmental Engineering",
     "Geotechnical Engineering",
@@ -13,6 +10,9 @@
     "Database Management Systems",
     "Object-Oriented Programming",
     "Programming Fundamentals"
+  ],
+  "Default Chapter": [
+    "Default Title"
   ],
   "Electrical Engineering": [
     "Control Systems",
