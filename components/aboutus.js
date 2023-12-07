@@ -10,7 +10,7 @@ class AboutUs extends HTMLElement {
   render() {
     this.innerHTML = `
         <section class="aboutus-section bg-warning bg-opacity-10">
-          <div class="container py-5">
+          <div class="container pb-5">
             <div class="row justify-content-center align-items-center">
               ${this.renderItems()}
             </div>

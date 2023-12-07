@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Admin Panel</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <section class="services-section bg-primary bg-opacity-10">
+            <h1 class="card-body text-center shadow mb-0 py-3 bg-primary bg-opacity-25 border border-primary border-start-0 border-end-0 border-5 border-opacity-50 d-flex align-items-center justify-content-center" style="font-weight: 900">InkredibleDoc Admin Portal</h1>
+            <div class="container py-5">
+                <form id="textForm">
+                    <div class="form-group">
+                        <label for="titleInput">Title:</label>
+                        <input type="text" class="form-control" id="titleInput" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="categoryInput">Category:</label>
+                        <select class="form-control" id="categoryInput" name="category" required>
+                            <option value="Digital Electronics">Digital Electronics</option>
+                            <option value="Embedded Systems">Embedded Systems</option>
+                            <option value="Web Development">Web Development</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="chapterInput">Chapter:</label>
+                        <textarea class="form-control" id="chapterInput" name="chapter" rows="2" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="postInput">Post Text:</label>
+                        <textarea class="form-control" id="postInput" name="post" rows="4" required></textarea>
+                    </div>
+                    <button type="button" class="btn btn-primary my-3" onclick="saveToFile()">Submit</button>
+                </form>
+            </div>
+        </section>
+        <script>
+    function saveToFile() {
+      const title = document.getElementById('titleInput').value;
+      const category = document.getElementById('categoryInput').value;
+      const chapter = document.getElementById('chapterInput').value;
+      const post = document.getElementById('postInput').value;
+
+      const formData = `title=${encodeURIComponent(title)}&category=${encodeURIComponent(category)}&chapter=${encodeURIComponent(chapter)}&post=${encodeURIComponent(post)}`;
+
+      fetch('/saveFile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formData,
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('File created successfully');
+        } else {
+          alert('Error creating file');
+        }
+      })
+      .catch(error => console.error('Error:', error));
+    }
+        </script>
+    </body>
+</html>
