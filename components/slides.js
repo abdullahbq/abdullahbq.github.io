@@ -132,7 +132,7 @@ function openStaticBackdropModal(contentPath) {
 
     // Extract title from the button's inner text
     const button = document.activeElement;
-    const buttonText = button.innerText.trim();
+    const buttonText = button.querySelector('h5').innerText.trim();
     modal.querySelector(".modal-title").textContent = buttonText;
 
     const modalBody = modal.querySelector(".modal-body");

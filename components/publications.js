@@ -1,9 +1,15 @@
 class PublicationsPageElement extends HTMLElement {
   constructor() {
     super();
+    this.items = []; // Initialize with an empty array
   }
 
   connectedCallback() {
+    this.fetchAndRender();
+  }
+
+  async fetchAndRender() {
+    this.items = await this.fetchData();
     this.render();
   }
 

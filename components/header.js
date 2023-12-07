@@ -48,9 +48,6 @@ class Header extends HTMLElement {
                 </li>
                 <li class="nav-item">
                   <a class="nav-link px-2" id="publications-link" href="publications.html">Publications</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link px-2" id="slides-link" href="slides.html">Slides</a>
                 </li>                
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle px-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -61,6 +58,7 @@ class Header extends HTMLElement {
                 <li><a class="dropdown-item rounded-2 my-1" id="services-link" href="services.html">Services</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="contact-link" href="contact.html">Contact</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="gallery-link" href="gallery.html">Gallery</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="slides-link" href="slides.html">Slides</a></li>
               </ul>
             </li>
               </ul>
