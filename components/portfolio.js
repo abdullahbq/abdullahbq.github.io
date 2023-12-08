@@ -6,42 +6,42 @@ class Portfolio extends HTMLElement {
         {
           name: "The Lazy Artist Gallery",
           category: "People",
-          src: "sample",
+          src: "05",
         },
         {
           name: "Daria Shevtsova",
           category: "Food",
-          src: "sample",
+          src: "06",
         },
         {
           name: "Kasuma",
           category: "Animals",
-          src: "sample",
+          src: "13",
         },
         {
           name: "Dominika Roseclay",
           category: "Plants",
-          src: "sample",
+          src: "08",
         },
         {
           name: "Scott Webb",
           category: "Plants",
-          src: "sample",
+          src: "09",
         },
         {
           name: "Jeffrey Czum",
           category: "People",
-          src: "sample",
+          src: "10",
         },
         {
           name: "Dominika Roseclay",
           category: "Food",
-          src: "sample",
+          src: "14",
         },
         {
           name: "Valeria Boltneva",
           category: "Animals",
-          src: "sample",
+          src: "12",
         },
       ],
       filters: ["All", "People", "Animals", "Plants", "Food"],
@@ -94,7 +94,7 @@ class Portfolio extends HTMLElement {
                   <div class="card shadow mb-4 position-relative">
                     <img
                       class="card-img"
-                      src="assets/images/${project.src}.png"
+                      src="assets/images/${project.src}.jpg"
                       alt="${project.name}"
                     />
                     <div class="card-overlay position-absolute top-50 start-50 translate-middle text-center">

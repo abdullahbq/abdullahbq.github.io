@@ -7,19 +7,24 @@ class Carousel extends HTMLElement {
     // JSON data for carousel content
     const carouselData = [
       {
-        image: "1",
+        image: "14",
         title: "First Slide Title",
         description: "Some description for the first slide.",
       },
       {
-        image: "2",
+        image: "13",
         title: "Second Slide Title",
         description: "Some description for the second slide.",
       },
       {
-        image: "3",
+        image: "12",
         title: "Third Slide Title",
         description: "Some description for the third slide.",
+      },
+      {
+        image: "10",
+        title: "Fourth Slide Title",
+        description: "Some description for the fourth slide.",
       },
     ];
 
@@ -45,7 +50,7 @@ class Carousel extends HTMLElement {
               <div class="carousel-item ${index === 0 ? "active" : ""}">
                 <img src="assets/images/${
                   item.image
-                }.png" class="img-top d-block w-100" alt="Slide ${index + 1}">
+                }.jpg" class="img-top d-block w-100" alt="Slide ${index + 1}">
                 <div class="carousel-caption d-none d-md-block">
                   <h5>${item.title}</h5>
                   <p>${item.description}</p>

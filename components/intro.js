@@ -18,7 +18,7 @@ class Intro extends HTMLElement {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5 shadow" src="assets/images/4.png" alt="InkredibleDoc" /></div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5 shadow" src="assets/images/01.jpg" alt="InkredibleDoc" /></div>
                     </div>
                 </div>
             </section>

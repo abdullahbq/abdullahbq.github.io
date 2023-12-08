@@ -40,7 +40,7 @@ function generatePostHtml(metadata, content) {
       <body>
         <header-component></header-component>
         <div class="card border-0 rounded-0 shadow">
-          <img src="assets/images/${metadata.image}.png" class="card-img-top rounded-0" alt=${metadata.title}>
+          <img src="assets/images/${metadata.image}.jpg" class="card-img-top rounded-0" alt=${metadata.title}>
             <div class="card-overlay position-absolute m-2">
               <p class="badge bg-primary">${metadata.category}</p>
               <h1 class="card-title text-light" style="font-weight:900">${metadata.title}</h1>
@@ -103,7 +103,7 @@ function generateBlogHtml(posts) {
                       <div class="card-overlay position-absolute m-2">
                         <p class="badge bg-primary">${post.category}</p>
                       </div>
-                      <img src="assets/images/${post.image}.png" class="card-img-top" alt=${post.title}>
+                      <img src="assets/images/${post.image}.jpg" class="card-img-top" alt=${post.title}>
                       <div class="card-body">
                         <h4 class="fw-bold card-title text-primary">${post.title}</h4>
                         <p class="card-text">${post.description}</p>

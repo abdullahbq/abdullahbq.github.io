@@ -47,7 +47,7 @@ const server = http.createServer((req, res) => {
           res.end("Internal Server Error");
         } else {
           // Run the build.js code
-          exec("node build.js", (err, stderr) => {
+          exec("node components/build.js", (err, stderr) => {
             if (err) {
               // There was an error starting the process (e.g., build.js doesn't exist)
               console.error("Error running build.js:", err);
@@ -60,7 +60,7 @@ const server = http.createServer((req, res) => {
               res.end("Internal Server Error");
             } else {
               // build.js executed successfully
-              console.log("Build code executed");
+              console.log("Build completed succesfully");
               res.writeHead(200, { "Content-Type": "text/plain" });
               res.end("File created successfully");
             }

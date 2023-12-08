@@ -34,7 +34,7 @@ class Resume extends HTMLElement {
                 </div>
                 <div class="col-3">
                   <div class="text-center">
-                    <img src="assets/images/abdullah.png" style="border-radius: 100%" alt="Abdullah Bin Queyam" width="120" />
+                    <img src="assets/images/abdullah.jpg" style="border-radius: 100%" alt="Abdullah Bin Queyam" width="120" />
                   </div>
                 </div>
               </div>
