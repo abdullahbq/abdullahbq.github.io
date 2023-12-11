@@ -1,3 +1,11 @@
+:root {
+    --myHeader-margin: 58px;
+}
+
+#myHeader {
+    margin-bottom: var(--myHeader-margin);
+}
+
 /* Dark theme styles */
 body.dark-theme {
     color: #ffffff;
@@ -38,16 +46,25 @@ body.dark-theme .modal-content {
 }
 
 #sidebar {
-    height: calc(100vh - 58px);
+    height: calc(100vh - var(--myHeader-margin));
     position: fixed;
-    top: 58px;
+    top: var(--myHeader-margin);
     left: 0;
-    width: 400px;
+    width: 30vw;
     overflow-y: auto;
+    z-index: 2;
 }
 
-#main-content {
-    margin-left: 400px;
+@media (max-width: 1200px) {
+    #sidebar {
+        width: 50vw;
+    }
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        width: 80vw;
+    }
 }
 
 /*Slide styles*/

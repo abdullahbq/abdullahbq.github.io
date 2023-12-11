@@ -14,7 +14,7 @@ class Header extends HTMLElement {
 
   render(showToggleButton) {
     this.innerHTML = `
-      <header id="myHeader" style="margin-bottom: 58px;">
+      <header id="myHeader">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-2 shadow">
           <div class="container-fluid">
             <div class="d-flex">

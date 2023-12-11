@@ -110,7 +110,7 @@ class Sidebar extends HTMLElement {
 
     this.innerHTML = `
           <section class="sidebar-section">
-            <div id="sidebar" class="bg-primary bg-opacity-10">
+            <div id="sidebar" class="bg-dark text-light">
             <ul id="folderTree" class="folder-tree list-unstyled mb-0"></ul>
             </div>    
             <div id="main-content"> 
@@ -133,10 +133,13 @@ class Sidebar extends HTMLElement {
     const mainContent = this.querySelector("#main-content");
 
     toggleBtn.addEventListener("click", () => {
-      sidebar.classList.toggle("d-none");
-      mainContent.style.marginLeft = sidebar.classList.contains("d-none")
-        ? "0"
-        : "400px";
+      const isSidebarHidden = sidebar.classList.toggle("d-none");
+
+      if (isSidebarHidden) {
+        mainContent.style.marginLeft = "0";
+      } else {
+        mainContent.style.marginLeft = "0";
+      }
     });
   }
 
