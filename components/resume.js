@@ -12,7 +12,7 @@ class Resume extends HTMLElement {
         <div class="container py-5">
           <div class="card shadow border-primary mb-1">
             <div class="card-header border-0">
-              <div class="row">
+              <div class="row align-items-center">
                 <div class="col-9">
                   <h2 class="text-primary fw-bold">Dr. Abdullah Bin Queyam</h2>
     
@@ -34,7 +34,7 @@ class Resume extends HTMLElement {
                 </div>
                 <div class="col-3">
                   <div class="text-center">
-                    <img src="assets/images/abdullah.jpg" style="border-radius: 100%" alt="Abdullah Bin Queyam" width="120" />
+                    <img src="assets/images/abdullah.jpg" style="border-radius: 100%" alt="Abdullah Bin Queyam" width="100" />
                   </div>
                 </div>
               </div>
