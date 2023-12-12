@@ -5,14 +5,16 @@ class Header extends HTMLElement {
 
   connectedCallback() {
     const showToggleButton = this.hasAttribute("showToggleButton");
-    this.render(showToggleButton);
+    const showSearchButton = this.hasAttribute("showSearchButton");
+
+    this.render(showToggleButton, showSearchButton);
     this.setupEventListeners();
     this.applyTheme();
     this.updateActiveLink();
     this.setupScrollToTop();
   }
 
-  render(showToggleButton) {
+  render(showToggleButton, showSearchButton) {
     this.innerHTML = `
       <header id="myHeader">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-2 shadow">
@@ -48,6 +50,7 @@ class Header extends HTMLElement {
                   <li><a class="dropdown-item rounded-2 my-1" id="digital_electronics-link" href="digital_electronics.html">Digital Electronics</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="embedded_systems-link" href="embedded_systems.html">Embedded Systems</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="web_development-link" href="web_development.html">Web Development</a></li>
+                  <li><a class="dropdown-item rounded-2 my-1" id="internet_of_things-link" href="internet_of_things.html">Internet of Things</a></li>
                 </ul>
               </li>
                 <li class="nav-item">
@@ -70,12 +73,16 @@ class Header extends HTMLElement {
               </ul>
             </li>
               </ul>
-              <form class="d-flex" role="search">
-                <input class="form-control me-2 border-primary shadow" type="search" placeholder="Search" aria-label="Search">
+              ${
+                showSearchButton
+                  ? `<form class="d-flex" role="search">
+                <input id="searchInput" class="form-control me-2 border-primary shadow" type="search" placeholder="Search Blog Articles" aria-label="Search">
                   <button class="btn btn-outline-primary text-light shadow" type="submit">
                     <i class="fas fa-search"></i>
                   </button>
-              </form>
+              </form>`
+                  : ""
+              }
             </div>
           </div>
         </nav>
@@ -111,6 +118,7 @@ class Header extends HTMLElement {
       "/digital_electronics.html": "digital_electronics-link",
       "/embedded_systems.html": "embedded_systems-link",
       "/web_development.html": "web_development-link",
+      "/internet_of_things.html": "internet_of_things-link",
       "/blog.html": "blog-link",
       "/about.html": "about-link",
       "/services.html": "services-link",

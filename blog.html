@@ -16,7 +16,7 @@
   </head>
   
   <body>
-    <header-component></header-component>
+    <header-component showSearchButton></header-component>
     <section class="blog-section bg-primary bg-opacity-10">
       <title-component title="Blog"></title-component>
       <div class="container py-5">
@@ -38,7 +38,7 @@
                   <a href="blog1.html" class="text-decoration-none">
                     <div class="card border-primary shadow mb-4">
                       <div class="card-overlay position-absolute m-2">
-                        <p class="badge bg-primary">Web Development</p>
+                        <p class="badge bg-success rounded-pill">Web Development</p>
                       </div>
                       <img src="assets/images/01.jpg" class="card-img-top" alt=Blog 1 Title is shown by default, until the collapse plugin adds the appropriate classes th>
                       <div class="card-body">
@@ -57,7 +57,7 @@
                   <a href="blog2.html" class="text-decoration-none">
                     <div class="card border-primary shadow mb-4">
                       <div class="card-overlay position-absolute m-2">
-                        <p class="badge bg-primary">Digital</p>
+                        <p class="badge bg-success rounded-pill">Digital</p>
                       </div>
                       <img src="assets/images/01.jpg" class="card-img-top" alt=Blog 2 Title>
                       <div class="card-body">
@@ -76,7 +76,7 @@
                   <a href="blog3.html" class="text-decoration-none">
                     <div class="card border-primary shadow mb-4">
                       <div class="card-overlay position-absolute m-2">
-                        <p class="badge bg-primary">React</p>
+                        <p class="badge bg-success rounded-pill">React</p>
                       </div>
                       <img src="assets/images/01.jpg" class="card-img-top" alt=Blog 3 Title>
                       <div class="card-body">
@@ -95,7 +95,7 @@
                   <a href="blog4.html" class="text-decoration-none">
                     <div class="card border-primary shadow mb-4">
                       <div class="card-overlay position-absolute m-2">
-                        <p class="badge bg-primary">Web Development</p>
+                        <p class="badge bg-success rounded-pill">Web Development</p>
                       </div>
                       <img src="assets/images/01.jpg" class="card-img-top" alt=Fake title>
                       <div class="card-body">
@@ -118,32 +118,57 @@
     document.addEventListener('DOMContentLoaded', function () {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const blogItems = document.querySelectorAll('.post-item');
-    
+      const searchInput = document.getElementById('searchInput');
+
+      // Function to filter by category
+      function filterByCategory(category) {
+        blogItems.forEach(item => {
+          const itemCategory = item.dataset.category;
+          if (category === 'all' || category === itemCategory) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+
+      // Event listener for filter buttons
       filterButtons.forEach(button => {
         button.addEventListener('click', function () {
-          // Remove "active" class from all filter buttons
           filterButtons.forEach(btn => {
             btn.classList.remove('active');
           });
-    
-          // Add "active" class to the clicked filter button
           this.classList.add('active');
-    
           const selectedCategory = this.getAttribute('data-filter');
-    
-          blogItems.forEach(item => {
-            const itemCategory = item.dataset.category;
-    
-            if (selectedCategory === 'all' || selectedCategory === itemCategory) {
-              item.style.display = 'block';
-            } else {
-              item.style.display = 'none';
-            }
+          filterByCategory(selectedCategory);
+        });
+      });
+
+      // Event listener for search input
+      searchInput.addEventListener('input', function () {
+        const searchQuery = this.value.toLowerCase();
+
+        // Check if search query is not empty
+        if (searchQuery.trim() !== '') {
+          // Activate "All" filter when searching
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active');
           });
+          filterButtons[0].classList.add('active');
+        }
+
+        // Filter blog items based on search query
+        blogItems.forEach(item => {
+          const itemTitle = item.querySelector('.card-title').innerText.toLowerCase();
+          if (itemTitle.includes(searchQuery) || searchQuery.trim() === '') {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
         });
       });
     });
-    </script>
+  </script>
   </body>
   
   </html>  

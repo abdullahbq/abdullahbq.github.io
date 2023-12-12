@@ -182,7 +182,7 @@ class PublicationsPageElement extends HTMLElement {
                 style="max-width: 100px; max-height: 1000px;"
               />
               <div>
-              <small class="badge bg-primary mb-2">${category}</small>
+              <small class="badge bg-success rounded-pill mb-2">${category}</small>
                 <h5 class="mb-0">${title}</h5>   
                 <small>${year}</small>             
               </div>

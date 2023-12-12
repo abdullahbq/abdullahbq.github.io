@@ -42,7 +42,7 @@ function generatePostHtml(metadata, content) {
         <div class="card border-0 rounded-0 shadow">
           <img src="assets/images/${metadata.image}.jpg" class="card-img-top rounded-0" alt=${metadata.title}>
             <div class="card-overlay position-absolute m-2">
-              <p class="badge bg-primary">${metadata.category}</p>
+              <p class="badge bg-success rounded-pill">${metadata.category}</p>
               <h1 class="card-title text-light" style="font-weight:900">${metadata.title}</h1>
             </div>
             <div class="card-body">
@@ -77,7 +77,7 @@ function generateBlogHtml(posts) {
   </head>
   
   <body>
-    <header-component></header-component>
+    <header-component showSearchButton></header-component>
     <section class="blog-section bg-primary bg-opacity-10">
       <title-component title="Blog"></title-component>
       <div class="container py-5">
@@ -101,7 +101,7 @@ function generateBlogHtml(posts) {
                   <a href="${post.fileName}.html" class="text-decoration-none">
                     <div class="card border-primary shadow mb-4">
                       <div class="card-overlay position-absolute m-2">
-                        <p class="badge bg-primary">${post.category}</p>
+                        <p class="badge bg-success rounded-pill">${post.category}</p>
                       </div>
                       <img src="assets/images/${post.image}.jpg" class="card-img-top" alt=${post.title}>
                       <div class="card-body">
@@ -126,32 +126,57 @@ function generateBlogHtml(posts) {
     document.addEventListener('DOMContentLoaded', function () {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const blogItems = document.querySelectorAll('.post-item');
-    
+      const searchInput = document.getElementById('searchInput');
+
+      // Function to filter by category
+      function filterByCategory(category) {
+        blogItems.forEach(item => {
+          const itemCategory = item.dataset.category;
+          if (category === 'all' || category === itemCategory) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      }
+
+      // Event listener for filter buttons
       filterButtons.forEach(button => {
         button.addEventListener('click', function () {
-          // Remove "active" class from all filter buttons
           filterButtons.forEach(btn => {
             btn.classList.remove('active');
           });
-    
-          // Add "active" class to the clicked filter button
           this.classList.add('active');
-    
           const selectedCategory = this.getAttribute('data-filter');
-    
-          blogItems.forEach(item => {
-            const itemCategory = item.dataset.category;
-    
-            if (selectedCategory === 'all' || selectedCategory === itemCategory) {
-              item.style.display = 'block';
-            } else {
-              item.style.display = 'none';
-            }
+          filterByCategory(selectedCategory);
+        });
+      });
+
+      // Event listener for search input
+      searchInput.addEventListener('input', function () {
+        const searchQuery = this.value.toLowerCase();
+
+        // Check if search query is not empty
+        if (searchQuery.trim() !== '') {
+          // Activate "All" filter when searching
+          filterButtons.forEach(btn => {
+            btn.classList.remove('active');
           });
+          filterButtons[0].classList.add('active');
+        }
+
+        // Filter blog items based on search query
+        blogItems.forEach(item => {
+          const itemTitle = item.querySelector('.card-title').innerText.toLowerCase();
+          if (itemTitle.includes(searchQuery) || searchQuery.trim() === '') {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
         });
       });
     });
-    </script>
+  </script>
   </body>
   
   </html>  
@@ -222,6 +247,10 @@ const rootFolders = [
   {
     rootFolder: "contents/Web Development",
     sidebarOutputPath: "sidebars/web_development.json",
+  },
+  {
+    rootFolder: "contents/Internet of Things",
+    sidebarOutputPath: "sidebars/internet_of_things.json",
   },
 ];
 
