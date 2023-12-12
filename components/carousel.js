@@ -7,22 +7,22 @@ class Carousel extends HTMLElement {
     // JSON data for carousel content
     const carouselData = [
       {
-        image: "14",
+        image: "01",
         title: "First Slide Title",
         description: "Some description for the first slide.",
       },
       {
-        image: "13",
+        image: "01",
         title: "Second Slide Title",
         description: "Some description for the second slide.",
       },
       {
-        image: "12",
+        image: "01",
         title: "Third Slide Title",
         description: "Some description for the third slide.",
       },
       {
-        image: "10",
+        image: "01",
         title: "Fourth Slide Title",
         description: "Some description for the fourth slide.",
       },

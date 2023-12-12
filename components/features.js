@@ -11,7 +11,7 @@ class Features extends HTMLElement {
     const items = [
       {
         order: "order-md-0",
-        image: "02", // Add your image source here
+        image: "01", // Add your image source here
         title:
           "Igniting curiosity, fueling innovation, and unlocking potential",
         titleinprimary: "Your future, our passion",
@@ -20,7 +20,7 @@ class Features extends HTMLElement {
       },
       {
         order: "order-md-1",
-        image: "03", // Add your image source here
+        image: "01", // Add your image source here
         title: "Bringing your ideas to life, one project at a time",
         titleinprimary: "Building a brighter tomorrow, today",
         content:
@@ -28,7 +28,7 @@ class Features extends HTMLElement {
       },
       {
         order: "order-md-0",
-        image: "04", // Add your image source here
+        image: "01", // Add your image source here
         title: "Learning without limits",
         titleinprimary: "Learning with purpose, impact, and meaning",
         content:
