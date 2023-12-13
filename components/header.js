@@ -113,8 +113,6 @@ class Header extends HTMLElement {
   updateActiveLink() {
     const path = window.location.pathname;
     const links = {
-      "/": "home-link",
-      "/index.html": "home-link",
       "/digital_electronics.html": "digital_electronics-link",
       "/embedded_systems.html": "embedded_systems-link",
       "/web_development.html": "web_development-link",

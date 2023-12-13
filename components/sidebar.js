@@ -110,7 +110,7 @@ class Sidebar extends HTMLElement {
 
     this.innerHTML = `
           <section class="sidebar-section">
-            <div id="sidebar" class="bg-dark text-light">
+            <div id="sidebar">
             <ul id="folderTree" class="folder-tree list-unstyled mb-0"></ul>
             </div>    
             <div id="main-content"> 

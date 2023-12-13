@@ -49,6 +49,8 @@ body.dark-theme .modal-content {
     height: calc(100vh - var(--myHeader-margin));
     position: fixed;
     top: var(--myHeader-margin);
+    background-color: #2a2a2aee;
+    color: #fafafa;
     left: 0;
     width: 30vw;
     overflow-y: auto;
