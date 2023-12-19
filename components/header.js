@@ -6,7 +6,6 @@ class Header extends HTMLElement {
   connectedCallback() {
     const showToggleButton = this.hasAttribute("showToggleButton");
     const showSearchButton = this.hasAttribute("showSearchButton");
-
     this.render(showToggleButton, showSearchButton);
     this.setupEventListeners();
     this.applyTheme();
@@ -26,12 +25,15 @@ class Header extends HTMLElement {
                   <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light shadow">
                     <i class="fas fa-list"></i>
                   </button>
+                  <button class="btn btn-outline-secondary me-2" id="toggleSidebarBtn">
+                    <i class="fas fa-list"></i>
+                  </button>
                 `
                 : ""
             }
               <button class="btn btn-outline-primary text-light shadow" id="toggleThemeBtn">
                 <i class="fas fa-sun"></i>
-              </button>
+              </button>              
             </div>
             <a class="navbar-brand d-flex mx-2 px-2" id="home-link" href="index.html">
               <img src="assets/images/inkredibledoc.png" alt="Your Logo" width="32" height="32" class="me-2"/>
@@ -64,7 +66,7 @@ class Header extends HTMLElement {
                 More
               </a>
               <ul class="dropdown-menu p-2">
-                <li><a class="dropdown-item rounded-2 my-1" id="about-link" href="about.html">About</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="about-link" href="docs.html">About</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="services-link" href="services.html">Services</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="contact-link" href="contact.html">Contact</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="gallery-link" href="gallery.html">Gallery</a></li>
@@ -93,8 +95,14 @@ class Header extends HTMLElement {
 
   setupEventListeners() {
     const toggleThemeBtn = this.querySelector("#toggleThemeBtn");
+    const toggleSidebarBtn = this.querySelector("#toggleSidebarBtn");
+
     if (toggleThemeBtn) {
       toggleThemeBtn.addEventListener("click", this.toggleTheme.bind(this));
+    }
+
+    if (toggleSidebarBtn) {
+      toggleSidebarBtn.addEventListener("click", this.toggleSidebar.bind(this));
     }
   }
 
@@ -108,6 +116,11 @@ class Header extends HTMLElement {
   applyTheme() {
     const currentTheme = localStorage.getItem("theme") || "light";
     document.body.classList.toggle("dark-theme", currentTheme === "dark");
+  }
+
+  toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.style.display = sidebar.style.display === "none" ? "block" : "none";
   }
 
   updateActiveLink() {

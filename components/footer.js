@@ -14,7 +14,7 @@ class Footer extends HTMLElement {
             </div>
             <div class="col-md-3">
               <h2 class="fw-bold text-light">Quick Links</h2>
-              <ul class="list-unstyled ms-3">
+              <ul class="list-unstyled">
                 <li><a href="index.html" class="text-decoration-none text-primary">Home</a></li>
                 <li><a href="blog.html" class="text-decoration-none text-primary">Blog</a></li>
                 <li><a href="about.html" class="text-decoration-none text-primary">About</a></li>

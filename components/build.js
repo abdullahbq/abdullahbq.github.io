@@ -252,6 +252,10 @@ const rootFolders = [
     rootFolder: "contents/Internet of Things",
     sidebarOutputPath: "sidebars/internet_of_things.json",
   },
+  {
+    rootFolder: "contents/Docs",
+    sidebarOutputPath: "sidebars/docsList.json",
+  },
 ];
 
 // Generate JSON files for each entry in the array
