@@ -22,10 +22,7 @@ class Header extends HTMLElement {
             ${
               showToggleButton
                 ? `
-                  <button id="toggle-btn" class="btn btn-outline-primary me-2 text-light shadow">
-                    <i class="fas fa-list"></i>
-                  </button>
-                  <button class="btn btn-outline-secondary me-2" id="toggleSidebarBtn">
+                  <button id="toggleSidebarBtn" class="btn btn-outline-primary me-2 text-light shadow">
                     <i class="fas fa-list"></i>
                   </button>
                 `
@@ -66,7 +63,7 @@ class Header extends HTMLElement {
                 More
               </a>
               <ul class="dropdown-menu p-2">
-                <li><a class="dropdown-item rounded-2 my-1" id="about-link" href="docs.html">About</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="about-link" href="about.html">About</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="services-link" href="services.html">Services</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="contact-link" href="contact.html">Contact</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="gallery-link" href="gallery.html">Gallery</a></li>

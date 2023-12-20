@@ -194,6 +194,7 @@ const sourceFiles = fs
 sourceFiles.forEach((sourceFile) => {
   const fileNameWithoutExtension = path.basename(sourceFile, ".md");
   const outputFileName = `${fileNameWithoutExtension}.html`;
+  console.log(`File created: ${outputFileName}`);
   const outputPath = path.join(outputFolder, outputFileName);
 
   const sourceContent = fs.readFileSync(sourceFile, "utf8");
@@ -205,6 +206,7 @@ sourceFiles.forEach((sourceFile) => {
 });
 
 const blogOutputPath = path.join(outputFolder, "blog.html");
+console.log(`File created: ${blogOutputPath}`);
 const posts = sourceFiles.map((sourceFile) => {
   const sourceContent = fs.readFileSync(sourceFile, "utf8");
   const metadata = parseMetadata(sourceContent);
@@ -251,14 +253,50 @@ const rootFolders = [
   {
     rootFolder: "contents/Internet of Things",
     sidebarOutputPath: "sidebars/internet_of_things.json",
-  },
-  {
-    rootFolder: "contents/Docs",
-    sidebarOutputPath: "sidebars/docsList.json",
-  },
+  }
 ];
 
 // Generate JSON files for each entry in the array
 rootFolders.forEach(({ rootFolder, sidebarOutputPath }) => {
-  generateSidebarJSON(rootFolder, sidebarOutputPath);
+  generateSidebarJSON(rootFolder, sidebarOutputPath);  
+  console.log(`File created: ${sidebarOutputPath}`);
+});
+
+
+// Your HTML template
+const courseTemplate = `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InkredibleDoc | Docs</title>
+    <link href="assets/css/fontawesome.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/mystyles.css" rel="stylesheet" type="text/css" />
+    <script src="assets/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
+    <script src="components/header.js" type="text/javascript" defer></script>
+    <script src="components/title.js" type="text/javascript" defer></script>
+    <script src="components/footer.js" type="text/javascript" defer></script>
+    <script src="components/docs.js" type="text/javascript" defer></script>
+</head>
+
+<body>
+    <header-component showToggleButton></header-component>
+    <docs-component content="{{CONTENT}}" sidebar="{{SIDEBAR}}"></docs-component>
+    <footer-component></footer-component>
+</body>
+
+</html>`;
+
+// Create HTML files
+rootFolders.forEach((rootFolder) => {
+  const outputHtml = courseTemplate
+    .replace('{{CONTENT}}', rootFolder.rootFolder)
+    .replace('{{SIDEBAR}}', rootFolder.sidebarOutputPath);
+
+  const fileName = `${path.basename(rootFolder.sidebarOutputPath, '.json')}.html`;
+
+  fs.writeFileSync(fileName, outputHtml);
+  console.log(`File created: ${fileName}`);
 });
