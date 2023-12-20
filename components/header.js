@@ -68,7 +68,7 @@ class Header extends HTMLElement {
                 <li><a class="dropdown-item rounded-2 my-1" id="contact-link" href="contact.html">Contact</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="gallery-link" href="gallery.html">Gallery</a></li>
                 <li><a class="dropdown-item rounded-2 my-1" id="slides-link" href="slides.html">Slides</a></li>
-                <li><a class="dropdown-item rounded-2 my-1" id="admin-link" href="http://localhost:8000/" target="_blank">Admin</a></li>
+                <li><a class="dropdown-item rounded-2 my-1" id="wallpaper-link" href="wallpaper.html">Wallpaper</a></li>
               </ul>
             </li>
               </ul>
@@ -134,7 +134,7 @@ class Header extends HTMLElement {
       "/gallery.html": "gallery-link",
       "/slides.html": "slides-link",
       "/publications.html": "publications-link",
-      "/admin.html": "admin-link",
+      "/wallpaper.html": "wallpaper-link"
     };
 
     const currentLink = links[path];

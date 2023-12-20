@@ -1,14 +1,14 @@
 class DocsComponent extends HTMLElement {
   connectedCallback() {
-      this.contentFolderPath = this.getAttribute("content");
-      this.sidebarDataURL = this.getAttribute("sidebar");
-      // Extract the course name from the coursesFolderPath
-      this.contentName = this.contentFolderPath.split("/").pop();
-      this.innerHTML = `
+    this.contentFolderPath = this.getAttribute("content");
+    this.sidebarDataURL = this.getAttribute("sidebar");
+    this.contentName = this.contentFolderPath.split("/").pop();
+    
+    this.innerHTML = `
       <div class="container-fluid m-0 p-0">
         <div class="row m-0 p-0">
           <aside class="col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 pb-4" id="sidebar">
-          <h4 class="fw-bold text-center py-2 pb-0">${this.contentName}</h4>
+            <h4 class="fw-bold text-center py-2 pb-0">${this.contentName}</h4>
             <div class="accordion" id="documentAccordion"></div>
           </aside>
 
@@ -18,6 +18,7 @@ class DocsComponent extends HTMLElement {
           </main>
         </div>
       </div>`;
+    
     this.populateDocs();
   }
 
@@ -41,11 +42,9 @@ class DocsComponent extends HTMLElement {
     const accordion = this.querySelector("#documentAccordion");
     accordion.innerHTML = ""; // Clear existing content
 
-    for (const folderName in data) {
-      if (data.hasOwnProperty(folderName) && Array.isArray(data[folderName])) {
-        accordion.appendChild(
-          this.createAccordionItem(folderName, data[folderName])
-        );
+    for (const [folderName, fileList] of Object.entries(data)) {
+      if (Array.isArray(fileList)) {
+        accordion.appendChild(this.createAccordionItem(folderName, fileList));
       } else {
         console.error(`Error: Invalid data format for key ${folderName}.`);
         this.renderError("Error loading file list.");
@@ -63,9 +62,8 @@ class DocsComponent extends HTMLElement {
     accordion.addEventListener("click", (event) => {
       const fileItem = event.target.closest(".file-item");
       if (fileItem) {
-        const folderName = fileItem.dataset.folder;
-        const fileName = fileItem.dataset.file;
-        this.loadContent(folderName, fileName);
+        const { folder, file } = fileItem.dataset;
+        this.loadContent(folder, file);
       }
     });
 
@@ -88,53 +86,29 @@ class DocsComponent extends HTMLElement {
     const accordionItem = document.createElement("div");
     accordionItem.classList.add("accordion-item");
 
-    const accordionHeader = document.createElement("h2");
-    accordionHeader.classList.add("accordion-header");
-    accordionHeader.id = `heading${folderName}`;
-
-    const accordionButton = document.createElement("button");
-    accordionButton.classList.add("accordion-button", "p-2", "fw-bold");
-    accordionButton.setAttribute("type", "button");
     const targetId = `collapse${folderName.replace(/\s+/g, "_")}`;
-    accordionButton.setAttribute("data-bs-toggle", "collapse");
-    accordionButton.setAttribute("data-bs-target", `#${targetId}`);
-    accordionButton.setAttribute("aria-expanded", "true");
-    accordionButton.setAttribute("aria-controls", targetId);
-
-    const icon = document.createElement("i");
-    icon.classList.add("fas", "fa-folder-open", "me-2"); // Using Font Awesome class for folder icon
-
-    const folderNameElement = document.createElement("span");
-    folderNameElement.textContent = folderName;
-
-    accordionButton.appendChild(icon);
-    accordionButton.appendChild(folderNameElement);
-
-    accordionHeader.appendChild(accordionButton);
-
-    const accordionBody = document.createElement("div");
-    accordionBody.classList.add("accordion-collapse", "collapse", "show");
-    accordionBody.id = targetId;
-    accordionBody.setAttribute("aria-labelledby", `heading${folderName}`);
-
-    const accordionBodyContent = document.createElement("div");
-    accordionBodyContent.classList.add("accordion-body", "p-2", "rounded");
-
-    const fileListElement = this.createFileList(fileList, folderName);
-    accordionBodyContent.appendChild(fileListElement);
-    accordionBody.appendChild(accordionBodyContent);
-
-    accordionItem.appendChild(accordionHeader);
-    accordionItem.appendChild(accordionBody);
+    
+    accordionItem.innerHTML = `
+      <h2 class="accordion-header" id="heading${folderName}">
+        <button class="accordion-button p-2 fw-bold"
+                type="button" data-bs-toggle="collapse" data-bs-target="#${targetId}"
+                aria-expanded="true" aria-controls="${targetId}">
+          <i class="fas fa-folder-open me-2"></i>
+          <span>${folderName}</span>
+        </button>
+      </h2>
+      <div class="accordion-collapse collapse show" id="${targetId}" 
+           aria-labelledby="heading${folderName}">
+        <div class="accordion-body p-2 rounded">
+          ${this.createFileList(fileList, folderName).outerHTML}
+        </div>
+      </div>`;
 
     // Toggle icon and update aria-expanded attribute on accordion button click
-    accordionButton.addEventListener("click", () => {
-      const isExpanded =
-        accordionButton.getAttribute("aria-expanded") === "true";
-      accordionButton.setAttribute(
-        "aria-expanded",
-        isExpanded ? "false" : "true"
-      );
+    accordionItem.querySelector(".accordion-button").addEventListener("click", () => {
+      const icon = accordionItem.querySelector("i");
+      const isExpanded = accordionItem.getAttribute("aria-expanded") === "true";
+      accordionItem.setAttribute("aria-expanded", isExpanded ? "false" : "true");
       icon.classList.toggle("fa-folder-open");
       icon.classList.toggle("fa-folder");
     });
@@ -146,15 +120,15 @@ class DocsComponent extends HTMLElement {
     const fileListElement = document.createElement("ul");
     fileListElement.classList.add("mb-0");
 
-    fileList.forEach((fileName) => {
+    for (const fileName of fileList) {
       const listItem = document.createElement("li");
       listItem.textContent = fileName;
-      listItem.classList.add("file-item"); // Add a class for event listeners
+      listItem.classList.add("file-item");
       listItem.dataset.folder = folderName;
       listItem.dataset.file = fileName;
       listItem.style.cursor = "pointer";
       fileListElement.appendChild(listItem);
-    });
+    }
 
     return fileListElement;
   }
@@ -162,18 +136,14 @@ class DocsComponent extends HTMLElement {
   async loadContent(folderName, fileName) {
     try {
       const fullFileName = fileName + ".html";
-      const response = await fetch(
-        `${this.contentFolderPath}/${folderName}/${fullFileName}`
-      );
+      const response = await fetch(`${this.contentFolderPath}/${folderName}/${fullFileName}`);
 
       if (!response.ok) {
         throw new Error("Error loading content.");
       }
 
       const data = await response.text();
-      this.updateContent(
-        `<title-component title="${fileName}"></title-component><div class="container p-3">${data}</div>`
-      );
+      this.updateContent(`<title-component title="${fileName}"></title-component><div class="container p-3">${data}</div>`);
     } catch (error) {
       this.updateContent(`<div class="container p-3">${error.message}</div>`);
     }

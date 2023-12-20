@@ -1,6 +1,14 @@
 const fs = require("fs");
 const path = require("path");
 
+// Kebab case conversion function
+function toKebabCase(str) {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/\s+/g, '_')
+    .toLowerCase();
+}
+
 function parseMetadata(sourceContent) {
   const metadata = {};
   const lines = sourceContent.split("\n");
@@ -236,24 +244,19 @@ function generateSidebarJSON(rootFolder, sidebarOutputPath) {
   fs.writeFileSync(sidebarOutputPath, jsonString);
 }
 
-// Array of root folders and corresponding sidebar output paths
+function createCourseObject(courseName) {
+  return {
+    courseName,
+    rootFolder: `contents/${courseName}`,
+    sidebarOutputPath: `sidebars/${toKebabCase(courseName)}.json`,
+  };
+}
+
 const rootFolders = [
-  {
-    rootFolder: "contents/Digital Electronics",
-    sidebarOutputPath: "sidebars/digital_electronics.json",
-  },
-  {
-    rootFolder: "contents/Embedded Systems",
-    sidebarOutputPath: "sidebars/embedded_systems.json",
-  },
-  {
-    rootFolder: "contents/Web Development",
-    sidebarOutputPath: "sidebars/web_development.json",
-  },
-  {
-    rootFolder: "contents/Internet of Things",
-    sidebarOutputPath: "sidebars/internet_of_things.json",
-  }
+  createCourseObject("Digital Electronics"),
+  createCourseObject("Embedded Systems"),
+  createCourseObject("Web Development"),
+  createCourseObject("Internet of Things"),
 ];
 
 // Generate JSON files for each entry in the array
