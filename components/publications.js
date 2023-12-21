@@ -146,7 +146,7 @@ class PublicationsPageElement extends HTMLElement {
     const items = await this.fetchData();
 
     this.innerHTML = `
-      <section class="publications-section bg-warning bg-opacity-10">
+      <section class="publications-section bg-primary bg-opacity-10">
         <title-component title="Publications"></title-component>      
         <div class="container py-5">
           <div class="accordion shadow rounded-2" id="accordionExample">

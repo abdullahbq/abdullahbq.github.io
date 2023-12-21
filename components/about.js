@@ -6,7 +6,7 @@ class About extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
     <section class="biodata-section bg-primary bg-opacity-10">    
-    <title-component title="About"></title-component>
+    <title-component title="About Us"></title-component>
     <div class="container py-5">
       <div class="row justify-content-center">
         <div class="col-md-4">
@@ -15,10 +15,10 @@ class About extends HTMLElement {
               <div class="d-flex flex-column align-items-center text-center">
               <img src="assets/images/abdullah.jpg" class="card-img-top shadow rounded-circle mb-2" style="width: 160px; height: 160px; margin: 0 auto" alt="Abdullah">                
                 <div class="mt-3">
-                  <h4 class="fw-bold">Abdullah</h4>
-                  <p class="text-secondary mb-1">Full Stack Developer</p>
+                  <h4 class="fw-bold">Dr. Abdullah Bin Queyam</h4>
+                  <p class="text-secondary mb-1">Assistant Professor and Web Developer</p>
                   <p class="text-muted font-size-sm">
-                    Bay Area, San Francisco, CA
+                    Jamshedpur, INDIA
                   </p>
                   <button class="btn btn-outline-primary shadow m-2">
                     Follow
@@ -48,7 +48,7 @@ class About extends HTMLElement {
               <hr />
               <li class="d-flex justify-content-between align-items-center">
                 <h6 class="mb-0">
-                <i class="fab fa-twitter"></i> Twitter
+                <i class="fab fa-linkedin"></i> Linkedin
                 </h6>
                 <span class="text-secondary">@bootdey</span>
               </li>
@@ -62,7 +62,7 @@ class About extends HTMLElement {
               <hr />
               <li class="d-flex justify-content-between align-items-center">
                 <h6 class="mb-0">
-                <i class="fab fa-facebook"></i> Facebook
+                <i class="fab fa-researchgate"></i> Researchgate
                 </h6>
                 <span class="text-secondary">bootdey</span>
               </li>
@@ -76,28 +76,28 @@ class About extends HTMLElement {
                 <div class="col-sm-3">
                   <h6 class="mb-0">Full Name</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">Abdullah Bin Queyam</div>
+                <div class="col-sm-9 text-secondary">Dr. Abdullah Bin Queyam</div>
               </div>
               <hr />
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0">Email</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">fip@jukmuh.al</div>
+                <div class="col-sm-9 text-secondary">abdullahbinqueyam@gmail.com</div>
               </div>
               <hr />
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0">Phone</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">(239) 816-9029</div>
+                <div class="col-sm-9 text-secondary">+91-Private</div>
               </div>
               <hr />
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0">Mobile</h6>
                 </div>
-                <div class="col-sm-9 text-secondary">(320) 380-4539</div>
+                <div class="col-sm-9 text-secondary">+91-Private</div>
               </div>
               <hr />
               <div class="row">
@@ -105,7 +105,7 @@ class About extends HTMLElement {
                   <h6 class="mb-0">Address</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  Bay Area, San Francisco, CA
+                  Jamshedpur, Jharkhand, INDIA
                 </div>
               </div>
             </div>

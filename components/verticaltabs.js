@@ -29,7 +29,7 @@ class VerticalTabs extends HTMLElement {
 
     this.innerHTML = `
           <section class="verticaltabs-section bg-primary bg-opacity-10">      
-            <title-component title="Vertical Tabs"></title-component>
+            <title-component title="Our Aspirations"></title-component>
             <div class="container text-center py-5">
               <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
