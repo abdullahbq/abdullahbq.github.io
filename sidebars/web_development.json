@@ -34,7 +34,6 @@
     "Manufacturing Processes",
     "Mechanics of Materials"
   ],
-  "Gatsby": [],
   "MSP 430": [
     "Calculus",
     "Differential Equations",
@@ -46,6 +45,5 @@
     "Communication Systems",
     "Digital Electronics",
     "Signals and Systems"
-  ],
-  "React": []
+  ]
 }

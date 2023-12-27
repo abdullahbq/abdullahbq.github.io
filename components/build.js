@@ -257,6 +257,7 @@ const rootFolders = [
   createCourseObject("Embedded Systems"),
   createCourseObject("Web Development"),
   createCourseObject("Internet of Things"),
+  createCourseObject("Electrical and Electronic Measurement")
 ];
 
 // Generate JSON files for each entry in the array
