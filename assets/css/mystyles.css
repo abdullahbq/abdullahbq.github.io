@@ -70,7 +70,7 @@ body.dark-theme .modal-content {
 
     #sidebar {
         top: 0;
-        display: none;
+        display: block;
         position: relative;
         height: auto;
     }
