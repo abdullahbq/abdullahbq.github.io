@@ -3,23 +3,29 @@ class DocsComponent extends HTMLElement {
     this.contentFolderPath = this.getAttribute("content");
     this.sidebarDataURL = this.getAttribute("sidebar");
     this.contentName = this.contentFolderPath.split("/").pop();
-    
-    this.innerHTML = `
-      <div class="container-fluid">
-        <div class="row">
-          <aside class="col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 p-1 pb-3" id="sidebar">
-            <h4 class="text-center" style="font-weight: 900">${this.contentName}</h4>
-            <div class="accordion" id="documentAccordion"></div>
-          </aside>
-
-          <main class="col-lg-9 col-md-7 m-0 p-0" id="content">
-            <title-component title="${this.contentName}"></title-component>
-            <div class="container p-3">Click a topic from the sidebar to start reading the topic.</div>
-          </main>
-        </div>
-      </div>`;
-    
+    this.renderSkeleton();
     this.populateDocs();
+  }
+
+  renderSkeleton() {
+    const container = document.createElement("div");
+    container.classList.add("container-fluid");
+
+    container.innerHTML = `
+      <div class="row">
+        <aside class="col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 p-1 pb-3" id="sidebar">
+          <h4 class="text-center" style="font-weight: 900">${this.contentName}</h4>
+          <div class="accordion" id="documentAccordion"></div>
+        </aside>
+
+        <main class="col-lg-9 col-md-7 m-0 p-0" id="content">
+          <title-component title="${this.contentName}"></title-component>
+          <div class="container p-3">Click a topic from the sidebar to start reading the topic.</div>
+        </main>
+      </div>
+    `;
+
+    this.appendChild(container);
   }
 
   async populateDocs() {
@@ -40,11 +46,11 @@ class DocsComponent extends HTMLElement {
 
   updateSidebar(data) {
     const accordion = this.querySelector("#documentAccordion");
-    accordion.innerHTML = ""; // Clear existing content
+    const fragment = document.createDocumentFragment();
 
     for (const [folderName, fileList] of Object.entries(data)) {
       if (Array.isArray(fileList)) {
-        accordion.appendChild(this.createAccordionItem(folderName, fileList));
+        fragment.appendChild(this.createAccordionItem(folderName, fileList));
       } else {
         console.error(`Error: Invalid data format for key ${folderName}.`);
         this.renderError("Error loading file list.");
@@ -52,7 +58,9 @@ class DocsComponent extends HTMLElement {
       }
     }
 
-    // Add event listeners after updating the sidebar
+    accordion.innerHTML = "";
+    accordion.appendChild(fragment);
+
     this.addEventListeners();
   }
 
