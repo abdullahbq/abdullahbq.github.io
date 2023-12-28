@@ -34,7 +34,7 @@ class Header extends HTMLElement {
             </div>
             <a class="navbar-brand d-flex mx-2 px-2" id="home-link" href="index.html">
               <img src="assets/images/inkredibledoc.png" alt="Your Logo" width="32" height="32" class="me-2"/>
-                <span class="fw-bold">InkredibleDoc</span>
+                Inkredible<span style="font-weight: 900">Doc</span>
             </a>
             <button class="navbar-toggler btn btn-outline-primary border-primary text-light shadow" style="padding: 9px 10px 9px 10px;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fas fa-hamburger"></i>

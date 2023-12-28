@@ -5,10 +5,10 @@ class DocsComponent extends HTMLElement {
     this.contentName = this.contentFolderPath.split("/").pop();
     
     this.innerHTML = `
-      <div class="container-fluid m-0 p-0">
-        <div class="row m-0 p-0">
-          <aside class="col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 pb-4" id="sidebar">
-            <h4 class="fw-bold text-center py-2 pb-0">${this.contentName}</h4>
+      <div class="container-fluid">
+        <div class="row">
+          <aside class="col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 p-1 pb-3" id="sidebar">
+            <h4 class="text-center" style="font-weight: 900">${this.contentName}</h4>
             <div class="accordion" id="documentAccordion"></div>
           </aside>
 
@@ -99,7 +99,7 @@ class DocsComponent extends HTMLElement {
       </h2>
       <div class="accordion-collapse collapse show" id="${targetId}" 
            aria-labelledby="heading${folderName}">
-        <div class="accordion-body p-2 rounded">
+        <div class="accordion-body py-2 px-0 rounded-1">
           ${this.createFileList(fileList, folderName).outerHTML}
         </div>
       </div>`;
@@ -118,7 +118,8 @@ class DocsComponent extends HTMLElement {
 
   createFileList(fileList, folderName) {
     const fileListElement = document.createElement("ul");
-    fileListElement.classList.add("mb-0");
+    fileListElement.classList.add("my-0", "px-3");
+    fileListElement.style.listStyleType = "none";
 
     for (const fileName of fileList) {
       const listItem = document.createElement("li");
