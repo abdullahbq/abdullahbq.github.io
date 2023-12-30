@@ -176,7 +176,7 @@ class PublicationsPageElement extends HTMLElement {
           >
             <div class="d-flex align-items-center">
               <img
-                src="assets/images/${image}.jpg"
+                src="assets/images/publications/${image}.jpg"
                 alt="${title}"
                 class="card-img-top rounded-2 me-3"
                 style="max-width: 100px; max-height: 1000px;"
