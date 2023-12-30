@@ -1,20 +1,7 @@
-class PublicationsPageElement extends HTMLElement {
+class Publications extends HTMLElement {
   constructor() {
     super();
-    this.items = []; // Initialize with an empty array
-  }
-
-  connectedCallback() {
-    this.fetchAndRender();
-  }
-
-  async fetchAndRender() {
-    this.items = await this.fetchData();
-    this.render();
-  }
-
-  fetchData() {
-    return Promise.resolve([
+    this.items = [
       {
         id: "paper1",
         category: "Journal",
@@ -139,70 +126,62 @@ class PublicationsPageElement extends HTMLElement {
         path: "https://csjournals.com/IJEE/PDF5-2/1.pdf",
         image: "paper-11",
       },
-    ]);
+    ];
   }
 
-  async render() {
-    const items = await this.fetchData();
+  connectedCallback() {
+    this.render();
+    this.addEventListener("click", this.handleItemClick.bind(this));
+  }
 
+  render() {
     this.innerHTML = `
       <section class="publications-section bg-primary bg-opacity-10">
-        <title-component title="Publications"></title-component>      
-        <div class="container py-5">
-          <div class="accordion shadow rounded-2" id="accordionExample">
-            ${items
+      <title-component title="Publications"></title-component>       
+        <div class="container py-5">          
+            ${this.items
               .map((item, index) => this.generateAccordion(item, index))
-              .join("")}
-          </div>
+              .join("")}          
         </div>
       </section>
     `;
   }
 
-  generateAccordion({ category, title, abstract, year, path, image }, index) {
-    const isFirstItem = index === 0 ? "show" : "";
-    const isCollapsed = index === 0 ? "" : "collapsed";
-
+  generateAccordion({ category, title, abstract, year, path, image }) {
     return `
-      <div class="accordion-item border-primary">
-        <h2 class="accordion-header" id="heading${index + 1}">
-          <button
-            class="accordion-button p-3 ${isCollapsed}"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapse${index + 1}"
-            aria-expanded="${isFirstItem}"
-            aria-controls="collapse${index + 1}"
-          >
-            <div class="d-flex align-items-center">
-              <img
-                src="assets/images/publications/${image}.jpg"
-                alt="${title}"
-                class="card-img-top rounded-2 me-3"
-                style="max-width: 100px; max-height: 1000px;"
-              />
-              <div>
-              <small class="badge bg-success rounded-pill mb-2">${category}</small>
-                <h5 class="mb-0">${title}</h5>   
-                <small>${year}</small>             
-              </div>
-            </div>
-          </button>
-        </h2>
-        <div
-          id="collapse${index + 1}"
-          class="accordion-collapse collapse ${isFirstItem}"
-          aria-labelledby="heading${index + 1}"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body">
-            <p>${abstract}</p>
-            <a href="${path}" target="_blank" class="btn btn-primary">Read More</a>
-          </div>
+      <div class="card border border-primary shadow mb-4 rounded-2">
+      <div class="accordion-item-header p-3 d-flex align-items-center" style="cursor: pointer; font-size: 1.2rem">
+      <img
+        src="assets/images/publications/${image}.jpg"
+        alt="${title}"
+        class="card-img-top border border-secondary shadow rounded-2 me-3"
+        style="max-width: 100px; max-height: 200px;"
+      />
+      <span>
+      <small class="badge bg-success rounded-pill mb-2">${category}</small>
+        <h5 class="fw-bold mb-0">${title}</h5>   
+        <small>${year}</small>             
+      </span>
+      <i class="fas fa-chevron-down ms-auto ps-3"></i>
+    </div>
+        <div class="accordion-item-content p-3 bg-primary bg-opacity-10" style="display: none;">
+          <p>${abstract}</p>
+          <a href="${path}" target="_blank" class="btn btn-primary">Read More</a>
         </div>
       </div>
     `;
   }
+
+  handleItemClick(event) {
+    const header = event.target.closest(".accordion-item-header");
+    if (!header) return;
+
+    const content = header.nextElementSibling;
+
+    header.parentElement.classList.toggle("active");
+    content.style.display =
+      content.style.display === "block" ? "none" : "block";
+  }
 }
 
-customElements.define("publications-page", PublicationsPageElement);
+customElements.define("publications-page", Publications);

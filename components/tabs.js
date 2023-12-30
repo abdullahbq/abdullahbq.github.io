@@ -84,7 +84,7 @@ class Tabs extends HTMLElement {
               ${data
                 .map(
                   (tab, i) =>
-                    `<div class="card card-body mt-4 border-primary shadow mb-4 tab-pane" id="tab-${i}"><i class="${tab.icon} fa-4x p-3 text-primary"></i>
+                    `<div class="card card-body mt-4 border-primary shadow tab-pane" id="tab-${i}"><i class="${tab.icon} fa-4x p-3 text-primary"></i>
                     <p>${tab.content}</p></div>`
                 )
                 .join("")}

@@ -1,14 +1,7 @@
 class Faq extends HTMLElement {
   constructor() {
     super();
-  }
-
-  connectedCallback() {
-    this.render();
-  }
-
-  render() {
-    const items = [
+    this.items = [
       {
         title: "What courses and projects do you offer?",
         content:
@@ -63,46 +56,47 @@ class Faq extends HTMLElement {
           "Enrolling in our courses and projects is easy. Simply visit our website and select the program you're interested in. From there, you can create an account, choose your payment plan, and start learning immediately. If you have any questions or need assistance, our customer support team is always available to help.Enrolling in our courses and projects is easy. Simply visit our website and select the program you're interested in. From there, you can create an account, choose your payment plan, and start learning immediately. If you have any questions or need assistance, our customer support team is always available to help.Enrolling in our courses and projects is easy. Simply visit our website and select the program you're interested in. From there, you can create an account, choose your payment plan, and start learning immediately. If you have any questions or need assistance, our customer support team is always available to help.Enrolling in our courses and projects is easy. Simply visit our website and select the program you're interested in. From there, you can create an account, choose your payment plan, and start learning immediately. If you have any questions or need assistance, our customer support team is always available to help.",
       },
     ];
+  }
 
+  connectedCallback() {
+    this.render();
+    this.addEventListener('click', this.handleItemClick.bind(this));
+  }
+
+  render() {
     this.innerHTML = `
       <section class="faq-section bg-primary bg-opacity-10">
         <title-component title="FAQ's"></title-component>      
-        <div class="container py-5">
-          <div class="accordion shadow rounded-2" id="accordionExample">
-            ${items
-              .map((item, index) => this.generateAccordion(item, index))
-              .join("")}
-          </div>
+        <div class="container py-5">          
+            ${this.items.map((item, index) => this.generateAccordion(item, index)).join("")}          
         </div>
       </section>
     `;
   }
 
-  generateAccordion({ title, content }, index) {
-    const isFirstItem = index === 0 ? "show" : "";
-    const isCollapsed = index === 0 ? "" : "collapsed";
-
+  generateAccordion({ title, content }) {
     return `
-      <div class="accordion-item border-primary">
-        <h2 class="accordion-header" id="heading${index + 1}">
-          <button class="accordion-button fw-bold ${isCollapsed}" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${
-      index + 1
-    }" aria-expanded="${isFirstItem}" aria-controls="collapse${index + 1}">
-            ${title}
-          </button>
-        </h2>
-        <div id="collapse${
-          index + 1
-        }" class="accordion-collapse collapse ${isFirstItem}" aria-labelledby="heading${
-      index + 1
-    }" data-bs-parent="#accordionExample">
-          <div class="accordion-body">
-            <p>${content}</p>
-          </div>
+      <div class="card border border-primary mb-4 rounded-2">
+        <div class="accordion-item-header p-3 d-flex align-items-center" style="cursor: pointer; font-size: 1.2rem">
+          <span class="fw-bold">${title}</span>
+          <i class="fas fa-chevron-down ms-auto ps-3"></i>
+        </div>
+        <div class="accordion-item-content p-3 bg-primary bg-opacity-10" style="display: none;">
+          <p>${content}</p>
         </div>
       </div>
     `;
   }
+
+  handleItemClick(event) {
+    const header = event.target.closest('.accordion-item-header');
+    if (!header) return;
+
+    const content = header.nextElementSibling;
+
+    header.parentElement.classList.toggle('active');
+    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+  }
 }
 
-customElements.define("faq-component", Faq);
+customElements.define('faq-component', Faq);
