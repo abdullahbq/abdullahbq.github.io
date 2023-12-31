@@ -45,6 +45,14 @@ body.dark-theme .modal-content {
     /* Firefox */
 }
 
+.file-list {
+    list-style: none;
+}
+
+.file-list li:hover {
+    font-weight: bold;
+}
+
 #sidebar {
     height: calc(100vh - var(--myHeader-margin));
     position: sticky;

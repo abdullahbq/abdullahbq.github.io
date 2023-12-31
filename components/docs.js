@@ -1,157 +1,63 @@
 class DocsComponent extends HTMLElement {
   connectedCallback() {
-    this.contentFolderPath = this.getAttribute("content");
-    this.sidebarDataURL = this.getAttribute("sidebar");
-    this.contentName = this.contentFolderPath.split("/").pop();
-    this.renderSkeleton();
-    this.populateDocs();
+    this.init();
+    this.render();
   }
 
-  renderSkeleton() {
-    const container = document.createElement("div");
-    container.classList.add("container-fluid");
+  async init() {
+    const [contentFolderPath, sidebarDataURL] = ["content", "sidebar"].map(attr => this.getAttribute(attr));
+    const contentName = contentFolderPath.split("/").pop();
 
-    container.innerHTML = `
-      <div class="row">
-        <aside class="col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 p-1 pb-3" id="sidebar">
-          <h4 class="text-center" style="font-weight: 900">${this.contentName}</h4>
-          <div class="accordion" id="documentAccordion"></div>
-        </aside>
+    this.innerHTML = `<div class="container-fluid"><div class="row">
+      ${this.section("col-lg-3 col-md-5 noscrollbar bg-primary bg-opacity-10 p-1 pb-2", "sidebar", `<h5 class="text-center" style="font-weight: 900">${contentName}</h5><div id="accordionContainer"></div>`)}
+      ${this.section("col-lg-9 col-md-7 m-0 p-0", "content", `<title-component title="${contentName}"></title-component><div class="container p-3">Click a topic from the sidebar to start reading the topic.</div>`)}
+    </div></div>`;
 
-        <main class="col-lg-9 col-md-7 m-0 p-0" id="content">
-          <title-component title="${this.contentName}"></title-component>
-          <div class="container p-3">Click a topic from the sidebar to start reading the topic.</div>
-        </main>
-      </div>
-    `;
+    this.q = (selector) => this.querySelector(selector);
+    this.q("#accordionContainer").addEventListener("click", (event) => {
+      const accordionItem = event.target.closest(".accordion-item-header");
+      const fileItem = event.target.closest(".file-item");
+      accordionItem ? this.toggleAccordion(accordionItem) : fileItem && this.loadContent(fileItem.dataset.folder, fileItem.dataset.file);
+    });
 
-    this.appendChild(container);
+    await this.populateDocs(sidebarDataURL);
   }
 
-  async populateDocs() {
+  section(classes, id, content) {
+    return `<div class="${classes}" id="${id}">${content}</div>`;
+  }
+
+  async populateDocs(sidebarDataURL) {
     try {
-      const response = await fetch(this.sidebarDataURL);
-
-      if (!response.ok) {
-        throw new Error("Error loading file list.");
-      }
-
-      const data = await response.json();
-      this.updateSidebar(data);
+      const data = await (await fetch(sidebarDataURL)).json();
+      this.q("#accordionContainer").innerHTML = Object.entries(data)
+        .map(([folderName, fileList]) => this.accordion(folderName, fileList)).join('');
     } catch (error) {
-      console.error("Error:", error);
-      this.renderError("Error loading file list.");
+      this.handleError(error, "Failed to load file list.");
     }
   }
 
-  updateSidebar(data) {
-    const accordion = this.querySelector("#documentAccordion");
-    const fragment = document.createDocumentFragment();
-
-    for (const [folderName, fileList] of Object.entries(data)) {
-      if (Array.isArray(fileList)) {
-        fragment.appendChild(this.createAccordionItem(folderName, fileList));
-      } else {
-        console.error(`Error: Invalid data format for key ${folderName}.`);
-        this.renderError("Error loading file list.");
-        break;
-      }
-    }
-
-    accordion.innerHTML = "";
-    accordion.appendChild(fragment);
-
-    this.addEventListeners();
+  accordion(folderName, fileList) {
+    return `<div class="accordion-item"><div class="card border border-primary mb-1 shadow rounded-2">
+      <div class="accordion-item-header p-2 d-flex align-items-center" style="cursor: pointer;">
+        <span class="fw-bold">${folderName}</span>
+        <i class="fas fa-chevron-down ms-auto ps-2"></i>
+      </div>
+      <div class="accordion-item-content py-2 bg-primary bg-opacity-10" style="display: none;">${this.fileList(fileList, folderName).outerHTML}</div>
+    </div></div>`;
   }
 
-  addEventListeners() {
-    const accordion = this.querySelector("#documentAccordion");
-
-    accordion.addEventListener("click", (event) => {
-      const fileItem = event.target.closest(".file-item");
-      if (fileItem) {
-        const { folder, file } = fileItem.dataset;
-        this.loadContent(folder, file);
-      }
-    });
-
-    accordion.addEventListener("mouseover", (event) => {
-      const fileItem = event.target.closest(".file-item");
-      if (fileItem) {
-        fileItem.style.fontWeight = "bold";
-      }
-    });
-
-    accordion.addEventListener("mouseout", (event) => {
-      const fileItem = event.target.closest(".file-item");
-      if (fileItem) {
-        fileItem.style.fontWeight = "normal";
-      }
-    });
-  }
-
-  createAccordionItem(folderName, fileList) {
-    const accordionItem = document.createElement("div");
-    accordionItem.classList.add("accordion-item");
-
-    const targetId = `collapse${folderName.replace(/\s+/g, "_")}`;
-    
-    accordionItem.innerHTML = `
-      <h2 class="accordion-header" id="heading${folderName}">
-        <button class="accordion-button p-2 fw-bold"
-                type="button" data-bs-toggle="collapse" data-bs-target="#${targetId}"
-                aria-expanded="true" aria-controls="${targetId}">
-          <i class="fas fa-folder-open me-2"></i>
-          <span>${folderName}</span>
-        </button>
-      </h2>
-      <div class="accordion-collapse collapse show" id="${targetId}" 
-           aria-labelledby="heading${folderName}">
-        <div class="accordion-body py-2 px-0 rounded-1">
-          ${this.createFileList(fileList, folderName).outerHTML}
-        </div>
-      </div>`;
-
-    // Toggle icon and update aria-expanded attribute on accordion button click
-    accordionItem.querySelector(".accordion-button").addEventListener("click", () => {
-      const icon = accordionItem.querySelector("i");
-      const isExpanded = accordionItem.getAttribute("aria-expanded") === "true";
-      accordionItem.setAttribute("aria-expanded", isExpanded ? "false" : "true");
-      icon.classList.toggle("fa-folder-open");
-      icon.classList.toggle("fa-folder");
-    });
-
-    return accordionItem;
-  }
-
-  createFileList(fileList, folderName) {
+  fileList(fileList, folderName) {
     const fileListElement = document.createElement("ul");
-    fileListElement.classList.add("my-0", "px-3");
-    fileListElement.style.listStyleType = "none";
-
-    for (const fileName of fileList) {
-      const listItem = document.createElement("li");
-      listItem.textContent = fileName;
-      listItem.classList.add("file-item");
-      listItem.dataset.folder = folderName;
-      listItem.dataset.file = fileName;
-      listItem.style.cursor = "pointer";
-      fileListElement.appendChild(listItem);
-    }
-
+    fileListElement.classList.add("my-0", "px-3", "file-list");
+    fileListElement.innerHTML = fileList.map(fileName => `<li class="file-item" data-folder="${folderName}" data-file="${fileName}" style="cursor: pointer;">${fileName}</li>`).join('');
     return fileListElement;
   }
 
   async loadContent(folderName, fileName) {
     try {
-      const fullFileName = fileName + ".html";
-      const response = await fetch(`${this.contentFolderPath}/${folderName}/${fullFileName}`);
-
-      if (!response.ok) {
-        throw new Error("Error loading content.");
-      }
-
-      const data = await response.text();
+      const contentPath = `${this.getAttribute("content")}/${folderName}/${fileName}.html`;
+      const data = await (await fetch(contentPath)).text();
       this.updateContent(`<title-component title="${fileName}"></title-component><div class="container p-3">${data}</div>`);
     } catch (error) {
       this.updateContent(`<div class="container p-3">${error.message}</div>`);
@@ -162,9 +68,15 @@ class DocsComponent extends HTMLElement {
     this.querySelector("#content").innerHTML = html;
   }
 
-  renderError(message) {
-    const sidebar = this.querySelector("#documentAccordion");
-    sidebar.innerHTML = `<div class="alert alert-danger" role="alert">${message}</div>`;
+  toggleAccordion(accordionItem) {
+    const content = accordionItem.nextElementSibling;
+    content.style.display = content.style.display === 'none' ? 'block' : 'none';
+    accordionItem.classList.toggle('active', content.style.display !== 'none');
+  }
+
+  handleError(error, message) {
+    console.error("Error:", error);
+    this.q("#accordionContainer").innerHTML = `<div class="alert alert-danger" role="alert">${message}</div>`;
   }
 }
 
