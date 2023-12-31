@@ -287,4 +287,69 @@ customElements.define('faq-component', Faq);
 
 
 
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .slider-card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .mycard {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      background-color: #286843;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s;
+    }
+
+    .curtain {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      width: 100%;
+      height: 100%;
+      background-color: #286843;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-100%);
+      transition: transform 0.5s;
+    }
+
+    .slider-card:hover .mycard {
+      transform: translateY(100%);
+    }
+
+    .slider-card:hover .curtain {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-card">
+    <div class="mycard">
+      <h2>Title</h2>
+      <p>Card content goes here.</p>
+    </div>
+    <div class="curtain">
+      Additional content or actions can be placed here.
+    </div>
+  </div>
+</body>
+
+</html>
