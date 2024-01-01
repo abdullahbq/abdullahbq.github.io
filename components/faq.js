@@ -91,11 +91,15 @@ class Faq extends HTMLElement {
   handleItemClick(event) {
     const header = event.target.closest('.accordion-item-header');
     if (!header) return;
-
+  
     const content = header.nextElementSibling;
-
+  
     header.parentElement.classList.toggle('active');
     content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+  
+    const icon = header.querySelector('i');
+    icon.classList.toggle('fa-chevron-down');
+    icon.classList.toggle('fa-chevron-up');
   }
 }
 

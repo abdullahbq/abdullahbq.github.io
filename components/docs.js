@@ -40,8 +40,9 @@ class DocsComponent extends HTMLElement {
   accordion(folderName, fileList) {
     return `<div class="accordion-item"><div class="card border border-primary mb-1 shadow rounded-2">
       <div class="accordion-item-header p-2 d-flex align-items-center" style="cursor: pointer;">
+        <i1 class="fas fa-folder pe-2"></i1>
         <span class="fw-bold">${folderName}</span>
-        <i class="fas fa-chevron-down ms-auto ps-2"></i>
+        <i2 class="fas fa-chevron-down ms-auto ps-2"></i2>
       </div>
       <div class="accordion-item-content py-2 bg-primary bg-opacity-10" style="display: none;">${this.fileList(fileList, folderName).outerHTML}</div>
     </div></div>`;
@@ -68,10 +69,23 @@ class DocsComponent extends HTMLElement {
     this.querySelector("#content").innerHTML = html;
   }
 
+  
   toggleAccordion(accordionItem) {
     const content = accordionItem.nextElementSibling;
     content.style.display = content.style.display === 'none' ? 'block' : 'none';
     accordionItem.classList.toggle('active', content.style.display !== 'none');
+
+    const icon1 = accordionItem.querySelector('i1');
+    icon1.classList.toggle('fa-folder', content.style.display === 'none');
+    icon1.classList.toggle('fa-folder-open', content.style.display !== 'none');
+
+    const icon2 = accordionItem.querySelector('i2');
+    icon2.classList.toggle('fa-chevron-down', content.style.display === 'none');
+    icon2.classList.toggle('fa-chevron-up', content.style.display !== 'none');
+  }
+
+  isAccordionItemActive(accordionItem) {
+    return accordionItem.classList.contains('active');
   }
 
   handleError(error, message) {
