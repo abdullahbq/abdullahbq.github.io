@@ -1,3 +1,5 @@
+node components/build.js
+
 reusable accordian
 
 export default class Accordion {
