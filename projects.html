@@ -4,7 +4,7 @@
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Blog</title>
+      <title>Projects</title>
       <link href="assets/css/fontawesome.css" rel="stylesheet" type="text/css" />
       <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
       <link href="assets/css/mystyles.css" rel="stylesheet" type="text/css" />
@@ -16,31 +16,33 @@
     <body>
       <header-component showSearchButton></header-component>
       <section class="blog-section bg-primary bg-opacity-10">
-        <title-component title="Blog"></title-component>
+        <title-component title="Projects"></title-component>
         <div class="container py-5">
           <div class="row">
             <div class="col-lg-12 mb-4 text-center">
               <div id="filterButtons">
                 <button class="btn btn-outline-primary rounded-pill filter-btn m-2 active shadow" data-filter="all">All Categories</button>
                 
-                      <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="Web Development">Web Development</button>
+                      <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="Kids">Kids</button>
                   
                       <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="Digital">Digital</button>
                   
                       <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="React">React</button>
                   
+                      <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="Web Development">Web Development</button>
+                  
               </div>
             </div>
             
-                  <div class="col-lg-4 col-md-6 post-item" data-category="Web Development">
-                    <a href="blog_1.html" class="text-decoration-none">
+                  <div class="col-lg-4 col-md-6 project-item" data-category="Kids">
+                    <a href="project_1.html" class="text-decoration-none">
                       <div class="card border-primary shadow mb-4">
                         <div class="card-overlay position-absolute m-2">
-                          <p class="badge bg-success rounded-pill">Web Development</p>
+                          <p class="badge bg-success rounded-pill">Kids</p>
                         </div>
-                        <img src="assets/images/01.jpg" class="card-img-top" alt=Blog 1 Title is shown by default, until the collapse plugin adds the appropriate classes th React>
+                        <img src="assets/images/01.jpg" class="card-img-top" alt=Project 1>
                         <div class="card-body">
-                          <h4 class="fw-bold card-title text-primary">Blog 1 Title is shown by default, until the collapse plugin adds the appropriate classes th React</h4>
+                          <h4 class="fw-bold card-title text-primary">Project 1</h4>
                           <p class="card-text">It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
                         </div>
                         <div class="card-footer bg-primary bg-opacity-10">
@@ -51,15 +53,15 @@
                       </div>
                     </a>
                   </div>
-                  <div class="col-lg-4 col-md-6 post-item" data-category="Digital">
-                    <a href="blog_ha_ha.html" class="text-decoration-none">
+                  <div class="col-lg-4 col-md-6 project-item" data-category="Digital">
+                    <a href="project2reryeuyr_eyreuryuer_8548574.html" class="text-decoration-none">
                       <div class="card border-primary shadow mb-4">
                         <div class="card-overlay position-absolute m-2">
                           <p class="badge bg-success rounded-pill">Digital</p>
                         </div>
-                        <img src="assets/images/01.jpg" class="card-img-top" alt=Blog 2 Title>
+                        <img src="assets/images/01.jpg" class="card-img-top" alt=Blog 2 Title Kids>
                         <div class="card-body">
-                          <h4 class="fw-bold card-title text-primary">Blog 2 Title</h4>
+                          <h4 class="fw-bold card-title text-primary">Blog 2 Title Kids</h4>
                           <p class="card-text">It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions.</p>
                         </div>
                         <div class="card-footer bg-primary bg-opacity-10">
@@ -70,8 +72,8 @@
                       </div>
                     </a>
                   </div>
-                  <div class="col-lg-4 col-md-6 post-item" data-category="React">
-                    <a href="blog3_ha.html" class="text-decoration-none">
+                  <div class="col-lg-4 col-md-6 project-item" data-category="React">
+                    <a href="project3.html" class="text-decoration-none">
                       <div class="card border-primary shadow mb-4">
                         <div class="card-overlay position-absolute m-2">
                           <p class="badge bg-success rounded-pill">React</p>
@@ -89,8 +91,8 @@
                       </div>
                     </a>
                   </div>
-                  <div class="col-lg-4 col-md-6 post-item" data-category="Web Development">
-                    <a href="yaar_tu_naa.html" class="text-decoration-none">
+                  <div class="col-lg-4 col-md-6 project-item" data-category="Web Development">
+                    <a href="project4.html" class="text-decoration-none">
                       <div class="card border-primary shadow mb-4">
                         <div class="card-overlay position-absolute m-2">
                           <p class="badge bg-success rounded-pill">Web Development</p>
@@ -115,11 +117,11 @@
       <script>
         document.addEventListener('DOMContentLoaded', function () {
           const filterButtons = document.querySelectorAll('.filter-btn');
-          const blogItems = document.querySelectorAll('.post-item');
+          const projectItems = document.querySelectorAll('.project-item');
           const searchInput = document.getElementById('searchInput');
 
           function filterByCategory(category) {
-            blogItems.forEach(item => {
+            projectItems.forEach(item => {
               const itemCategory = item.dataset.category;
               if (category === 'all' || category === itemCategory) {
                 item.style.display = 'block';
@@ -150,7 +152,7 @@
               filterButtons[0].classList.add('active');
             }
 
-            blogItems.forEach(item => {
+            projectItems.forEach(item => {
               const itemTitle = item.querySelector('.card-title').innerText.toLowerCase();
               if (itemTitle.includes(searchQuery) || searchQuery.trim() === '') {
                 item.style.display = 'block';

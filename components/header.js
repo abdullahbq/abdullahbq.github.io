@@ -46,12 +46,12 @@ class Header extends HTMLElement {
                   Courses
                 </a>
                 <ul class="dropdown-menu p-2">
+                  <li><a class="dropdown-item rounded-2 my-1" id="electrical_and_electronic_measurement-link" href="electrical_and_electronic_measurement.html">Electrical and Electronic Measurement</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="digital_electronics-link" href="digital_electronics.html">Digital Electronics</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="embedded_systems-link" href="embedded_systems.html">Embedded Systems</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="web_development-link" href="web_development.html">Web Development</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="internet_of_things-link" href="internet_of_things.html">Internet of Things</a></li>
-                  <li><a class="dropdown-item rounded-2 my-1" id="electrical_and_electronic_measurement-link" href="electrical_and_electronic_measurement.html">Electrical and Electronic Measurement</a></li>
-                </ul>
+                   </ul>
               </li>
                 <li class="nav-item">
                   <a class="nav-link px-2" id="blog-link" href="blog.html">Blog</a>
@@ -76,10 +76,7 @@ class Header extends HTMLElement {
               ${
                 showSearchButton
                   ? `<form class="d-flex" role="search">
-                <input id="searchInput" class="form-control me-2 border-primary shadow" type="search" placeholder="Search Blog Articles" aria-label="Search">
-                  <button class="btn btn-outline-primary text-light shadow" type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
+                <input id="searchInput" class="form-control border-primary shadow" type="search" placeholder="Type to Search Articles" aria-label="Search">
               </form>`
                   : ""
               }
