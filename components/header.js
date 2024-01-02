@@ -53,6 +53,9 @@ class Header extends HTMLElement {
                   <li><a class="dropdown-item rounded-2 my-1" id="internet_of_things-link" href="internet_of_things.html">Internet of Things</a></li>
                    </ul>
               </li>
+              <li class="nav-item">
+                <a class="nav-link px-2" id="projects-link" href="projects.html">Projects</a>
+              </li>
                 <li class="nav-item">
                   <a class="nav-link px-2" id="blog-link" href="blog.html">Blog</a>
                 </li>
@@ -76,7 +79,7 @@ class Header extends HTMLElement {
               ${
                 showSearchButton
                   ? `<form class="d-flex" role="search">
-                <input id="searchInput" class="form-control border-primary shadow" type="search" placeholder="Type to Search Articles" aria-label="Search">
+                <input id="searchInput" class="form-control border-primary shadow" type="search" placeholder="Type to Filter Articles" aria-label="Search">
               </form>`
                   : ""
               }
@@ -125,6 +128,7 @@ class Header extends HTMLElement {
       "/embedded_systems.html": "embedded_systems-link",
       "/web_development.html": "web_development-link",
       "/internet_of_things.html": "internet_of_things-link",
+      "/projects.html": "projects-link",
       "/blog.html": "blog-link",
       "/about.html": "about-link",
       "/services.html": "services-link",
