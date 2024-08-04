@@ -46,7 +46,7 @@ function generatePostHtml(metadata, content) {
     <body>
       <header-component></header-component>
       <div class="card border-0 rounded-0 shadow">
-        <img src="assets/images/${metadata.image}.jpg" class="card-img-top rounded-0" alt=${metadata.title}>
+        <img src="assets/images/${metadata.image}.jpg" class="card-img-top rounded-0" style="height: 300px; width: auto; object-fit: cover;" alt=${metadata.title}>
         <div class="card-overlay position-absolute m-2">
           <p class="badge bg-success rounded-pill">${metadata.category}</p>
           <h1 class="card-title text-light" style="font-weight:900">${metadata.title}</h1>
@@ -90,17 +90,17 @@ function generateBlogHtml(posts) {
               <div id="filterButtons">
                 <button class="btn btn-outline-primary rounded-pill filter-btn m-2 active shadow" data-filter="all">All Categories</button>
                 ${Array.from(new Set(posts.map((post) => post.category)))
-                  .map(
-                    (category) => `
+      .map(
+        (category) => `
                       <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="${category}">${category}</button>
                   `
-                  )
-                  .join("")}
+      )
+      .join("")}
               </div>
             </div>
             ${posts
-              .map(
-                (post) => `
+      .map(
+        (post) => `
                   <div class="col-lg-4 col-md-6 post-item" data-category="${post.category}">
                     <a href="${toKebabCase(post.fileName)}.html" class="text-decoration-none">
                       <div class="card border-primary shadow mb-4">
@@ -120,8 +120,8 @@ function generateBlogHtml(posts) {
                       </div>
                     </a>
                   </div>`
-              )
-              .join("")}
+      )
+      .join("")}
           </div>
         </div>
       </section>
@@ -206,17 +206,17 @@ function generateProjectHtml(projects) {
               <div id="filterButtons">
                 <button class="btn btn-outline-primary rounded-pill filter-btn m-2 active shadow" data-filter="all">All Categories</button>
                 ${Array.from(new Set(projects.map((project) => project.category)))
-                  .map(
-                    (category) => `
+      .map(
+        (category) => `
                       <button class="btn btn-outline-primary rounded-pill filter-btn me-2 shadow" data-filter="${category}">${category}</button>
                   `
-                  )
-                  .join("")}
+      )
+      .join("")}
               </div>
             </div>
             ${projects
-              .map(
-                (project) => `
+      .map(
+        (project) => `
                   <div class="col-lg-4 col-md-6 project-item" data-category="${project.category}">
                     <a href="${toKebabCase(project.fileName)}.html" class="text-decoration-none">
                       <div class="card border-primary shadow mb-4">
@@ -236,8 +236,8 @@ function generateProjectHtml(projects) {
                       </div>
                     </a>
                   </div>`
-              )
-              .join("")}
+      )
+      .join("")}
           </div>
         </div>
       </section>
@@ -401,7 +401,7 @@ const rootFolders = [
 
 // Generate JSON files for each entry in the array
 rootFolders.forEach(({ rootFolder, sidebarOutputPath }) => {
-  generateSidebarJSON(rootFolder, sidebarOutputPath);  
+  generateSidebarJSON(rootFolder, sidebarOutputPath);
   console.log(`File created: ${sidebarOutputPath}`);
 });
 
