@@ -396,6 +396,7 @@ const rootFolders = [
   createCourseObject("Embedded Systems"),
   createCourseObject("Web Development"),
   createCourseObject("Internet of Things"),
+  createCourseObject("Cloud Computing"),
   createCourseObject("Electrical and Electronic Measurement")
 ];
 

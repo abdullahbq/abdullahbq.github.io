@@ -19,15 +19,14 @@ class Header extends HTMLElement {
         <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top py-2 shadow">
           <div class="container-fluid">
             <div class="d-flex">
-            ${
-              showToggleButton
-                ? `
+            ${showToggleButton
+        ? `
                   <button id="toggleSidebarBtn" class="btn btn-outline-primary me-2 text-light shadow">
                     <i class="fas fa-list"></i>
                   </button>
                 `
-                : ""
-            }
+        : ""
+      }
               <button class="btn btn-outline-primary text-light shadow" id="toggleThemeBtn">
                 <i class="fas fa-sun"></i>
               </button>              
@@ -50,6 +49,7 @@ class Header extends HTMLElement {
                   <li><a class="dropdown-item rounded-2 my-1" id="digital_electronics-link" href="digital_electronics.html">Digital Electronics</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="embedded_systems-link" href="embedded_systems.html">Embedded Systems</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="web_development-link" href="web_development.html">Web Development</a></li>
+                  <li><a class="dropdown-item rounded-2 my-1" id="cloud_computing-link" href="cloud_computing.html">Cloud Computing</a></li>
                   <li><a class="dropdown-item rounded-2 my-1" id="internet_of_things-link" href="internet_of_things.html">Internet of Things</a></li>
                    </ul>
               </li>
@@ -76,13 +76,12 @@ class Header extends HTMLElement {
               </ul>
             </li>
               </ul>
-              ${
-                showSearchButton
-                  ? `<form class="d-flex" role="search">
+              ${showSearchButton
+        ? `<form class="d-flex" role="search">
                 <input id="searchInput" class="form-control border-primary shadow" type="search" placeholder="Type to Filter Articles" aria-label="Search">
               </form>`
-                  : ""
-              }
+        : ""
+      }
             </div>
           </div>
         </nav>
@@ -126,6 +125,7 @@ class Header extends HTMLElement {
     const links = {
       "/digital_electronics.html": "digital_electronics-link",
       "/embedded_systems.html": "embedded_systems-link",
+      "/cloud_computing.html": "cloud_computing-link",
       "/web_development.html": "web_development-link",
       "/internet_of_things.html": "internet_of_things-link",
       "/projects.html": "projects-link",
